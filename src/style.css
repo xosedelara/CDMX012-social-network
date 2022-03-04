@@ -1,5 +1,36 @@
 body{
     background-color: #201F41;
     font-family: 'Orbitron', sans-serif;
-    color: #fff
+    color: #fff;
+
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    font-family: 'Orbitron', sans-serif;
+    color: #fff;
+}
+
+.login-box {
+    background-color: #105C7C;
+    padding: 10%;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.submit {
+    background-color: #201F41;
+    border-radius: 10px;
+}
+
+.register {
+    background-color: #F1972A;
+    border-radius: 10px;
+}
+
+h2 {
+    font-size: 1rem;
 }
