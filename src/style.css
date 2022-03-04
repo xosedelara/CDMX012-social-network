@@ -7,30 +7,47 @@ body{
     display: flex;
     justify-content: center;
 }
-
-button {
-    font-family: 'Orbitron', sans-serif;
-    color: #fff;
+.petspace-logo{
+    height: 50px;
+    margin-top: 25%;
 }
-
 .login-box {
+    margin-top: 20%;
     background-color: #105C7C;
     padding: 10%;
     display: flex;
     align-items: center;
     border-radius: 10px;
 }
-
-.submit {
+input{
+    border-radius: 10px;
+    border: 0;
+}
+.submit-button {
+    margin-top: 10px;
+    font-family: 'Orbitron', sans-serif;
+    color: #fff;
     background-color: #201F41;
     border-radius: 10px;
+    border:0;
 }
 
-.register {
+.register-button {
+    color: #fff;
     background-color: #F1972A;
     border-radius: 10px;
-}
+    border: 0;
+    height: 25px;
+    padding: 6px, 8px, 6px, 8px;
 
+
+}
+.facebook-logo{
+    height: 25px;
+}
+.gmail-logo{
+    height: 25px;
+}
 h2 {
     font-size: 1rem;
 }
