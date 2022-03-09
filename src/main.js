@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 const firebaseConfig = {
     apiKey: 'AIzaSyC26n4Fh-NfxC_ZNKZrFDH4NzrQrYwgirY',
     authDomain: 'petspace-3f65f.firebaseapp.com',
@@ -9,11 +10,12 @@ const firebaseConfig = {
 
   firebase.initializeApp(firebaseConfig);
 
-  const singupForm = document.getElementById('registrationForm');
-  singupForm.addEventListener('submit', (e) => {
+  const registrationForm = document.getElementById('registrationForm');
+  const registrationBtn = document.getElementById('regBtn');
+  registrationBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    const email = singupForm.regEmail.value;
-    const password = singupForm.regPW.value;
+    const email = registrationForm.regEmail.value;
+    const password = registrationForm.regPW.value;
     console.log(email, password);
     firebase.auth().createUserWithEmailAndPassword(email, password).catch(e => {
       console.log(e);
