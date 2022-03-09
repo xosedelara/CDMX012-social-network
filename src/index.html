@@ -7,49 +7,33 @@
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
   <title>PetSpace</title>
+  <script src="about.js"></script>
+  <script src="home.js"></script>
 </head>
 <body>
-  <div id="root">
-  <header class="logo-PS" id="logoPS"><img class="petspace-logo" id="petspaceLogo" src="img/logoPS.png" ></header>
-  <section class = "login-box" id="loginBox">
-    <form class= "login-form" id="loginForm" action="submit">
-      <input id="user" name="user" type="text" placeholder="Usuarix / e-mail"><br>
-      <input id="password" type="password" placeholder="Contraseña"><br>
-      <button class="submit-button" id="submitButton" type="submit">Entrar</button>
-    </form>
-  </section>
-  <section class="login-with" id="loginWith">
-    <p>Inicia sesión con:</p><br>
-    <img class="facebook-logo" id="facebookLogo" src="img/facebook.png">
-    <img class="gmail-logo" id="gmailLogo" src="img/google.png"><br>
-  </section>
-  <section class="register-section" id="registerSection">
-    <p>¿No tienes cuenta?</p><br>
-    <button class="register-button" id="registerButton" type="button">Regístrate</button>
-  </section>
-</div>
-  <script type="module" src="main.js"></script>
-  
-  <!-- Instalando Firebase -->
-  <script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-  
-    // Your web app's Firebase configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyC26n4Fh-NfxC_ZNKZrFDH4NzrQrYwgirY",
-      authDomain: "petspace-3f65f.firebaseapp.com",
-      projectId: "petspace-3f65f",
-      storageBucket: "petspace-3f65f.appspot.com",
-      messagingSenderId: "719999017536",
-      appId: "1:719999017536:web:4e72654f1a5dba66b1b5a5"
-    };
-  
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-  </script>
+    <div id="root"></div>
+  <script src="app.js"></script>
+
+<!-- Instalando Firebase -->
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyC26n4Fh-NfxC_ZNKZrFDH4NzrQrYwgirY",
+    authDomain: "petspace-3f65f.firebaseapp.com",
+    projectId: "petspace-3f65f",
+    storageBucket: "petspace-3f65f.appspot.com",
+    messagingSenderId: "719999017536",
+    appId: "1:719999017536:web:4e72654f1a5dba66b1b5a5"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+</script>
 
 </body>
 </html>
