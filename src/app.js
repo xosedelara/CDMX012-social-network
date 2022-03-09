@@ -1,6 +1,6 @@
 const routes = {
   '/' : home,
-  '/about' : about
+  '/registration' : registration
 };
 
 const rootDiv = document.getElementById('root');

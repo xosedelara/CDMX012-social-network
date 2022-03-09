@@ -1,4 +1,4 @@
-let about = `
+let registration = `
 <div>
     <section class="reg-box">
         <p>Crea un usuario y contraseña</p>
