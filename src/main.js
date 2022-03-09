@@ -62,6 +62,41 @@
 // Este es el punto de entrada de tu aplicacion
 // import { myFunction } from './lib/index.js';
 
+
+const firebaseConfig = {
+    apiKey: 'AIzaSyC26n4Fh-NfxC_ZNKZrFDH4NzrQrYwgirY',
+    authDomain: 'petspace-3f65f.firebaseapp.com',
+    projectId: 'petspace-3f65f',
+    storageBucket: 'petspace-3f65f.appspot.com',
+    messagingSenderId: '719999017536',
+    appId: '1:719999017536:web:4e72654f1a5dba66b1b5a5',
+  };
+
+  firebase.initializeApp(firebaseConfig);
+
+  const singupForm = document.getElementById('loginForm');
+  singupForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = singupForm.user.value;
+    const password = singupForm.password.value;
+    console.log(email, password);
+    firebase.auth().createUserWithEmailAndPassword(email, password).catch(e => {
+      console.log(e);
+    });
+  });
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      console.log(user);
+    } else {
+
+    }
+  });
+
+
+
+
+
+
 const root = document.getElementById('root');
 const registerButton = document.getElementById('registerButton');
 
