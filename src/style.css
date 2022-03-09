@@ -14,7 +14,7 @@ body{
 .login-box {
     margin-top: 20%;
     background-color: #105C7C;
-    padding: 10%;
+    padding: 9%;
     display: flex;
     align-items: center;
     border-radius: 10px;
@@ -22,32 +22,56 @@ body{
 input{
     border-radius: 10px;
     border: 0;
+    margin: 10px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    line-height: 18px;
+    padding: 5px, 10px, 5px, 10px;
 }
 .submit-button {
     margin-top: 10px;
     font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    line-height: 15px;
     color: #fff;
     background-color: #201F41;
     border-radius: 10px;
     border:0;
+    width: 78px;
+    height: 21px;
 }
-
+.login-with {
+    padding: 20px;
+}
+p{
+    font-size: 12px;
+    line-height: 15px;
+    margin: 15px;
+}
+.facebook-logo{
+    height: 25px;
+    margin:10px;
+}
+.gmail-logo{
+    height: 25px;
+    margin: 10px;
+}
 .register-button {
     color: #fff;
     background-color: #F1972A;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    line-height: 15px;
+    width: 135px;
     border-radius: 10px;
     border: 0;
     height: 25px;
     padding: 6px, 8px, 6px, 8px;
-
-
+    margin: 10px;
 }
-.facebook-logo{
-    height: 25px;
-}
-.gmail-logo{
-    height: 25px;
-}
-h2 {
-    font-size: 1rem;
+.reg-box{
+    background-color: #422E53;
+    border-radius: 10px;
+    margin-top: 40%;
+    padding: 20px;
 }
