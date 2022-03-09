@@ -1,12 +1,12 @@
-let registration = `
+const registration = `
 <div>
     <section class="reg-box">
         <p>Crea un usuario y contraseña</p>
-        <form>
-            <input placeholder="Nombre"></input>
-            <input placeholder="Correo electrónico"></input>
-            <input placeholder="Contraseña"></input>
-            <input placeholder="Confirma contraseña"></input>
+        <form id="registrationForm">
+            <input placeholder="Nombre" id="regName"></input>
+            <input placeholder="Correo electrónico" id="regEmail"></input>
+            <input type="password" placeholder="Contraseña" id="regPW"></input>
+            <input type="password" placeholder="Confirma contraseña" id="regPW2"></input>
         </form>
         <button class="register-button">Regístrate</button>
         <p>o regístrate con:</p>

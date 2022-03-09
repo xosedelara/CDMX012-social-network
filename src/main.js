@@ -9,11 +9,11 @@ const firebaseConfig = {
 
   firebase.initializeApp(firebaseConfig);
 
-  const singupForm = document.getElementById('loginForm');
+  const singupForm = document.getElementById('registrationForm');
   singupForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const email = singupForm.user.value;
-    const password = singupForm.password.value;
+    const email = singupForm.regEmail.value;
+    const password = singupForm.regPW.value;
     console.log(email, password);
     firebase.auth().createUserWithEmailAndPassword(email, password).catch(e => {
       console.log(e);

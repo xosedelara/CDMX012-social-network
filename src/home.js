@@ -1,4 +1,4 @@
-let home = `
+const home = `
 <header class="logo-PS" id="logoPS"><img class="petspace-logo" id="petspaceLogo" src="img/logoPS.png" ></header>
   <section class = "login-box" id="loginBox">
     <form class= "login-form" id="loginForm" action="submit">
