@@ -1,10 +1,12 @@
+/* eslint-disable no-multiple-empty-lines */
+/* eslint-disable indent */
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 
 //  Routing
 const routes = {
   '/': home,
-  '/registration': registration
+  '/registration': registration,
 };
 
 const rootDiv = document.getElementById('root');
@@ -14,7 +16,7 @@ const onNavigate = (pathname) => {
   window.history.pushState(
     {},
     pathname,
-    window.location.origin + pathname
+    window.location.origin + pathname,
   );
   rootDiv.innerHTML = routes[pathname];
 };
@@ -33,6 +35,18 @@ const firebaseConfig = {
   appId: '1:719999017536:web:4e72654f1a5dba66b1b5a5',
 };
 firebase.initializeApp(firebaseConfig);
+
+
+document.getElementById('seePassword').addEventListener('click', (e) => {
+  e.preventDefault();
+  if (password.type === 'password') {
+    password.type = 'text';
+  } else {
+    password.type = 'password';
+  }
+});
+
+
 
 function activateAuth() {
   console.log('hola');
@@ -63,7 +77,15 @@ const registrationFunctionality = () => {
     onNavigate('/');
     return false;
   });
-}
+  document.getElementById('seePasswordReg').addEventListener('click', (e) => {
+    e.preventDefault();
+    if (regPW.type === 'password') {
+      regPW.type = 'text';
+    } else {
+      regPW.type = 'password';
+    }
+  });
+ };
 
 //  RegistrationButton functionality
 const registrationBtn = document.getElementById('registerButton');
