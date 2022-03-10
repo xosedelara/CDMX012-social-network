@@ -13,5 +13,5 @@ const registration = `
         <img src="img/facebook.png" class="facebook-logo">
         <img src="img/google.png" class="gmail-logo">
     </section>
-    <a href="#" onclick="onNavigate('/'); return false;"><button class="register-button">Regresa al inicio</button></a>
+    <button class="return-button" id="returnButton">Regresa al inicio</button>
 `;

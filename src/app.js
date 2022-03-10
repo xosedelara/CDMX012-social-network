@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 
-//Routing
+//  Routing
 const routes = {
   '/': home,
   '/registration': registration
@@ -15,15 +15,15 @@ const onNavigate = (pathname) => {
     {},
     pathname,
     window.location.origin + pathname
-  )
-  rootDiv.innerHTML = routes[pathname]
-}
+  );
+  rootDiv.innerHTML = routes[pathname];
+};
 
 window.onpopstate = () => {
-  rootDiv.innerHTML = routes[window.location.pathname]
-}
+  rootDiv.innerHTML = routes[window.location.pathname];
+};
 
-//Firebase implementation
+//  Firebase implementation
 const firebaseConfig = {
   apiKey: 'AIzaSyC26n4Fh-NfxC_ZNKZrFDH4NzrQrYwgirY',
   authDomain: 'petspace-3f65f.firebaseapp.com',
@@ -34,13 +34,11 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 
-
 function activateAuth() {
   console.log('hola');
   const registrationForm = document.getElementById('registrationForm');
   const registrationBtn = document.getElementById('regBtn');
   registrationBtn.addEventListener('click', (e) => {
-    // window.location.reload();
     e.preventDefault();
     const email = registrationForm.regEmail.value;
     const password = registrationForm.regPW.value;
@@ -54,16 +52,24 @@ function activateAuth() {
     if (user) {
       console.log(user);
     } else {
-
     }
   });
 }
 
-//RegistrationButton functionality
-const registrationBtn = document.getElementById('registerButton');
+// return button functionality
+const registrationFunctionality = () => {
+  const returnBtn = document.getElementById('returnButton');
+  returnBtn.addEventListener('click', () => {
+    onNavigate('/');
+    return false;
+  });
+}
 
-registrationBtn.addEventListener('click', ()=>{
- onNavigate('/registration');
- activateAuth()
- return false
+//  RegistrationButton functionality
+const registrationBtn = document.getElementById('registerButton');
+registrationBtn.addEventListener('click', () => {
+  onNavigate('/registration');
+  registrationFunctionality();
+  activateAuth();
+  return false;
 });

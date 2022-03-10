@@ -16,9 +16,10 @@ body{
     background-color: #105C7C;
     padding: 9%;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     border-radius: 10px;
 }
+
 input{
     border-radius: 10px;
     border: 0;
@@ -74,4 +75,17 @@ p{
     border-radius: 10px;
     margin-top: 40%;
     padding: 20px;
+}
+.return-button{
+    color: #fff;
+    background-color: #F1972A;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    line-height: 15px;
+    width: 135px;
+    border-radius: 10px;
+    border: 0;
+    height: 25px;
+    padding: 6px, 8px, 6px, 8px;
+    margin: 10px;
 }
