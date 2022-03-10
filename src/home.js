@@ -1,5 +1,5 @@
 const home = `
-<header class="logo-PS" id="logoPS"><img class="petspace-logo" id="petspaceLogo" src="img/logoPS.png" ></header>
+<header class="logo-PS" id="logoPS"><img class="petspace-logo" id="petspaceLogo" src="img/PetSpaceLogo.png" ></header>
   <section class = "login-box" id="loginBox">
     <form class= "login-form" id="loginForm" action="submit">
       <input id="user" name="user" type="text" placeholder="Usuarix / e-mail"><br>
@@ -14,6 +14,6 @@ const home = `
   </section>
   <section class="register-section" id="registerSection">
     <p>¿No tienes cuenta?</p><br>
-    <button class="register-button" id="registerButton" type="button"><a href="#" onclick="onNavigate('/registration'); return false;">Registrate</a></button>
+    <button class="register-button" id="registerButton" type="button"><a href="#" onclick="onNavigate('/registration'); probando();return false;">Registrate</a></button>
   </section>
 `

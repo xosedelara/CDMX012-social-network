@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 const registration = `
     <section class="reg-box">
         <p>Crea un usuario y contraseña</p>
