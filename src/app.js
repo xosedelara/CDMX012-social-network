@@ -2,6 +2,8 @@
 /* eslint-disable indent */
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
+
+//  Routing
 const routes = {
   '/': home,
   '/registration': registration,
@@ -23,6 +25,7 @@ window.onpopstate = () => {
   rootDiv.innerHTML = routes[window.location.pathname];
 };
 
+//  Firebase implementation
 const firebaseConfig = {
   apiKey: 'AIzaSyC26n4Fh-NfxC_ZNKZrFDH4NzrQrYwgirY',
   authDomain: 'petspace-3f65f.firebaseapp.com',
@@ -45,27 +48,34 @@ document.getElementById('seePassword').addEventListener('click', (e) => {
 
 
 
-function activateAtuh() {
+function activateAuth() {
   console.log('hola');
   const registrationForm = document.getElementById('registrationForm');
   const registrationBtn = document.getElementById('regBtn');
   registrationBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const email = registrationForm.regEmail.value;
-      const password = registrationForm.regPW.value;
-      console.log(email, password);
-      firebase.auth().createUserWithEmailAndPassword(email, password).catch((error) => {
-          console.log(error);
-          console.log(error.message);
-      });
+    e.preventDefault();
+    const email = registrationForm.regEmail.value;
+    const password = registrationForm.regPW.value;
+    console.log(email, password);
+    firebase.auth().createUserWithEmailAndPassword(email, password).catch((error) => {
+      console.log(error);
+      console.log(error.message);
+    });
   });
   firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-          console.log(user);
-      // eslint-disable-next-line no-empty
-      } else {
+    if (user) {
+      console.log(user);
+    } else {
+    }
+  });
+}
 
-      }
+// return button functionality
+const registrationFunctionality = () => {
+  const returnBtn = document.getElementById('returnButton');
+  returnBtn.addEventListener('click', () => {
+    onNavigate('/');
+    return false;
   });
   document.getElementById('seePasswordReg').addEventListener('click', (e) => {
     e.preventDefault();
@@ -75,4 +85,13 @@ function activateAtuh() {
       regPW.type = 'password';
     }
   });
- }
+ };
+
+//  RegistrationButton functionality
+const registrationBtn = document.getElementById('registerButton');
+registrationBtn.addEventListener('click', () => {
+  onNavigate('/registration');
+  registrationFunctionality();
+  activateAuth();
+  return false;
+});

@@ -14,7 +14,7 @@ const home = `
     <img class="gmail-logo" id="gmailLogo" src="img/google.png"><br>
   </section>
   <section class="register-section" id="registerSection">
-    <p>¿No tienes cuenta?</p>
-    <button class="register-button" id="registerButton" type="button"><a href="#" onclick="onNavigate('/registration'); activateAtuh();return false;">Registrate</a></button>
+    <p>¿No tienes cuenta?</p><br>
+    <button class="register-button" id="registerButton" type="button">Regístrate</button>
   </section>
 `
