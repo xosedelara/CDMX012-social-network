@@ -51,8 +51,8 @@ document.getElementById('seePassword').addEventListener('click', (e) => {
 const errorTranslate = {
   'auth/invalid-email': 'El email es inválido.',
   'auth/email-already-in-use': 'El email ya está registrado.',
-  'auth/weak-password': 'La contraseña es inválida'
-}
+  'auth/weak-password': 'La contraseña es inválida',
+};
 
 // activar el login
 const loginForm = document.getElementById('loginForm');
@@ -64,7 +64,7 @@ loginBtn.addEventListener('click', (e) => {
   console.log(email, password);
   // Sign In User with Email and Password
   firebase.auth().signInWithEmailAndPassword(email, password).catch((error) => {
-    // Handle Errors here.
+    // Handle Errors here
     const errorCode = error.code;
     const errorMessage = error.message;
     console.log(errorCode);
