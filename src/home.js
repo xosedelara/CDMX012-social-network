@@ -1,4 +1,5 @@
-const home = `
+const home = {
+ homeHTML: `
 <header class="logo-PS" id="logoPS"><img class="petspace-logo" id="petspaceLogo" src="img/PetSpaceLogo.png" ></header>
   <section class = "login-box" id="loginBox">
     <form class= "login-form" id="loginForm" action="submit">
@@ -17,4 +18,26 @@ const home = `
     <p>¿No tienes cuenta?</p><br>
     <button class="register-button" id="registerButton" type="button">Regístrate</button>
   </section>
-`;
+`,
+
+sendToRegistration: () => { 
+  const registrationBtn = document.getElementById('registerButton');
+  registrationBtn.addEventListener('click', () => {
+  onNavigate('/registration');
+  return false;
+});
+},
+
+showPassword: () => {
+  document.getElementById('seePassword').addEventListener('click', (e) => {
+  e.preventDefault();
+  if (password.type === 'password') {
+    password.type = 'text';
+  } else {
+    password.type = 'password';
+  }
+});
+}
+}
+
+export default home;
