@@ -14,6 +14,6 @@ const home = `
   </section>
   <section class="register-section" id="registerSection">
     <p>¿No tienes cuenta?</p><br>
-    <button class="register-button" id="registerButton" type="button"><a href="#" onclick="onNavigate('/registration'); probando();return false;">Registrate</a></button>
+    <button class="register-button" id="registerButton" type="button">Regístrate</button>
   </section>
 `
