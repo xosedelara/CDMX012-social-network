@@ -86,7 +86,9 @@ function activateAuth() {
     console.log(email, password);
     firebase.auth().createUserWithEmailAndPassword(email, password).catch((error) => {
       const errorType = error.code;
-      window.alert(errorTranslate[errorType]);
+      const regForm = document.getElementById('registrationForm');
+      regForm.setAttribute('class', 'alert');
+      regForm.innerHTML = (errorTranslate[errorType]);
     });
   });
   firebase.auth().onAuthStateChanged((user) => {
@@ -114,7 +116,8 @@ const registrationFunctionality = () => {
       regPW.type = 'password';
     }
   });
- };
+};
+
 
 //  RegistrationButton functionality
 const registrationBtn = document.getElementById('registerButton');
