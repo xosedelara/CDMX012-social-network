@@ -2,7 +2,6 @@ body{
     background-color: #201F41;
     font-family: 'Orbitron', sans-serif;
     color: #fff;
-
     text-align: center;
     display: flex;
     justify-content: center;
@@ -28,6 +27,7 @@ input{
     font-size: 12px;
     line-height: 18px;
     padding: 5px, 10px, 5px, 10px;
+    text-align: center;
 }
 .submit-button {
     margin-top: 10px;

@@ -37,6 +37,8 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 
+
+
 document.getElementById('seePassword').addEventListener('click', (e) => {
   e.preventDefault();
   if (password.type === 'password') {
@@ -45,6 +47,26 @@ document.getElementById('seePassword').addEventListener('click', (e) => {
     password.type = 'password';
   }
 });
+
+
+// activar el login
+const loginForm = document.getElementById('loginForm');
+const loginBtn = document.getElementById('submitButton');
+loginBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  const email = loginForm.user.value;
+  const password = loginForm.password.value;
+  console.log(email, password);
+  // Sign In User with Email and Password
+  firebase.auth().signInWithEmailAndPassword(email, password).catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorCode);
+    console.log(errorMessage);
+  });
+});
+
 
 
 
@@ -65,6 +87,7 @@ function activateAuth() {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       console.log(user);
+    // eslint-disable-next-line no-empty
     } else {
     }
   });
@@ -75,6 +98,7 @@ const registrationFunctionality = () => {
   const returnBtn = document.getElementById('returnButton');
   returnBtn.addEventListener('click', () => {
     onNavigate('/');
+    window.location.reload();
     return false;
   });
   document.getElementById('seePasswordReg').addEventListener('click', (e) => {
