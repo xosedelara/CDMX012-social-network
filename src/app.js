@@ -1,8 +1,10 @@
+/* eslint-disable no-multiple-empty-lines */
+/* eslint-disable indent */
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 const routes = {
-  '/' : home,
-  '/registration' : registration
+  '/': home,
+  '/registration': registration,
 };
 
 const rootDiv = document.getElementById('root');
@@ -12,14 +14,14 @@ const onNavigate = (pathname) => {
   window.history.pushState(
     {},
     pathname,
-    window.location.origin + pathname
-  )
-  rootDiv.innerHTML = routes[pathname]
-}
+    window.location.origin + pathname,
+  );
+  rootDiv.innerHTML = routes[pathname];
+};
 
 window.onpopstate = () => {
-  rootDiv.innerHTML = routes[window.location.pathname]
-}
+  rootDiv.innerHTML = routes[window.location.pathname];
+};
 
 const firebaseConfig = {
   apiKey: 'AIzaSyC26n4Fh-NfxC_ZNKZrFDH4NzrQrYwgirY',
@@ -32,12 +34,22 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 
-function probando() {
+document.getElementById('seePassword').addEventListener('click', (e) => {
+  e.preventDefault();
+  if (password.type === 'password') {
+    password.type = 'text';
+  } else {
+    password.type = 'password';
+  }
+});
+
+
+
+function activateAtuh() {
   console.log('hola');
   const registrationForm = document.getElementById('registrationForm');
   const registrationBtn = document.getElementById('regBtn');
   registrationBtn.addEventListener('click', (e) => {
-      // window.location.reload();
       e.preventDefault();
       const email = registrationForm.regEmail.value;
       const password = registrationForm.regPW.value;
@@ -50,8 +62,17 @@ function probando() {
   firebase.auth().onAuthStateChanged((user) => {
       if (user) {
           console.log(user);
+      // eslint-disable-next-line no-empty
       } else {
 
       }
   });
-}
+  document.getElementById('seePasswordReg').addEventListener('click', (e) => {
+    e.preventDefault();
+    if (regPW.type === 'password') {
+      regPW.type = 'text';
+    } else {
+      regPW.type = 'password';
+    }
+  });
+ }
