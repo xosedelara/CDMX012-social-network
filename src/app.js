@@ -49,8 +49,8 @@ document.getElementById('seePassword').addEventListener('click', (e) => {
 const errorTranslate = {
   'auth/invalid-email': 'El email es inválido.',
   'auth/email-already-in-use': 'El email ya está registrado.',
-  'auth/weak-password': 'La contraseña es inválida'
-}
+  'auth/weak-password': 'La contraseña es inválida',
+};
 
 
 function activateAuth() {
@@ -64,7 +64,9 @@ function activateAuth() {
     console.log(email, password);
     firebase.auth().createUserWithEmailAndPassword(email, password).catch((error) => {
       const errorType = error.code;
-      window.alert(errorTranslate[errorType]);
+      const regForm = document.getElementById('registrationForm');
+      regForm.setAttribute('class', 'alert');
+      regForm.innerHTML = (errorTranslate[errorType]);
     });
   });
   firebase.auth().onAuthStateChanged((user) => {
@@ -91,7 +93,8 @@ const registrationFunctionality = () => {
       regPW.type = 'password';
     }
   });
- };
+};
+
 
 //  RegistrationButton functionality
 const registrationBtn = document.getElementById('registerButton');

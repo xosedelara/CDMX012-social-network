@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 const registration = `
-    <header class="logo-PS" id="logoPS"><img class="petspace-logo" id="petspaceLogo" src="img/PetSpaceLogo.png" ></header>
+    <img class="petspace-logo" id="petspaceLogo" src="img/PetSpaceLogo.png" >
     <section class="reg-box">
         <p>Crea un usuario y contraseña</p>
         <form id="registrationForm" action="submit">

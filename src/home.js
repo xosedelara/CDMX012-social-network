@@ -17,4 +17,4 @@ const home = `
     <p>¿No tienes cuenta?</p><br>
     <button class="register-button" id="registerButton" type="button">Regístrate</button>
   </section>
-`
+`;
