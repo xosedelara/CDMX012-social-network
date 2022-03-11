@@ -1,22 +1,111 @@
-// eslint-disable-next-line no-unused-vars
-const home = `
-<header class="logo-PS" id="logoPS"><img class="petspace-logo" id="petspaceLogo" src="img/PetSpaceLogo.png" ></header>
-  <section class = "login-box" id="loginBox">
-    <form class= "login-form" id="loginForm" action="submit">
-      <input id="user" name="user" type="text" placeholder="Usuarix / e-mail"><br>
-      <input id="password" type="password" placeholder="Contraseña">
-      <p id="message"></p>
-      <button id="seePassword"> <i class="fas fa-eye" ></i></button>
-      <button class="submit-button" id="submitButton" type="submit">Entrar</button>
-    </form>
-  </section>
-  <section class="login-with" id="loginWith">
-    <p>Inicia sesión con:</p>
-    <img class="facebook-logo" id="facebookLogo" src="img/facebook.png">
-    <img class="gmail-logo" id="gmailLogo" src="img/google.png"><br>
-  </section>
-  <section class="register-section" id="registerSection">
-    <p>¿No tienes cuenta?</p>
-    <button class="register-button" id="registerButton" type="button">Regístrate</button>
-  </section>
-`;
+/* eslint-disable no-trailing-spaces */
+// agregar <p id="message"></p>
+export const home = () => {
+  const petspaceLogoAttributes = {
+    class: 'petspace-logo',
+    id: 'petspaceLogo',
+    src: 'img/PetSpaceLogo.png',
+  };
+  const loginBoxAttributes = {
+    class: 'login-box',
+    id: 'loginBox',
+  };
+  const loginFormAttributes = {
+    class: 'login-form',
+    id: 'loginForm',
+  };
+  const loginMailAttributes = {
+    id: 'user',
+    name: 'user',
+    type: 'text',
+    placeholder: '  Usuarix / e-mail',
+  };
+  const loginPWAttributes = {
+    id: 'password',
+    type: 'password',
+    placeholder: '  Constraseña',
+  };
+  const seePWBtnAttributes = {
+    id: 'seePassword',
+  };
+  const seePWBtnIAttributes = {
+    class: 'fas fa-eye',
+  };
+  const loginSubmitAttributes = {
+    class: 'submit-button',
+    id: 'submitButton',
+    type: 'submit',
+  };
+  const loginWithSectionAttributes = {
+    class: 'login-with',
+    id: 'loginWith',
+  };
+  const facebookLogoAttributes = {
+    class: 'facebook-logo',
+    id: 'facebookLogo',
+    src: 'img/facebook.png',
+  };
+  const gmailLogoAttributes = {
+    class: 'gmail-logo',
+    id: 'gmailLogo',
+    src: 'img/google.png',
+  };
+  const registerSectionAttributes = {
+    class: 'register-section',
+    id: 'registerSection',
+  };
+  const registerBtnAttributes = {
+    class: 'register-button',
+    id: 'registerButton',
+    type: 'button',
+  };
+
+  const setAttributes = (element, attributes) => {
+    Object.keys(attributes).forEach((attr) => element.setAttribute(attr, attributes[attr]));
+  };
+
+  const homeStructure = document.createElement('div');
+  const petspaceLogo = document.createElement('img');
+  const loginBox = document.createElement('section');
+  const loginForm = document.createElement('form');
+  const loginMail = document.createElement('input');
+  const loginPW = document.createElement('input');
+  const seePWBtn = document.createElement('button');
+  const seePWBtnI = document.createElement('i');
+  const loginSubmit = document.createElement('button');
+  const loginWithSection = document.createElement('section');
+  const loginWithText = document.createElement('p');
+  const facebookLogo = document.createElement('img');
+  const gmailLogo = document.createElement('img');
+  const registerSection = document.createElement('section');
+  const registerSectionText = document.createElement('p');
+  const registerBtn = document.createElement('button');
+
+  setAttributes(petspaceLogo, petspaceLogoAttributes);
+  setAttributes(loginBox, loginBoxAttributes);
+  setAttributes(loginForm, loginFormAttributes);
+  setAttributes(loginMail, loginMailAttributes);
+  setAttributes(loginPW, loginPWAttributes);
+  setAttributes(seePWBtn, seePWBtnAttributes);
+  setAttributes(seePWBtnI, seePWBtnIAttributes);
+  setAttributes(loginSubmit, loginSubmitAttributes);
+  setAttributes(loginWithSection, loginWithSectionAttributes);
+  setAttributes(facebookLogo, facebookLogoAttributes);
+  setAttributes(gmailLogo, gmailLogoAttributes);
+  setAttributes(registerSection, registerSectionAttributes);
+  setAttributes(registerBtn, registerBtnAttributes);
+
+  loginWithText.textContent = 'Inicia sesión con:';
+  registerSectionText.textContent = '¿No tienes cuenta?';
+  registerBtn.textContent = 'Regístrate';
+  loginSubmit.textContent = 'Entrar';
+  
+  seePWBtn.appendChild(seePWBtnI);
+  loginForm.append(loginMail, loginPW, seePWBtn, loginSubmit);
+  loginBox.appendChild(loginForm);
+  loginWithSection.append(loginWithText, facebookLogo, gmailLogo);
+  registerSection.append(registerSectionText, registerBtn);
+  homeStructure.append(petspaceLogo, loginBox, loginWithSection, registerSection);
+
+  return homeStructure;
+};
