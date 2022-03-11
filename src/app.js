@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-multiple-empty-lines */
 /* eslint-disable indent */
 /* eslint-disable no-undef */
@@ -52,6 +53,8 @@ const errorTranslate = {
   'auth/invalid-email': 'El email es inválido.',
   'auth/email-already-in-use': 'El email ya está registrado.',
   'auth/weak-password': 'La contraseña es inválida',
+  'auth/wrong-password': 'La contraseña es incorrecta',
+  'auth/user-not-found': 'El usuario no existe',
 };
 
 // activar el login
@@ -61,14 +64,19 @@ loginBtn.addEventListener('click', (e) => {
   e.preventDefault();
   const email = loginForm.user.value;
   const password = loginForm.password.value;
+  const message = document.getElementById('message');
   console.log(email, password);
   // Sign In User with Email and Password
-  firebase.auth().signInWithEmailAndPassword(email, password).catch((error) => {
+  firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
+    message.innerHTML = 'Ha loggeado exitosamente';
+    message.style.color = '#F1972A';
+  }).catch((error) => {
     // Handle Errors here
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log(errorCode);
-    console.log(errorMessage);
+    const errorType = error.code;
+    console.log(error.code);
+    console.log(error.message);
+    message.innerHTML = (errorTranslate[errorType]);
+    message.style.color = '#FE6C6C';
   });
 });
 
@@ -83,12 +91,18 @@ function activateAuth() {
     e.preventDefault();
     const email = registrationForm.regEmail.value;
     const password = registrationForm.regPW.value;
+    const message = document.getElementById('message');
     console.log(email, password);
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch((error) => {
+    firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
+      message.innerHTML = 'Se ha creado su cuenta exitosamente';
+      message.style.color = '#F1972A';
+      // onNvigate a la pag de inicio
+    }).catch((error) => {
       const errorType = error.code;
-      const regForm = document.getElementById('registrationForm');
-      regForm.setAttribute('class', 'alert');
-      regForm.innerHTML = (errorTranslate[errorType]);
+      // const regForm = document.getElementById('registrationForm');
+      // regForm.setAttribute('class', 'alert');
+      message.innerHTML = (errorTranslate[errorType]);
+      message.style.color = '#FE6C6C';
     });
   });
   firebase.auth().onAuthStateChanged((user) => {

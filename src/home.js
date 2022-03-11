@@ -4,7 +4,8 @@ const home = `
   <section class = "login-box" id="loginBox">
     <form class= "login-form" id="loginForm" action="submit">
       <input id="user" name="user" type="text" placeholder="Usuarix / e-mail"><br>
-      <input id="password" type="password" placeholder="Contraseña"><br>
+      <input id="password" type="password" placeholder="Contraseña">
+      <p id="message"></p>
       <button id="seePassword"> <i class="fas fa-eye" ></i></button>
       <button class="submit-button" id="submitButton" type="submit">Entrar</button>
     </form>

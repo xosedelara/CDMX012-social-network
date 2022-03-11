@@ -6,7 +6,8 @@ const registration = `
         <form id="registrationForm" action="submit">
             <input placeholder="Nombre" id="regName"></input><br>
             <input placeholder="Correo electrónico" id="regEmail"></input><br>
-            <input type="password" placeholder="Contraseña" id="regPW"></input><br><br>
+            <input type="password" placeholder="Contraseña" id="regPW"></input><br>
+            <p id="message"></p>
             <button id="seePasswordReg"> <i class="fas fa-eye" ></i></button>
             <button class="register-button" type="button" id="regBtn">Regístrate</button>
         </form>
