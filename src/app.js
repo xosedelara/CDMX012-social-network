@@ -2,7 +2,7 @@
 /* eslint-disable indent */
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-
+/* 
 //  Routing
 const routes = {
   '/': home,
@@ -104,3 +104,30 @@ registrationBtn.addEventListener('click', () => {
   activateAuth();
   return false;
 });
+
+ */
+import homeview from './home.js';
+
+const home = homeview;
+
+//  Routing
+const routes = {
+  '/': home,
+  '/registration': registration,
+};
+
+const root = document.getElementById('root');
+root.attr.value = routes[window.location.pathname];
+
+const onNavigate = (pathname) => {
+  window.history.pushState(
+    {},
+    pathname,
+    window.location.origin + pathname,
+  );
+  root.attr.value = routes[pathname];
+};
+
+window.onpopstate = () => {
+  root.attr.value = routes[window.location.pathname];
+};
