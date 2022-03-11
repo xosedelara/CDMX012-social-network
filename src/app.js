@@ -2,8 +2,7 @@
 /* eslint-disable indent */
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-/* 
-//  Routing
+/* //  Routing
 const routes = {
   '/': home,
   '/registration': registration,
@@ -106,18 +105,16 @@ registrationBtn.addEventListener('click', () => {
 });
 
  */
-import homeview from './home.js';
-
-const home = homeview;
+import { home } from './home.js';
 
 //  Routing
 const routes = {
   '/': home,
-  '/registration': registration,
+  //'/registration': registration,
 };
 
 const root = document.getElementById('root');
-root.attr.value = routes[window.location.pathname];
+root.appendChild(routes[window.location.pathname]());
 
 const onNavigate = (pathname) => {
   window.history.pushState(
@@ -125,9 +122,9 @@ const onNavigate = (pathname) => {
     pathname,
     window.location.origin + pathname,
   );
-  root.attr.value = routes[pathname];
+  root.appendChild(routes[pathname]());
 };
 
 window.onpopstate = () => {
-  root.attr.value = routes[window.location.pathname];
+  root.appendChild(routes[window.location.pathname]());
 };
