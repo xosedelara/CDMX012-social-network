@@ -106,11 +106,12 @@ registrationBtn.addEventListener('click', () => {
 
  */
 import { home } from './home.js';
+import { registration } from './registration.js';
 
 //  Routing
 const routes = {
   '/': home,
-  //'/registration': registration,
+  '/registration': registration,
 };
 
 const root = document.getElementById('root');
