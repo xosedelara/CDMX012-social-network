@@ -1,22 +1,5 @@
-// eslint-disable-next-line no-unused-vars
-// const registration = `
-//     <img class="petspace-logo" id="petspaceLogo" src="img/PetSpaceLogo.png" >
-//     <section class="reg-box">
-//         <p>Crea un usuario y contraseña</p>
-//         <form id="registrationForm" action="submit">
-//             <input placeholder="Nombre" id="regName"></input><br>
-//             <input placeholder="Correo electrónico" id="regEmail"></input><br>
-//             <input type="password" placeholder="Contraseña" id="regPW"></input><br><br>
-//             <button id="seePasswordReg"> <i class="fas fa-eye" ></i></button>
-//             <button class="register-button" type="button" id="regBtn">Regístrate</button>
-//         </form>
-//         <p>o regístrate con:</p>
-//         <img src="img/facebook.png" class="facebook-logo">
-//         <img src="img/google.png" class="gmail-logo">
-//     </section>
-//     <br>
-//     <button class="return-button" id="returnButton">Regresa al inicio</button>
-// `;
+/* eslint-disable import/no-cycle */
+import { onNavigate } from './app.js';
 
 export const registration = () => {
   const petspaceLogoAttributes = {
@@ -98,9 +81,19 @@ export const registration = () => {
   returnButton.textContent = 'Regresa al inicio';
 
   eyeButton.append(eye);
-  form.append(inputName, inputEmail, inputPW, buttonRegister);
+  form.append(inputName, inputEmail, inputPW, eyeButton, buttonRegister);
   registrationBox.append(pUser, form, pOptions, facebookLogo, googleLogo);
   registrationStructure.append(petspaceLogo, registrationBox, returnButton);
+
+  returnButton.addEventListener('click', () => { onNavigate('/'); });
+  eyeButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (inputPW.type === 'password') {
+      inputPW.type = 'text';
+    } else {
+      inputPW.type = 'password';
+    }
+  });
 
   return registrationStructure;
 };
