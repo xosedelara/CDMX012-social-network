@@ -21,9 +21,12 @@ export const home = () => {
     placeholder: '  Usuarix / e-mail',
   };
   const loginPWAttributes = {
-    id: 'password',
+    id: 'loginPassword',
     type: 'password',
     placeholder: '  Constraseña',
+  };
+  const messageAttributes = {
+    id: 'loginMessage',
   };
   const seePWBtnAttributes = {
     id: 'seePassword',
@@ -70,8 +73,9 @@ export const home = () => {
   const loginForm = document.createElement('form');
   const loginMail = document.createElement('input');
   const loginPW = document.createElement('input');
+  const loginMessage = document.createElement('p');
   const seePWBtn = document.createElement('button');
-  const seePWBtnI = document.createElement('i');
+  const seePassword = document.createElement('i');
   const loginSubmit = document.createElement('button');
   const loginWithSection = document.createElement('section');
   const loginWithText = document.createElement('p');
@@ -80,14 +84,16 @@ export const home = () => {
   const registerSection = document.createElement('section');
   const registerSectionText = document.createElement('p');
   const registerBtn = document.createElement('button');
+  const createSpace = document.createElement('br');
 
   setAttributes(petspaceLogo, petspaceLogoAttributes);
   setAttributes(loginBox, loginBoxAttributes);
   setAttributes(loginForm, loginFormAttributes);
   setAttributes(loginMail, loginMailAttributes);
   setAttributes(loginPW, loginPWAttributes);
+  setAttributes(loginMessage, messageAttributes);
   setAttributes(seePWBtn, seePWBtnAttributes);
-  setAttributes(seePWBtnI, seePWBtnIAttributes);
+  setAttributes(seePassword, seePWBtnIAttributes);
   setAttributes(loginSubmit, loginSubmitAttributes);
   setAttributes(loginWithSection, loginWithSectionAttributes);
   setAttributes(facebookLogo, facebookLogoAttributes);
@@ -100,8 +106,8 @@ export const home = () => {
   registerBtn.textContent = 'Regístrate';
   loginSubmit.textContent = 'Entrar';
   
-  seePWBtn.appendChild(seePWBtnI);
-  loginForm.append(loginMail, loginPW, seePWBtn, loginSubmit);
+  seePWBtn.appendChild(seePassword);
+  loginForm.append(loginMail, loginPW, createSpace, loginMessage, seePWBtn, loginSubmit);
   loginBox.appendChild(loginForm);
   loginWithSection.append(loginWithText, facebookLogo, gmailLogo);
   registerSection.append(registerSectionText, registerBtn);

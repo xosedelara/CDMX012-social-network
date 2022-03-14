@@ -3,27 +3,30 @@
 /* eslint-disable indent */
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-/* //  Routing
-const routes = {
-  '/': home,
-  '/registration': registration,
-};
+ //  Routing
+ import { home } from './home.js';
 
-const rootDiv = document.getElementById('root');
-rootDiv.innerHTML = routes[window.location.pathname];
+ //  Routing
+ const routes = {
+   '/': home,
+   //'/registration': registration,
+ };
 
-const onNavigate = (pathname) => {
-  window.history.pushState(
-    {},
-    pathname,
-    window.location.origin + pathname,
-  );
-  rootDiv.innerHTML = routes[pathname];
-};
+ const root = document.getElementById('root');
+ root.appendChild(routes[window.location.pathname]());
 
-window.onpopstate = () => {
-  rootDiv.innerHTML = routes[window.location.pathname];
-};
+ const onNavigate = (pathname) => {
+   window.history.pushState(
+     {},
+     pathname,
+     window.location.origin + pathname,
+   );
+   root.appendChild(routes[pathname]());
+ };
+
+ window.onpopstate = () => {
+   root.appendChild(routes[window.location.pathname]());
+ };
 
 //  Firebase implementation
 const firebaseConfig = {
@@ -38,13 +41,12 @@ firebase.initializeApp(firebaseConfig);
 
 
 
-
-document.getElementById('seePassword').addEventListener('click', (e) => {
+seePassword.addEventListener('click', (e) => {
   e.preventDefault();
-  if (password.type === 'password') {
-    password.type = 'text';
+  if (loginPassword.type === 'password') {
+    loginPassword.type = 'text';
   } else {
-    password.type = 'password';
+    loginPassword.type = 'password';
   }
 });
 
@@ -57,13 +59,13 @@ const errorTranslate = {
 };
 
 // activar el login
-const loginForm = document.getElementById('loginForm');
-const loginBtn = document.getElementById('submitButton');
-loginBtn.addEventListener('click', (e) => {
+// const loginForm = document.getElementById('loginForm');
+// const loginBtn = document.getElementById('submitButton');
+submitButton.addEventListener('click', (e) => {
   e.preventDefault();
-  const email = loginForm.user.value;
-  const password = loginForm.password.value;
-  const message = document.getElementById('message');
+  const email = user.value;
+  const password = loginPassword.value;
+  const message = loginMessage;
   console.log(email, password);
   // Sign In User with Email and Password
   firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
@@ -141,27 +143,5 @@ registrationBtn.addEventListener('click', () => {
   return false;
 });
 
- */
-import { home } from './home.js';
+ 
 
-//  Routing
-const routes = {
-  '/': home,
-  //'/registration': registration,
-};
-
-const root = document.getElementById('root');
-root.appendChild(routes[window.location.pathname]());
-
-const onNavigate = (pathname) => {
-  window.history.pushState(
-    {},
-    pathname,
-    window.location.origin + pathname,
-  );
-  root.appendChild(routes[pathname]());
-};
-
-window.onpopstate = () => {
-  root.appendChild(routes[window.location.pathname]());
-};
