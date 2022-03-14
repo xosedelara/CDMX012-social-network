@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable import/no-cycle */
 import { onNavigate } from './app.js';
 
@@ -5,41 +6,44 @@ export const registration = () => {
   const petspaceLogoAttributes = {
     class: 'petspace-logo',
     id: 'petspaceLogo',
-    src: 'img/PetSpaceLogo.png'
+    src: 'img/PetSpaceLogo.png',
   };
   const formAttributes = {
     id: 'registrationForm',
-    action: 'submit'
+    action: 'submit',
   };
   const inputNameAttributes = {
     placeholder: 'Nombre',
-    id: 'regName'
+    id: 'regName',
   };
   const inputEmailAttributes = {
     placeholder: 'Correo electrónico',
-    id: 'regEmail'
+    id: 'regEmail',
   };
   const inputPWAttributes = {
     type: 'password',
     placeholder: 'Contraseña',
-    id: 'regPW'
+    id: 'regPW',
+  };
+  const messageAttributes = {
+    id: 'regMessage',
   };
   const buttonRegisterAttributes = {
     class: 'register-button',
     type: 'button',
-    id: 'regBtn'
+    id: 'regBtn',
   };
   const facebookLogoAttributes = {
     src: 'img/facebook.png',
-    class: 'facebook-logo'
+    class: 'facebook-logo',
   };
   const googleLogoAttributes = {
     src: 'img/google.png',
-    class: 'gmail-logo'
+    class: 'gmail-logo',
   };
   const returnButtonAttributes = {
     class: 'return-button',
-    id: 'returnButton'
+    id: 'returnButton',
   };
 
   const setAttributes = (element, attributes) => {
@@ -55,6 +59,7 @@ export const registration = () => {
   const inputName = document.createElement('input');
   const inputEmail = document.createElement('input');
   const inputPW = document.createElement('input');
+  const regMessage = document.createElement('p');
   const eyeButton = document.createElement('button');
   eyeButton.setAttribute('id', 'seePasswordReg');
   const eye = document.createElement('i');
@@ -64,12 +69,17 @@ export const registration = () => {
   const facebookLogo = document.createElement('img');
   const googleLogo = document.createElement('img');
   const returnButton = document.createElement('button');
+  const addBr1 = document.createElement('br');
+  const addBr2 = document.createElement('br');
+  const addBr3 = document.createElement('br');
+  const addBr4 = document.createElement('br');
 
   setAttributes(petspaceLogo, petspaceLogoAttributes);
   setAttributes(form, formAttributes);
   setAttributes(inputName, inputNameAttributes);
   setAttributes(inputEmail, inputEmailAttributes);
   setAttributes(inputPW, inputPWAttributes);
+  setAttributes(regMessage, messageAttributes);
   setAttributes(buttonRegister, buttonRegisterAttributes);
   setAttributes(facebookLogo, facebookLogoAttributes);
   setAttributes(googleLogo, googleLogoAttributes);
@@ -81,9 +91,9 @@ export const registration = () => {
   returnButton.textContent = 'Regresa al inicio';
 
   eyeButton.append(eye);
-  form.append(inputName, inputEmail, inputPW, eyeButton, buttonRegister);
+  form.append(inputName, addBr1, inputEmail, addBr2, inputPW, addBr3, regMessage, eyeButton, buttonRegister);
   registrationBox.append(pUser, form, pOptions, facebookLogo, googleLogo);
-  registrationStructure.append(petspaceLogo, registrationBox, returnButton);
+  registrationStructure.append(petspaceLogo, registrationBox, addBr4, returnButton);
 
   returnButton.addEventListener('click', () => { onNavigate('/'); });
   eyeButton.addEventListener('click', (e) => {
