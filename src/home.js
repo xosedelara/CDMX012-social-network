@@ -1,5 +1,8 @@
 /* eslint-disable no-trailing-spaces */
 // agregar <p id="message"></p>
+/* eslint-disable import/no-cycle */
+import { onNavigate } from './app.js';
+
 export const home = () => {
   const petspaceLogoAttributes = {
     class: 'petspace-logo',
@@ -105,13 +108,29 @@ export const home = () => {
   registerSectionText.textContent = '¿No tienes cuenta?';
   registerBtn.textContent = 'Regístrate';
   loginSubmit.textContent = 'Entrar';
+<<<<<<< HEAD
   
   seePWBtn.appendChild(seePassword);
   loginForm.append(loginMail, loginPW, createSpace, loginMessage, seePWBtn, loginSubmit);
+=======
+
+  seePWBtn.appendChild(seePWBtnI);
+  loginForm.append(loginMail, loginPW, seePWBtn, loginSubmit);
+>>>>>>> c5998ee31b8f704a1a937e0ecba69cf6104a4dc3
   loginBox.appendChild(loginForm);
   loginWithSection.append(loginWithText, facebookLogo, gmailLogo);
   registerSection.append(registerSectionText, registerBtn);
   homeStructure.append(petspaceLogo, loginBox, loginWithSection, registerSection);
+
+  seePWBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (loginPW.type === 'password') {
+      loginPW.type = 'text';
+    } else {
+      loginPW.type = 'password';
+    }
+  });
+  registerBtn.addEventListener('click', () => { onNavigate('/registration'); });
 
   return homeStructure;
 };
