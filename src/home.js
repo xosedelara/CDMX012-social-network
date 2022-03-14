@@ -1,6 +1,6 @@
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable import/no-cycle */
-import { onNavigate } from './app.js';
+import { onNavigate, firebaseInitialization, errorTranslate } from './app.js';
 
 export const home = () => {
   const petspaceLogoAttributes = {
@@ -124,6 +124,26 @@ export const home = () => {
     }
   });
   registerBtn.addEventListener('click', () => { onNavigate('/registration'); });
+
+  const firebase = firebaseInitialization;
+
+  loginSubmit.addEventListener('click', (e) => {
+    e.preventDefault();
+    const email = loginMail.value;
+    const password = loginPW.value;
+    const message = loginMessage;
+    console.log(email, password);
+    firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
+      message.innerHTML = 'Ha loggeado exitosamente';
+      message.style.color = '#F1972A';
+    }).catch((error) => {
+      const errorType = error.code;
+      console.log(error.code);
+      console.log(error.message);
+      message.innerHTML = (errorTranslate[errorType]);
+      message.style.color = '#FE6C6C';
+    });
+  });
 
   return homeStructure;
 };
