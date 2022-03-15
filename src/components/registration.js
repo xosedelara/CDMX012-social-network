@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 /* eslint-disable import/no-cycle */
-import { onNavigate } from './app.js';
-import * as firebase from './lib/firebaseAppJS.js';
+import { onNavigate } from '../app.js';
+import { createAccount } from '../lib/firebaseApp.js';
 
 export const registration = () => {
   const petspaceLogoAttributes = {
@@ -106,17 +106,21 @@ export const registration = () => {
     }
   });
 
-  firebase.firebaseInitialization();
-
   buttonRegister.addEventListener('click', (e) => {
     e.preventDefault();
     const email = inputEmail.value;
     const password = inputPW.value;
     const message = regMessage;
     console.log(email, password);
-    firebase.firebaseAuthRegistration(email, password, message);
+    createAccount(message, email, password);
   });
-  firebase.firebaseAuthStateChanged();
+/*   firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      console.log(user);
+      // eslint-disable-next-line no-empty
+    } else {
+    }
+  }); */
 
   return registrationStructure;
 };
