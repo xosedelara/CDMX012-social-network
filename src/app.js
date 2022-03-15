@@ -1,7 +1,7 @@
 /* eslint-disable import/no-cycle */
 //  Routing
-import { home } from './home.js';
-import { registration } from './registration.js';
+import { home } from './components/home.js';
+import { registration } from './components/registration.js';
 
 //  Firebase implementation
 const firebaseConfig = {
@@ -12,15 +12,7 @@ const firebaseConfig = {
   messagingSenderId: '719999017536',
   appId: '1:719999017536:web:4e72654f1a5dba66b1b5a5',
 };
-export const firebaseInitialization = firebase.initializeApp(firebaseConfig);
-
-export const errorTranslate = {
-  'auth/invalid-email': 'El email es inválido.',
-  'auth/email-already-in-use': 'El email ya está registrado.',
-  'auth/weak-password': 'La contraseña es inválida',
-  'auth/wrong-password': 'La contraseña es incorrecta',
-  'auth/user-not-found': 'El usuario no existe',
-};
+firebase.initializeApp(firebaseConfig);
 
 //  Routing
 const routes = {
