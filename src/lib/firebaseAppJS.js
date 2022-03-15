@@ -7,7 +7,7 @@ const firebaseConfig = {
   messagingSenderId: '719999017536',
   appId: '1:719999017536:web:4e72654f1a5dba66b1b5a5',
 };
-export const firebaseInitialization = () => { firebase.initializeApp(firebaseConfig); };
+export const firebaseInitialization = firebase.initializeApp(firebaseConfig);
 
 const errorTranslate = {
   'auth/invalid-email': 'El email es inválido.',

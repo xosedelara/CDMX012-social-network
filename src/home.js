@@ -2,7 +2,7 @@
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable import/no-cycle */
 import { onNavigate } from './app.js';
-import { firebaseAuth, firebaseInitialization } from './lib/firebaseAppJS.js';
+import { firebaseAuth/*, firebaseInitialization*/ } from './lib/firebaseAppJS.js';
 
 export const home = () => {
   const petspaceLogoAttributes = {
@@ -126,7 +126,7 @@ export const home = () => {
     }
   });
   registerBtn.addEventListener('click', () => { onNavigate('/registration'); });
-  firebaseInitialization();
+  // firebaseInitialization();
   loginSubmit.addEventListener('click', (e) => {
     e.preventDefault();
     const email = loginMail.value;
