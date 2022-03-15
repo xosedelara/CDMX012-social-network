@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 /* eslint-disable import/no-cycle */
-import { onNavigate, firebaseInitialization, errorTranslate } from './app.js';
+/* import { onNavigate, firebaseInitialization, errorTranslate } from './app.js';
 
 export const registration = () => {
   const petspaceLogoAttributes = {
@@ -132,3 +132,4 @@ export const registration = () => {
 
   return registrationStructure;
 };
+ */
