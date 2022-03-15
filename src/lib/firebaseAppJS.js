@@ -7,7 +7,7 @@ const firebaseConfig = {
   messagingSenderId: '719999017536',
   appId: '1:719999017536:web:4e72654f1a5dba66b1b5a5',
 };
-firebase.initializeApp(firebaseConfig);
+export const firebaseInitialization = () => { firebase.initializeApp(firebaseConfig); };
 
 const errorTranslate = {
   'auth/invalid-email': 'El email es inválido.',
@@ -28,5 +28,26 @@ export const firebaseAuth = (email, password, message) => {
     console.log(error.message);
     responseMessage.innerHTML = (errorTranslate[errorType]);
     responseMessage.style.color = '#FE6C6C';
+  });
+};
+
+export const firebaseAuthRegistration = (email, password, message) => {
+  const returnMessage = message;
+  firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
+    returnMessage.innerHTML = 'Se ha creado su cuenta exitosamente';
+    returnMessage.style.color = '#F1972A';
+  }).catch((error) => {
+    const errorType = error.code;
+    returnMessage.innerHTML = (errorTranslate[errorType]);
+    returnMessage.style.color = '#FE6C6C';
+  });
+};
+export const firebaseAuthStateChanged = () => {
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      console.log(user);
+      // eslint-disable-next-line no-empty
+    } else {
+    }
   });
 };

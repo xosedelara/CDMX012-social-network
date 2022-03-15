@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 /* eslint-disable import/no-cycle */
-/* import { onNavigate, firebaseInitialization, errorTranslate } from './app.js';
+import { onNavigate } from './app.js';
+import * as firebase from './lib/firebaseAppJS.js';
 
 export const registration = () => {
   const petspaceLogoAttributes = {
@@ -105,7 +106,7 @@ export const registration = () => {
     }
   });
 
-  const firebase = firebaseInitialization;
+  firebase.firebaseInitialization();
 
   buttonRegister.addEventListener('click', (e) => {
     e.preventDefault();
@@ -113,23 +114,9 @@ export const registration = () => {
     const password = inputPW.value;
     const message = regMessage;
     console.log(email, password);
-    firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
-      message.innerHTML = 'Se ha creado su cuenta exitosamente';
-      message.style.color = '#F1972A';
-    }).catch((error) => {
-      const errorType = error.code;
-      message.innerHTML = (errorTranslate[errorType]);
-      message.style.color = '#FE6C6C';
-    });
+    firebase.firebaseAuthRegistration(email, password, message);
   });
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      console.log(user);
-      // eslint-disable-next-line no-empty
-    } else {
-    }
-  });
+  firebase.firebaseAuthStateChanged();
 
   return registrationStructure;
 };
- */

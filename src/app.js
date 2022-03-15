@@ -2,12 +2,12 @@
 //  Routing
 import { home } from './home.js';
 // import { firebaseAuth } from './lib/firebaseAppJS.js';
-// import { registration } from './registration.js';
+import { registration } from './registration.js';
 
 //  Routing
 const routes = {
   '/': home,
-  // '/registration': registration,
+  '/registration': registration,
 };
 
 const root = document.getElementById('root');
