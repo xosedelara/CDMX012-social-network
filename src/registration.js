@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 /* eslint-disable import/no-cycle */
+/* eslint-disable no-console */
 import { onNavigate, firebaseInitialization, errorTranslate } from './app.js';
 
 export const registration = () => {

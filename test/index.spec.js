@@ -1,9 +1,9 @@
 // importamos la funcion que vamos a testear
-/* import { myFunction } from '../src/lib/index';
+import { describe, it } from 'eslint/lib/rule-tester/rule-tester';
+import { home } from '../src/home.js';
 
-describe('myFunction', () => {
+describe('home', () => {
   it('debería ser una función', () => {
-    expect(typeof myFunction).toBe('function');
+    expect(typeof home).toBe('function');
   });
 });
- */

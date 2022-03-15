@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable import/no-cycle */
 import { onNavigate, firebaseInitialization, errorTranslate } from './app.js';
@@ -86,7 +87,7 @@ export const home = () => {
   const registerSection = document.createElement('section');
   const registerSectionText = document.createElement('p');
   const registerBtn = document.createElement('button');
-  const createSpace = document.createElement('br');
+  const addBr = document.createElement('br');
 
   setAttributes(petspaceLogo, petspaceLogoAttributes);
   setAttributes(loginBox, loginBoxAttributes);
@@ -109,7 +110,7 @@ export const home = () => {
   loginSubmit.textContent = 'Entrar';
   
   seePWBtn.appendChild(seePassword);
-  loginForm.append(loginMail, loginPW, createSpace, loginMessage, seePWBtn, loginSubmit);
+  loginForm.append(loginMail, loginPW, addBr, loginMessage, seePWBtn, loginSubmit);
   loginBox.appendChild(loginForm);
   loginWithSection.append(loginWithText, facebookLogo, gmailLogo);
   registerSection.append(registerSectionText, registerBtn);

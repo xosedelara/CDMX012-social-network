@@ -1,5 +1,7 @@
 /* eslint-disable import/no-cycle */
 //  Routing
+// import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js';
+// import { getAuth, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js';
 import { home } from './home.js';
 import { registration } from './registration.js';
 
@@ -13,6 +15,9 @@ const firebaseConfig = {
   appId: '1:719999017536:web:4e72654f1a5dba66b1b5a5',
 };
 export const firebaseInitialization = firebase.initializeApp(firebaseConfig);
+// export const app = initializeApp(firebaseConfig);
+// export const auth = getAuth(firebaseConfig);
+// export const createUser = createUserWithEmailAndPassword(auth, email, password);
 
 export const errorTranslate = {
   'auth/invalid-email': 'El email es inválido.',
