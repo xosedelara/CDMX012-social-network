@@ -2,7 +2,7 @@
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable import/no-cycle */
 import { onNavigate } from '../app.js';
-import { signInEmailAndPW } from '../lib/firebaseApp.js';
+import { signInEmailAndPW, signInWithGoogle } from '../lib/firebaseApp.js';
 
 export const home = () => {
   const homeStructureAttributes = {
@@ -25,12 +25,12 @@ export const home = () => {
     id: 'user',
     name: 'user',
     type: 'text',
-    placeholder: '  Usuarix / e-mail',
+    placeholder: 'E-mail',
   };
   const loginPWAttributes = {
     id: 'loginPassword',
     type: 'password',
-    placeholder: '  Constraseña',
+    placeholder: 'Contraseña',
   };
   const messageAttributes = {
     id: 'loginMessage',
@@ -129,7 +129,9 @@ export const home = () => {
       loginPW.type = 'password';
     }
   });
+
   registerBtn.addEventListener('click', () => { onNavigate('/registration'); });
+
   loginSubmit.addEventListener('click', (e) => {
     e.preventDefault();
     const email = loginMail.value;
@@ -138,5 +140,11 @@ export const home = () => {
     console.log(email, password);
     signInEmailAndPW(message, email, password);
   });
+
+  gmailLogo.addEventListener('click', () => {
+    console.log('hola');
+    signInWithGoogle(loginMessage);
+  });
+
   return homeStructure;
 };
