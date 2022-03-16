@@ -127,8 +127,7 @@ export const registration = () => {
   }); */
 
   gmailLogo.addEventListener('click', () => {
-    console.log('hola');
-    signInWithGoogle(regMessage);
+    signInWithGoogle();
   });
 
   return registrationStructure;

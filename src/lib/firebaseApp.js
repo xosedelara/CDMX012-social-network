@@ -36,7 +36,7 @@ export const createAccount = (message, email, password) => {
   });
 };
 
-export const signInWithGoogle = (message) => {
+export const signInWithGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth()
     .signInWithPopup(provider)
@@ -51,7 +51,6 @@ export const signInWithGoogle = (message) => {
       const user = result.user;
       console.log(user);
       // ...
-      message.innerHTML = ('Has iniciado sesión correctamente.');
       onNavigate('/mainPage');
     }).catch((error) => {
     // Handle Errors here.
