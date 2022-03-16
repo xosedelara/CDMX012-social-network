@@ -1,4 +1,7 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable no-param-reassign */
+import { onNavigate } from '../app.js';
+
 const errorTranslate = {
   'auth/invalid-email': 'El email es inválido.',
   'auth/email-already-in-use': 'El email ya está registrado.',
@@ -9,8 +12,9 @@ const errorTranslate = {
 
 export const signInEmailAndPW = (message, email, password) => {
   firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
-    message.innerHTML = 'Ha loggeado exitosamente';
-    message.style.color = '#F1972A';
+    // message.innerHTML = 'Ha loggeado exitosamente';
+    // message.style.color = '#F1972A';
+    onNavigate('/mainPage');
   }).catch((error) => {
     const errorType = error.code;
     console.log(error.code);
@@ -22,8 +26,9 @@ export const signInEmailAndPW = (message, email, password) => {
 
 export const createAccount = (message, email, password) => {
   firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
-    message.innerHTML = 'Se ha creado su cuenta exitosamente';
-    message.style.color = '#F1972A';
+    // message.innerHTML = 'Se ha creado su cuenta exitosamente';
+    // message.style.color = '#F1972A';
+    onNavigate('/mainPage');
   }).catch((error) => {
     const errorType = error.code;
     message.innerHTML = (errorTranslate[errorType]);
@@ -47,6 +52,7 @@ export const signInWithGoogle = (message) => {
       console.log(user);
       // ...
       message.innerHTML = ('Has iniciado sesión correctamente.');
+      onNavigate('/mainPage');
     }).catch((error) => {
     // Handle Errors here.
       const errorCode = error.code;

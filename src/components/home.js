@@ -5,6 +5,9 @@ import { onNavigate } from '../app.js';
 import { signInEmailAndPW, signInWithGoogle } from '../lib/firebaseApp.js';
 
 export const home = () => {
+  const homeStructureAttributes = {
+    class: 'home',
+  };
   const petspaceLogoAttributes = {
     class: 'petspace-logo',
     id: 'petspaceLogo',
@@ -88,8 +91,10 @@ export const home = () => {
   const registerSection = document.createElement('section');
   const registerSectionText = document.createElement('p');
   const registerBtn = document.createElement('button');
-  const addBr = document.createElement('br');
+  const addBr1 = document.createElement('br');
+  const addBr2 = document.createElement('br');
 
+  setAttributes(homeStructure, homeStructureAttributes);
   setAttributes(petspaceLogo, petspaceLogoAttributes);
   setAttributes(loginBox, loginBoxAttributes);
   setAttributes(loginForm, loginFormAttributes);
@@ -111,7 +116,7 @@ export const home = () => {
   loginSubmit.textContent = 'Entrar';
   
   seePWBtn.appendChild(seePassword);
-  loginForm.append(loginMail, loginPW, addBr, loginMessage, seePWBtn, loginSubmit);
+  loginForm.append(loginMail, addBr1, loginPW, addBr2, loginMessage, seePWBtn, loginSubmit);
   loginBox.appendChild(loginForm);
   loginWithSection.append(loginWithText, facebookLogo, gmailLogo);
   registerSection.append(registerSectionText, registerBtn);
