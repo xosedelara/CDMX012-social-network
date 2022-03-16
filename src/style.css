@@ -4,8 +4,9 @@ body{
     color: #fff;
     text-align: center;
     display: flex;
-    justify-content: center;
+    justify-content: center; 
 }
+
 .petspace-logo{
     height: 50px;
     margin-top: 20%;
@@ -104,4 +105,30 @@ p{
 }
 .alert{
     color: #F1972A;
+}
+.main-page{
+    background-color: #fff;
+    margin: 0;
+    
+    width: 100%;
+    height: 100%;
+}
+.menu {
+    background-color: #201F41;
+    width: 100%;
+    /* display: flex;
+    justify-content: space-between;
+    align-items: flex-start; */
+}
+/* .home-page{
+
+} */
+.petspace-planet{
+    height: 50px;
+    margin-top: 20%;
+}
+.icon{
+    position: relative;
+    height: 50px;
+    margin-top: 20%;
 }

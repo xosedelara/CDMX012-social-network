@@ -4,6 +4,9 @@ import { onNavigate } from '../app.js';
 import { createAccount } from '../lib/firebaseApp.js';
 
 export const registration = () => {
+  const registrationStructureAttributes = {
+    class: 'registration',
+  };
   const petspaceLogoAttributes = {
     class: 'petspace-logo',
     id: 'petspaceLogo',
@@ -75,6 +78,7 @@ export const registration = () => {
   const addBr3 = document.createElement('br');
   const addBr4 = document.createElement('br');
 
+  setAttributes(registrationStructure, registrationStructureAttributes);
   setAttributes(petspaceLogo, petspaceLogoAttributes);
   setAttributes(form, formAttributes);
   setAttributes(inputName, inputNameAttributes);
@@ -114,7 +118,7 @@ export const registration = () => {
     console.log(email, password);
     createAccount(message, email, password);
   });
-/*   firebase.auth().onAuthStateChanged((user) => {
+  /*   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       console.log(user);
       // eslint-disable-next-line no-empty

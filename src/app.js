@@ -2,6 +2,7 @@
 //  Routing
 import { home } from './components/home.js';
 import { registration } from './components/registration.js';
+import { mainPage } from './components/mainPage.js';
 
 //  Firebase implementation
 const firebaseConfig = {
@@ -18,6 +19,7 @@ firebase.initializeApp(firebaseConfig);
 const routes = {
   '/': home,
   '/registration': registration,
+  '/mainPage': mainPage,
 };
 
 const root = document.getElementById('root');
@@ -36,5 +38,10 @@ export const onNavigate = (pathname) => {
 };
 
 window.onpopstate = () => {
+  root.innerHTML = '';
   root.appendChild(routes[window.location.pathname]());
 };
+
+window.addEventListener('click', function (e) {
+  this.console.log(e.target);
+});
