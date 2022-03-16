@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 const errorTranslate = {
   'auth/invalid-email': 'El email es inválido.',
   'auth/email-already-in-use': 'El email ya está registrado.',

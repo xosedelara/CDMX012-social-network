@@ -22,12 +22,12 @@ export const home = () => {
     id: 'user',
     name: 'user',
     type: 'text',
-    placeholder: '  Usuarix / e-mail',
+    placeholder: 'E-mail',
   };
   const loginPWAttributes = {
     id: 'loginPassword',
     type: 'password',
-    placeholder: '  Constraseña',
+    placeholder: 'Contraseña',
   };
   const messageAttributes = {
     id: 'loginMessage',
