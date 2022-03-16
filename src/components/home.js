@@ -2,7 +2,7 @@
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable import/no-cycle */
 import { onNavigate } from '../app.js';
-import { signInEmailAndPW, signInWithGoogle } from '../lib/firebaseApp.js';
+import { signInEmailAndPW, signInWithGoogle, signInWithFacebook } from '../lib/firebaseApp.js';
 
 export const home = () => {
   const petspaceLogoAttributes = {
@@ -140,6 +140,10 @@ export const home = () => {
 
   gmailLogo.addEventListener('click', () => {
     signInWithGoogle();
+  });
+
+  facebookLogo.addEventListener('click', () => {
+    signInWithFacebook();
   });
 
   return homeStructure;

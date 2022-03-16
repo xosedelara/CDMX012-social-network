@@ -1,5 +1,6 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable no-param-reassign */
+/* eslint-disable no-unused-vars */
 import { onNavigate } from '../app.js';
 
 const errorTranslate = {
@@ -41,7 +42,7 @@ export const signInWithGoogle = () => {
   firebase.auth()
     .signInWithPopup(provider)
     .then((result) => {
-    /** @type {firebase.auth.OAuthCredential} */
+      /** @type {firebase.auth.OAuthCredential} */
       const credential = result.credential;
 
       // This gives you a Google Access Token. You can use it to access the Google API.
@@ -53,7 +54,7 @@ export const signInWithGoogle = () => {
       // ...
       onNavigate('/mainPage');
     }).catch((error) => {
-    // Handle Errors here.
+      // Handle Errors here.
       const errorCode = error.code;
       console.log(errorCode);
       const errorMessage = error.message;
@@ -64,6 +65,35 @@ export const signInWithGoogle = () => {
       // The firebase.auth.AuthCredential type that was used.
       const credential = error.credential;
       console.log(credential);
-    // ...
+      // ...
     });
+};
+
+export const signInWithFacebook = () => {
+  const provider = new firebase.auth.FacebookAuthProvider();
+  firebase.auth().signInWithPopup(provider).then((result) => {
+    /** @type {firebase.auth.OAuthCredential} */
+    const credential = result.credential;
+    console.log(credential);
+    // The signed-in user info.
+    const user = result.user;
+    console.log(user);
+    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+    const accessToken = credential.accessToken;
+    console.log(accessToken);
+    // ...
+  }).catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    console.log(errorCode);
+    const errorMessage = error.message;
+    console.log(errorMessage);
+    // The email of the user's account used.
+    const email = error.email;
+    console.log(email);
+    // The firebase.auth.AuthCredential type that was used.
+    const credential = error.credential;
+    console.log(credential);
+    // ...
+  });
 };

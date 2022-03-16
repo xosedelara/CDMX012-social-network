@@ -12,9 +12,13 @@ export const mainPage = () => {
     id: 'menuUp',
   };
   const petspacePlanetAttributes = {
-    class: 'petspace-planet',
+    class: 'petspace-planet icon',
     id: 'petspacePlanet',
     src: 'img/PetSpacePlanet.png',
+  };
+  const menuUpRightAttributes = {
+    class: 'menu-up-r menu',
+    id: 'menuUpRight',
   };
   const shopIconAttributes = {
     class: 'shop-icon icon',
@@ -76,6 +80,7 @@ export const mainPage = () => {
   const mainPageStructure = document.createElement('div');
   const menuUp = document.createElement('section');
   const petspacePlanet = document.createElement('img');
+  const menuUpRight = document.createElement('section');
   const shopIcon = document.createElement('img');
   const locationIcon = document.createElement('img');
   const searchIcon = document.createElement('img');
@@ -92,6 +97,7 @@ export const mainPage = () => {
   setAttributes(mainPageStructure, mainPageStructureAttributes);
   setAttributes(menuUp, menuUpAttributes);
   setAttributes(petspacePlanet, petspacePlanetAttributes);
+  setAttributes(menuUpRight, menuUpRightAttributes);
   setAttributes(shopIcon, shopIconAttributes);
   setAttributes(locationIcon, locationIconAttributes);
   setAttributes(searchIcon, searchIconAttributes);
@@ -104,7 +110,8 @@ export const mainPage = () => {
   setAttributes(messageIcon, messageIconAttributes);
   setAttributes(profileIcon, profileIconAttributes);
 
-  menuUp.append(petspacePlanet, shopIcon, locationIcon, searchIcon);
+  menuUpRight.append(shopIcon, locationIcon, searchIcon);
+  menuUp.append(petspacePlanet, menuUpRight);
   homePage.appendChild(homePageM);
   menuDown.append(homeIcon, menuIcon, notificationIcon, messageIcon, profileIcon);
   mainPageStructure.append(menuUp, homePage, menuDown);
