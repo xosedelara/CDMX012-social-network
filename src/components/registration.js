@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 /* eslint-disable import/no-cycle */
 import { onNavigate } from '../app.js';
-import { createAccount } from '../lib/firebaseApp.js';
+import { createAccount, signInWithGoogle } from '../lib/firebaseApp.js';
 
 export const registration = () => {
   const petspaceLogoAttributes = {
@@ -38,7 +38,7 @@ export const registration = () => {
     src: 'img/facebook.png',
     class: 'facebook-logo',
   };
-  const googleLogoAttributes = {
+  const gmailLogoAttributes = {
     src: 'img/google.png',
     class: 'gmail-logo',
   };
@@ -68,7 +68,7 @@ export const registration = () => {
   const buttonRegister = document.createElement('button');
   const pOptions = document.createElement('p');
   const facebookLogo = document.createElement('img');
-  const googleLogo = document.createElement('img');
+  const gmailLogo = document.createElement('img');
   const returnButton = document.createElement('button');
   const addBr1 = document.createElement('br');
   const addBr2 = document.createElement('br');
@@ -83,7 +83,7 @@ export const registration = () => {
   setAttributes(regMessage, messageAttributes);
   setAttributes(buttonRegister, buttonRegisterAttributes);
   setAttributes(facebookLogo, facebookLogoAttributes);
-  setAttributes(googleLogo, googleLogoAttributes);
+  setAttributes(gmailLogo, gmailLogoAttributes);
   setAttributes(returnButton, returnButtonAttributes);
 
   pUser.textContent = 'Crea un usuario y contraseña';
@@ -93,7 +93,7 @@ export const registration = () => {
 
   eyeButton.append(eye);
   form.append(inputName, addBr1, inputEmail, addBr2, inputPW, addBr3, regMessage, eyeButton, buttonRegister);
-  registrationBox.append(pUser, form, pOptions, facebookLogo, googleLogo);
+  registrationBox.append(pUser, form, pOptions, facebookLogo, gmailLogo);
   registrationStructure.append(petspaceLogo, registrationBox, addBr4, returnButton);
 
   returnButton.addEventListener('click', () => { onNavigate('/'); });
@@ -114,13 +114,11 @@ export const registration = () => {
     console.log(email, password);
     createAccount(message, email, password);
   });
-  /*   firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      console.log(user);
-      // eslint-disable-next-line no-empty
-    } else {
-    }
-  }); */
+
+  gmailLogo.addEventListener('click', () => {
+    console.log('hola');
+    signInWithGoogle(regMessage);
+  });
 
   return registrationStructure;
 };
