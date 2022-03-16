@@ -114,7 +114,7 @@ export const registration = () => {
     console.log(email, password);
     createAccount(message, email, password);
   });
-/*   firebase.auth().onAuthStateChanged((user) => {
+  /*   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       console.log(user);
       // eslint-disable-next-line no-empty
