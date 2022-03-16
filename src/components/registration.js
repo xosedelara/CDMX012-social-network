@@ -4,9 +4,6 @@ import { onNavigate } from '../app.js';
 import { createAccount, signInWithGoogle } from '../lib/firebaseApp.js';
 
 export const registration = () => {
-  const registrationStructureAttributes = {
-    class: 'registration',
-  };
   const petspaceLogoAttributes = {
     class: 'petspace-logo',
     id: 'petspaceLogo',
@@ -78,7 +75,6 @@ export const registration = () => {
   const addBr3 = document.createElement('br');
   const addBr4 = document.createElement('br');
 
-  setAttributes(registrationStructure, registrationStructureAttributes);
   setAttributes(petspaceLogo, petspaceLogoAttributes);
   setAttributes(form, formAttributes);
   setAttributes(inputName, inputNameAttributes);

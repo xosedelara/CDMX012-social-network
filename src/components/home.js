@@ -5,9 +5,6 @@ import { onNavigate } from '../app.js';
 import { signInEmailAndPW, signInWithGoogle } from '../lib/firebaseApp.js';
 
 export const home = () => {
-  const homeStructureAttributes = {
-    class: 'home',
-  };
   const petspaceLogoAttributes = {
     class: 'petspace-logo',
     id: 'petspaceLogo',
@@ -94,7 +91,6 @@ export const home = () => {
   const addBr1 = document.createElement('br');
   const addBr2 = document.createElement('br');
 
-  setAttributes(homeStructure, homeStructureAttributes);
   setAttributes(petspaceLogo, petspaceLogoAttributes);
   setAttributes(loginBox, loginBoxAttributes);
   setAttributes(loginForm, loginFormAttributes);

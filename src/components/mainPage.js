@@ -109,6 +109,8 @@ export const mainPage = () => {
   menuDown.append(homeIcon, menuIcon, notificationIcon, messageIcon, profileIcon);
   mainPageStructure.append(menuUp, homePage, menuDown);
   menuIcon.addEventListener('click', () => { onNavigate('/'); });
+  // const body = document.querySelector('body');
+  //   body.style.background = '#ffff';
 
   return mainPageStructure;
 };
