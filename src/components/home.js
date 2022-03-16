@@ -143,8 +143,7 @@ export const home = () => {
   });
 
   gmailLogo.addEventListener('click', () => {
-    console.log('hola');
-    signInWithGoogle(loginMessage);
+    signInWithGoogle();
   });
 
   return homeStructure;
