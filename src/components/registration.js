@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 /* eslint-disable import/no-cycle */
 import { onNavigate } from '../app.js';
-import { createAccount, signInWithGoogle } from '../lib/firebaseApp.js';
+import { createAccount, signInWithFacebook, signInWithGoogle } from '../lib/firebaseApp.js';
 
 export const registration = () => {
   const registrationStructureAttributes = {
@@ -129,6 +129,8 @@ export const registration = () => {
   gmailLogo.addEventListener('click', () => {
     signInWithGoogle();
   });
-
+  facebookLogo.addEventListener('click', () => {
+    signInWithFacebook();
+  });
   return registrationStructure;
 };
