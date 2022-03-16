@@ -20,9 +20,10 @@ body{
     background-color: #105C7C;
     margin-top: 20%;
     width: 62%;
-    padding: 9%;
+    padding: 9% 0%;
     display: flex;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     border-radius: 10px;
 }
 
@@ -113,22 +114,27 @@ p{
     color: #F1972A;
 }
 .main-page{
-    background-color: #fff;
+    /* background-color: #fff; */
     margin: 0;
     
     width: 100%;
     height: 100%;
 }
-.menu {
+.menuUp {
     background-color: #201F41;
     width: 100%;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    top: 0;
+    left: 0;
     /* display: flex;
     justify-content: space-between;
     align-items: flex-start; */
 }
-/* .home-page{
-
-} */
+.home-page{
+    background-color: #fff;
+}
 .petspace-planet{
     height: 50px;
     margin-top: 20%;

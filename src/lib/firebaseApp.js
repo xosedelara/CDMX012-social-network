@@ -26,8 +26,9 @@ export const signInEmailAndPW = (message, email, password) => {
 
 export const createAccount = (message, email, password) => {
   firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
-    message.innerHTML = 'Se ha creado su cuenta exitosamente';
-    message.style.color = '#F1972A';
+    // message.innerHTML = 'Se ha creado su cuenta exitosamente';
+    // message.style.color = '#F1972A';
+    onNavigate('/mainPage');
   }).catch((error) => {
     const errorType = error.code;
     message.innerHTML = (errorTranslate[errorType]);
@@ -51,6 +52,7 @@ export const signInWithGoogle = (message) => {
       console.log(user);
       // ...
       message.innerHTML = ('Has iniciado sesión correctamente.');
+      onNavigate('/mainPage');
     }).catch((error) => {
     // Handle Errors here.
       const errorCode = error.code;
