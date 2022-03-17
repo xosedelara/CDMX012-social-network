@@ -6,7 +6,7 @@ body{
     margin: 0;
 }
 
-#root div {
+.structure {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,6 +15,10 @@ body{
 .petspace-logo{
     height: 50px;
     margin-top: 20%;
+}
+
+.desktop-img{
+    display: none;
 }
 
 .login-box {
@@ -177,4 +181,16 @@ p{
     align-items: center;
     z-index: 2;
     border-radius: 15px 15px 0px 0px;
+}
+
+@media only screen and (min-width: 768px) {
+    .desktop-img {
+        display: block;
+        height: 60%;
+    }
+    #root :first-child {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }

@@ -5,10 +5,17 @@ import { onNavigate } from '../app.js';
 import { signInEmailAndPW, signInWithGoogle, signInWithFacebook } from '../lib/firebaseApp.js';
 
 export const home = () => {
+  const homeStructureAttributes = {
+    class: 'structure',
+  };
   const petspaceLogoAttributes = {
     class: 'petspace-logo',
     id: 'petspaceLogo',
     src: 'img/PetSpaceLogo.png',
+  };
+  const desktopImgAttributes = {
+    class: 'desktop-img',
+    src: 'img/homeDesktop.png',
   };
   const loginBoxAttributes = {
     class: 'login-box',
@@ -71,8 +78,10 @@ export const home = () => {
     Object.keys(attributes).forEach((attr) => element.setAttribute(attr, attributes[attr]));
   };
 
+  const structure = document.createElement('div');
   const homeStructure = document.createElement('div');
   const petspaceLogo = document.createElement('img');
+  const desktopImg = document.createElement('img');
   const loginBox = document.createElement('section');
   const loginForm = document.createElement('form');
   const loginMail = document.createElement('input');
@@ -91,7 +100,9 @@ export const home = () => {
   const addBr1 = document.createElement('br');
   const addBr2 = document.createElement('br');
 
+  setAttributes(homeStructure, homeStructureAttributes);
   setAttributes(petspaceLogo, petspaceLogoAttributes);
+  setAttributes(desktopImg, desktopImgAttributes);
   setAttributes(loginBox, loginBoxAttributes);
   setAttributes(loginForm, loginFormAttributes);
   setAttributes(loginMail, loginMailAttributes);
@@ -117,6 +128,7 @@ export const home = () => {
   loginWithSection.append(loginWithText, facebookLogo, gmailLogo);
   registerSection.append(registerSectionText, registerBtn);
   homeStructure.append(petspaceLogo, loginBox, loginWithSection, registerSection);
+  structure.append(desktopImg, homeStructure);
 
   seePWBtn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -146,5 +158,5 @@ export const home = () => {
     signInWithFacebook();
   });
 
-  return homeStructure;
+  return structure;
 };
