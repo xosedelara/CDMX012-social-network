@@ -79,10 +79,6 @@ export const registration = () => {
   const facebookLogo = document.createElement('img');
   const gmailLogo = document.createElement('img');
   const returnButton = document.createElement('button');
-  const addBr1 = document.createElement('br');
-  const addBr2 = document.createElement('br');
-  const addBr3 = document.createElement('br');
-  const addBr4 = document.createElement('br');
 
   setAttributes(registrationStructure, registrationStructureAttributes);
   setAttributes(petspaceLogo, petspaceLogoAttributes);
@@ -103,9 +99,9 @@ export const registration = () => {
   returnButton.textContent = 'Regresa al inicio';
 
   eyeButton.append(eye);
-  form.append(inputName, addBr1, inputEmail, addBr2, inputPW, addBr3, regMessage, eyeButton, buttonRegister);
+  form.append(inputName, inputEmail, inputPW, regMessage, eyeButton, buttonRegister);
   registrationBox.append(pUser, form, pOptions, facebookLogo, gmailLogo);
-  registrationStructure.append(petspaceLogo, registrationBox, addBr4, returnButton);
+  registrationStructure.append(petspaceLogo, registrationBox, returnButton);
   structure.append(desktopImg, registrationStructure);
 
   returnButton.addEventListener('click', () => { onNavigate('/'); });
