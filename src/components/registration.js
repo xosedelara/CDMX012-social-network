@@ -108,25 +108,21 @@ export const registration = () => {
 
   buttonRegister.addEventListener('click', (e) => {
     e.preventDefault();
+    const name = inputName.value;
     const email = inputEmail.value;
     const password = inputPW.value;
     const message = regMessage;
     console.log(email, password);
-    createAccount(message, email, password);
+    createAccount(message, email, password, name);
   });
-  /*   firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      console.log(user);
-      // eslint-disable-next-line no-empty
-    } else {
-    }
-  }); */
 
   gmailLogo.addEventListener('click', () => {
     signInWithGoogle();
   });
+
   facebookLogo.addEventListener('click', () => {
     signInWithFacebook();
   });
+
   return registrationStructure;
 };

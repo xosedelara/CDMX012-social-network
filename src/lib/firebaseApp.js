@@ -13,8 +13,6 @@ const errorTranslate = {
 
 export const signInEmailAndPW = (message, email, password) => {
   firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
-    // message.innerHTML = 'Ha loggeado exitosamente';
-    // message.style.color = '#F1972A';
     onNavigate('/mainPage');
   }).catch((error) => {
     const errorType = error.code;
@@ -25,10 +23,12 @@ export const signInEmailAndPW = (message, email, password) => {
   });
 };
 
-export const createAccount = (message, email, password) => {
-  firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
-    // message.innerHTML = 'Se ha creado su cuenta exitosamente';
-    // message.style.color = '#F1972A';
+export const createAccount = (message, email, password, name) => {
+  firebase.auth().createUserWithEmailAndPassword(email, password).then((result) => {
+    console.log(result);
+    result.user.updateProfile({
+      displayName: name,
+    });
     onNavigate('/mainPage');
   }).catch((error) => {
     const errorType = error.code;
