@@ -32,8 +32,8 @@ const routes = {
   '/mainPage': mainPage,
 };
 
-const root = document.getElementById('root');
-root.appendChild(routes[window.location.pathname]());
+/* const root = document.getElementById('root');
+root.appendChild(routes[window.location.pathname]()); */
 
 export const onNavigate = (pathname) => {
   window.history.pushState(

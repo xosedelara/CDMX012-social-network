@@ -62,7 +62,7 @@ export const pubBarFunc = () => {
   secondBox.setAttribute('class', 'pub-second-box');
   lastBox.setAttribute('class', 'pub-last-box');
 
-  userName.innerText = 'holi';
+  // userName.innerText = user;
   publishButton.innerText = 'Publicar';
 
   publicationBar.append(firstBox, secondBox, lastBox);
