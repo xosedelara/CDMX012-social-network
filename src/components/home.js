@@ -100,8 +100,6 @@ export const home = () => {
   const registerSection = document.createElement('section');
   const registerSectionText = document.createElement('p');
   const registerBtn = document.createElement('button');
-  const addBr1 = document.createElement('br');
-  const addBr2 = document.createElement('br');
 
   setAttributes(structure, structureAttributes);
   setAttributes(homeStructure, homeStructureAttributes);
@@ -127,7 +125,7 @@ export const home = () => {
   loginSubmit.textContent = 'Entrar';
   
   seePWBtn.appendChild(seePassword);
-  loginForm.append(loginMail, addBr1, loginPW, addBr2, loginMessage, seePWBtn, loginSubmit);
+  loginForm.append(loginMail, loginPW, loginMessage, seePWBtn, loginSubmit);
   loginBox.appendChild(loginForm);
   loginWithSection.append(loginWithText, facebookLogo, gmailLogo);
   registerSection.append(registerSectionText, registerBtn);
