@@ -66,7 +66,7 @@ export const home = () => {
     id: 'registerButton',
     type: 'button',
   };
-
+  
   const setAttributes = (element, attributes) => {
     Object.keys(attributes).forEach((attr) => element.setAttribute(attr, attributes[attr]));
   };
