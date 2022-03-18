@@ -4,10 +4,17 @@ import { onNavigate } from '../app.js';
 import { createAccount, signInWithFacebook, signInWithGoogle } from '../lib/firebaseApp.js';
 
 export const registration = () => {
+  const registrationStructureAttributes = {
+    class: 'structure',
+  };
   const petspaceLogoAttributes = {
     class: 'petspace-logo',
     id: 'petspaceLogo',
     src: 'img/PetSpaceLogo.png',
+  };
+  const desktopImgAttributes = {
+    class: 'desktop-img',
+    src: 'img/homeDesktop.png',
   };
   const formAttributes = {
     id: 'registrationForm',
@@ -51,8 +58,10 @@ export const registration = () => {
     Object.keys(attributes).forEach((attr) => element.setAttribute(attr, attributes[attr]));
   };
 
+  const structure = document.createElement('div');
   const registrationStructure = document.createElement('div');
   const petspaceLogo = document.createElement('img');
+  const desktopImg = document.createElement('img');
   const registrationBox = document.createElement('section');
   registrationBox.setAttribute('class', 'reg-box');
   const pUser = document.createElement('p');
@@ -70,12 +79,10 @@ export const registration = () => {
   const facebookLogo = document.createElement('img');
   const gmailLogo = document.createElement('img');
   const returnButton = document.createElement('button');
-  const addBr1 = document.createElement('br');
-  const addBr2 = document.createElement('br');
-  const addBr3 = document.createElement('br');
-  const addBr4 = document.createElement('br');
 
+  setAttributes(registrationStructure, registrationStructureAttributes);
   setAttributes(petspaceLogo, petspaceLogoAttributes);
+  setAttributes(desktopImg, desktopImgAttributes);
   setAttributes(form, formAttributes);
   setAttributes(inputName, inputNameAttributes);
   setAttributes(inputEmail, inputEmailAttributes);
@@ -92,9 +99,10 @@ export const registration = () => {
   returnButton.textContent = 'Regresa al inicio';
 
   eyeButton.append(eye);
-  form.append(inputName, addBr1, inputEmail, addBr2, inputPW, addBr3, regMessage, eyeButton, buttonRegister);
+  form.append(inputName, inputEmail, inputPW, regMessage, eyeButton, buttonRegister);
   registrationBox.append(pUser, form, pOptions, facebookLogo, gmailLogo);
-  registrationStructure.append(petspaceLogo, registrationBox, addBr4, returnButton);
+  registrationStructure.append(petspaceLogo, registrationBox, returnButton);
+  structure.append(desktopImg, registrationStructure);
 
   returnButton.addEventListener('click', () => { onNavigate('/'); });
   eyeButton.addEventListener('click', (e) => {
@@ -124,5 +132,5 @@ export const registration = () => {
     signInWithFacebook();
   });
 
-  return registrationStructure;
+  return structure;
 };
