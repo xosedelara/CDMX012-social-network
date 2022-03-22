@@ -1,6 +1,7 @@
 /* eslint-disable no-multiple-empty-lines */
 /* eslint-disable import/no-cycle */
 import { onNavigate } from '../app.js';
+import { pubBarFunc } from './publication.js';
 
 export const mainPage = () => {
   const mainPageStructureAttributes = {
@@ -112,7 +113,7 @@ export const mainPage = () => {
 
   menuUpRight.append(shopIcon, locationIcon, searchIcon);
   menuUp.append(petspacePlanet, menuUpRight);
-  homePage.appendChild(homePageM);
+  homePage.append(pubBarFunc(), homePageM);
   menuDown.append(homeIcon, menuIcon, notificationIcon, messageIcon, profileIcon);
   mainPageStructure.append(menuUp, homePage, menuDown);
   menuIcon.addEventListener('click', () => { onNavigate('/'); });

@@ -12,6 +12,16 @@ const firebaseConfig = {
   storageBucket: 'petspace-3f65f.appspot.com',
   messagingSenderId: '719999017536',
   appId: '1:719999017536:web:4e72654f1a5dba66b1b5a5',
+/*   apiKey: "API_KEY",
+  authDomain: "PROJECT_ID.firebaseapp.com",
+  // The value of `databaseURL` depends on the location of the database
+  databaseURL: "https://DATABASE_NAME.firebaseio.com",
+  projectId: "PROJECT_ID",
+  storageBucket: "PROJECT_ID.appspot.com",
+  messagingSenderId: "SENDER_ID",
+  appId: "APP_ID",
+  // For Firebase JavaScript SDK v7.20.0 and later, `measurementId` is an optional field
+  measurementId: "G-MEASUREMENT_ID", */
 };
 firebase.initializeApp(firebaseConfig);
 
@@ -23,7 +33,10 @@ const routes = {
 };
 
 const root = document.getElementById('root');
-root.appendChild(routes[window.location.pathname]());
+window.onload =()=>{
+  root.appendChild(routes[window.location.pathname]());
+}
+
 
 export const onNavigate = (pathname) => {
   window.history.pushState(
