@@ -33,10 +33,9 @@ const routes = {
 };
 
 const root = document.getElementById('root');
-window.onload =()=>{
+window.onload = () => {
   root.appendChild(routes[window.location.pathname]());
-}
-
+};
 
 export const onNavigate = (pathname) => {
   window.history.pushState(
