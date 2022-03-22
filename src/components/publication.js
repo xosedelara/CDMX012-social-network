@@ -103,7 +103,7 @@ export const pubBarFunc = () => {
     // const newPubName = document.createElement('p');
     // const newPubText = document.createElement('p');
     // const newPubProfile = document.createElement('section');
-    // const editPub = document.createElement('img'); // no he agregado icono de editar a imágenes
+    // const editPub = document.createElement('img');
     // const likePost = document.createElement('section');
     // const likeIcon = document.createElement('img');
     // const likeCount = document.createElement('p');

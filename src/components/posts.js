@@ -22,7 +22,7 @@ export const createPosts = () => {
   };
   const pubTextAttributes = {
     class: 'publication-input new-pub-text',
-    // falta agregar el src
+
   };
 
   const setAttributes = (element, attributes) => {
