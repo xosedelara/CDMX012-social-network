@@ -5,6 +5,12 @@ body {
     margin: 0;
 }
 
+#root{
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
 .desktop-img {
     display: none;
 }
@@ -18,7 +24,7 @@ body {
 
 .petspace-logo {
     width: 60%;
-    margin: 15% auto 10% auto;
+    margin-bottom: 10%;
 }
 
 .login-box, .reg-box {
@@ -127,7 +133,7 @@ p {
 .return-button{
     background-color: #F1972A;
     width: 35%;
-    margin: 2.5%;
+    margin-top: 5%;
 }
 
 /* MAIN PAGE */
