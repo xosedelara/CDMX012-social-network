@@ -92,8 +92,9 @@ export const pubBarFunc = () => {
   publicationSpace.append(createPublications);
 
   publishButton.addEventListener('click', () => {
-    createPosts();
-    const newPubText = document.querySelector('.publication-input');
+    const newPub = createPosts();
+    publicationSpace.append(newPub);
+    const newPubText = document.querySelector('.new-pub-text');
     newPubText.innerText = publicationInput.value;
     publicationInput.value = null;
     // const newPublication = document.createElement('section');

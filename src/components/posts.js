@@ -20,6 +20,10 @@ export const createPosts = () => {
     id: 'editPub',
     // falta agregar el src
   };
+  const pubTextAttributes = {
+    class: 'publication-input new-pub-text',
+    // falta agregar el src
+  };
 
   const setAttributes = (element, attributes) => {
     Object.keys(attributes).forEach((attr) => element.setAttribute(attr, attributes[attr]));
@@ -40,7 +44,6 @@ export const createPosts = () => {
   const commentSpace = document.createElement('input');
 
   newPublication.setAttribute('class', 'create-pubs');
-  newPubText.setAttribute('class', 'publication-input');
   newPubProfile.setAttribute('class', 'pub-first-box');
   likePost.setAttribute('class', 'like-post');
   likeIcon.setAttribute('class', 'like-icon');
@@ -49,19 +52,20 @@ export const createPosts = () => {
   commentIcon.setAttribute('class', 'comment-icon');
   commentSpace.setAttribute('class', 'comment-space');
 
+  setAttributes(newPubText, pubTextAttributes);
   setAttributes(newPubPicSpace, userPicSpaceAttributes);
   setAttributes(newPubPic, userPicAttributes);
   setAttributes(newPubName, userNameAttributes);
   setAttributes(editPub, editPubAttributes);
 
-  //   newPubText.innerText = pubBarFunc.publicationInput.value;
+  //   newPubText.innerText = pubBarFunc.publicationInput.value; NECESITO AWEBO ESTO
   newPubName.innerText = 'Usuarix';
   //   pubBarFunc.publicationInput.value = null;
 
   newPubPicSpace.appendChild(newPubPic);
   newPubProfile.append(newPubPicSpace, newPubName);
   newPublication.append(newPubProfile, newPubText);
-  //   pubBarFunc.publicationSpace.append(newPublication);
+  //   pubBarFunc.publicationSpace.append(newPublication); Y ESTO
   //   pubBarFunc.createPublications.after(newPublication);
   //   return pubBarFunc.publicationSpace;
   return newPublication;
