@@ -1,4 +1,7 @@
 /* eslint-disable max-len */
+// eslint-disable-next-line import/no-cycle
+import { createPosts } from './posts.js';
+
 export const pubBarFunc = () => {
   const root = document.getElementById('root');
   root.innerHTML = '';
@@ -89,6 +92,10 @@ export const pubBarFunc = () => {
   publicationSpace.append(createPublications);
 
   publishButton.addEventListener('click', () => {
+    createPosts();
+    const newPubText = document.querySelector('.publication-input');
+    newPubText.innerText = publicationInput.value;
+    publicationInput.value = null;
     // const newPublication = document.createElement('section');
     // const newPubPicSpace = document.createElement('figure');
     // const newPubPic = document.createElement('img');
@@ -96,10 +103,23 @@ export const pubBarFunc = () => {
     // const newPubText = document.createElement('p');
     // const newPubProfile = document.createElement('section');
     // const editPub = document.createElement('img'); // no he agregado icono de editar a imágenes
+    // const likePost = document.createElement('section');
+    // const likeIcon = document.createElement('img');
+    // const likeCount = document.createElement('p');
+    // const commentPost = document.createElement('section');
+    // const commentIcon = document.createElement('img');
+    // const commentSpace = document.createElement('input');
 
     // newPublication.setAttribute('class', 'create-pubs');
     // newPubText.setAttribute('class', 'publication-input');
     // newPubProfile.setAttribute('class', 'pub-first-box');
+    // likePost.setAttribute('class', 'like-post');
+    // likeIcon.setAttribute('class', 'like-icon');
+    // likeCount.setAttribute('class', 'like-count');
+    // commentPost.setAttribute('class', 'comment-post');
+    // commentIcon.setAttribute('class', 'comment-icon');
+    // commentSpace.setAttribute('class', 'comment-space');
+
     // setAttributes(newPubPicSpace, userPicSpaceAttributes);
     // setAttributes(newPubPic, userPicAttributes);
     // setAttributes(newPubName, userNameAttributes);
@@ -113,12 +133,7 @@ export const pubBarFunc = () => {
     // newPubProfile.append(newPubPicSpace, newPubName);
     // newPublication.append(newPubProfile, newPubText);
     // publicationSpace.append(newPublication);
-    const clone = createPublications.cloneNode(true);
-    clone.id = 'newPub';
-    createPublications.after(clone);
-    publicationInput.value = null;
-    const nonPub = document.getElementsByClassName('pub-third-box'[1]);
-    nonPub.remove();
+    // createPublications.after(newPublication);
   });
   return publicationSpace;
 };
