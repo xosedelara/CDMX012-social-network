@@ -171,59 +171,6 @@ p {
     align-items:flex-start;
     z-index: 1;
 }
-
-.publication-bar{
-    display: flex;
-    margin-top: 75px;
-    width: 300px;
-    background: #FFFFFF;
-    border: 0.1px solid #000000;
-    box-sizing: border-box;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 7px; 
-}
-.pub-first-box{
-    display: flex;
-    justify-content: left;
-    align-items: center;
-}
-.user-name{
-    font-size: 18px;
-    line-height: 20px;
-    font-family: 'Orbitron', sans-serif;
-    color: #000;
-    justify-self: left;
-    margin: 7px;
-}
-.pub-second-box{
-    display: flex;
-    justify-content: center;
-}
-.publication-input{
-    width: 350px;
-    height:fit-content;
-    margin: 3px;
-    /* width: 255.91px;
-    height: 25px; */
-    left: 29.63px;
-    background: #ECECEC;
-    border-radius: 6px;
-
-}
-.pub-last-box{
-    margin-top: 3px;
-    margin-bottom: 10px;
-    display: flex;
-}
-.publish-button{
-    width: 86.26px;
-    height: 21px;
-    margin-left: 125px;
-    background: #105C7C;
-    border: 0.3px solid #000000;
-    box-sizing: border-box;
-    border-radius: 6px;
-}
 .icon{
     height: 40%;
 }
@@ -234,19 +181,11 @@ p {
 .menu-icon, .message-icon{
     height: 30%;
 }
-.upload-image-icon{
-    height: 20px;
-}
-.upload-location-icon{
-    height: 20px;
-}
 .menu-down{
     position: fixed;
     bottom: 0px;
     width: 100%;
     height: 10%;
-    padding: 0;
-    margin: 0;
     background-color: #201F41;
     display: flex;
     justify-content: space-around;
@@ -269,3 +208,89 @@ p {
         width: 35%;
     }
 }
+.publication-space{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    margin: 20% 5%;
+    position: absolute;
+}
+.create-pubs{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 25%;
+    width: 80%;
+    background-color: white;
+    padding: 0% 3%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    overflow:hidden;
+    margin-bottom: 5%;
+}
+.pub-first-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.pub-second-box{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0%;
+}
+.pub-third-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.user-pic-space{
+    width: 45px;
+    height: 45px;
+    background-color: gray;
+    border-radius: 100%;
+    margin: 0;
+    margin-left: 2%;
+    overflow:hidden;
+}
+.user-pic{
+    max-width: 100%;
+}
+.user-name{
+    font-size: 120%;
+    color: black;
+}
+.publication-input{
+    background-color: rgb(236, 236, 236);
+    text-align: left;
+    padding-left: 7%;
+    height: 50%;
+    color: black;
+}
+.upload-space{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    width: 25%;
+    position: relative;
+    right: 15%;
+}
+.pub-icon{
+    height: 20px;
+}
+.publish-button{
+    font-family: 'Orbitron', sans-serif;
+    font-size: 80%;
+    color: white;
+    background-color: #105C7C;
+    border-radius: 5px;
+    padding: 1% 3%;
+}
+
+
