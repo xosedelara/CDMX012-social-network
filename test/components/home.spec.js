@@ -6,15 +6,18 @@ import '../app';
 import { home } from '../../src/components/home.js';
 
 describe('home', () => {
+  const component = home();
   it('Snapshot home', () => {
-    const component = home();
     document.body.innerHTML = '<div id="root"></div>';
     const rootDiv = document.getElementById('root');
     rootDiv.appendChild(component);
-    expect(rootDiv.innerHTML).toMatchSnapshot();
+    expect(rootDiv.innerHTML).toMatchSnapshot('./home.spec.js.snap');
   });
-  it('has functionality in button to see Password', () => {
-    expect()
+  it('emits an event when a request is started', () => {
+    const page = component;
+    page.on('request_started', (data) => {
+      expect(data.url).tocontain('/');
+    });
   });
   it('ís a function', () => {
     expect(typeof home).toBe('function');

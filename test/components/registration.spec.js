@@ -11,7 +11,7 @@ describe('home', () => {
     document.body.innerHTML = '<div id="root"></div>';
     const rootDiv = document.getElementById('root');
     rootDiv.appendChild(component);
-    expect(rootDiv.innerHTML).toMatchSnapshot();
+    expect(rootDiv.innerHTML).toMatchSnapshot('./registration.spec.js.snap');
   });
   it('ís a function', () => {
     expect(typeof registration).toBe('function');

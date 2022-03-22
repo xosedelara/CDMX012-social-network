@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-cycle
 // import { pubBarFunc } from './publication.js';
 
-export const createPosts = () => {
+export const createPosts = (publicationInput) => {
   const userPicSpaceAttributes = {
     class: 'user-pic-space',
     id: 'userPicSpace',
@@ -58,15 +58,12 @@ export const createPosts = () => {
   setAttributes(newPubName, userNameAttributes);
   setAttributes(editPub, editPubAttributes);
 
-  //   newPubText.innerText = pubBarFunc.publicationInput.value; NECESITO AWEBO ESTO
+  newPubText.innerText = publicationInput;
   newPubName.innerText = 'Usuarix';
-  //   pubBarFunc.publicationInput.value = null;
 
   newPubPicSpace.appendChild(newPubPic);
   newPubProfile.append(newPubPicSpace, newPubName);
   newPublication.append(newPubProfile, newPubText);
-  //   pubBarFunc.publicationSpace.append(newPublication); Y ESTO
-  //   pubBarFunc.createPublications.after(newPublication);
-  //   return pubBarFunc.publicationSpace;
+
   return newPublication;
 };
