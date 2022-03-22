@@ -43,7 +43,8 @@ export const home = () => {
     id: 'loginMessage',
   };
   const seePWBtnAttributes = {
-    id: 'seePassword',
+    id: 'seePasswordHome',
+    class: 'seePassword',
   };
   const seePWBtnIAttributes = {
     class: 'fas fa-eye',
@@ -72,7 +73,6 @@ export const home = () => {
     id: 'registerSection',
   };
   const registerBtnAttributes = {
-    class: 'register-button',
     id: 'registerButton',
     type: 'button',
   };
@@ -90,6 +90,8 @@ export const home = () => {
   const loginMail = document.createElement('input');
   const loginPW = document.createElement('input');
   const loginMessage = document.createElement('p');
+  const pwAndSubmit = document.createElement('div');
+  pwAndSubmit.setAttribute('class', 'eyeAndSubmit');
   const seePWBtn = document.createElement('button');
   const seePassword = document.createElement('i');
   const loginSubmit = document.createElement('button');
@@ -125,7 +127,8 @@ export const home = () => {
   loginSubmit.textContent = 'Entrar';
   
   seePWBtn.appendChild(seePassword);
-  loginForm.append(loginMail, loginPW, loginMessage, seePWBtn, loginSubmit);
+  pwAndSubmit.append(seePWBtn, loginSubmit);
+  loginForm.append(loginMail, loginPW, loginMessage, pwAndSubmit);
   loginBox.appendChild(loginForm);
   loginWithSection.append(loginWithText, facebookLogo, gmailLogo);
   registerSection.append(registerSectionText, registerBtn);

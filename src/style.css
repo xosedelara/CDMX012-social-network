@@ -1,37 +1,37 @@
-body{
+body {
     background-color: #201F41;
     font-family: 'Orbitron', sans-serif;
     color: #fff;
     margin: 0;
 }
 
-.desktop-img{
+.desktop-img {
     display: none;
 }
 
-.home-structure {
+.home-structure, .registration-structure {
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.petspace-logo{
+.petspace-logo {
     width: 60%;
-    margin: 15% auto 15% auto;
+    margin: 15% auto 10% auto;
 }
 
-.login-box {
-    background-color: #105C7C;
+.login-box, .reg-box {
     width: 65%;
     padding: 9% 0%;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     border-radius: 10px;
 }
 
-.login-form{
+form  {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -49,35 +49,48 @@ input{
     text-align: center;
 }
 
-button{
+button {
     border:0;
-}
-
-#seePassword{
-    background-color: #F1972A;
-    color: white;
-    width: 20%;
-    border-radius: 10px;
-    padding: 0.15rem;
-}
-
-.submit-button {
-    margin-top: 5%;
     font-family: 'Orbitron', sans-serif;
     font-size: 0.75rem;
     color: #fff;
-    background-color: #201F41;
     border-radius: 10px;
-    height: 1.3rem;
-    width: 40%; 
+    height: 1.5rem;
 }
-.login-with {
-    margin: 5% auto;
+
+.eyeAndSubmit {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 }
+
+.seePassword {
+    color: white;
+    width: 20%;
+    padding: 0.15rem;
+}
+
+/* HOME ONLY */
+
+.login-box {
+    background-color: #105C7C;
+}
+
+#seePasswordHome {
+    background-color: #F1972A;
+}
+
+#submitButton {
+    background-color: #201F41;
+    width: 40%;
+}
+
 p {
     font-size: 0.75rem;
     margin: 1rem;
 }
+
 .facebook-logo{
     width: 8%;
     margin: 2.5%;
@@ -86,47 +99,38 @@ p {
     width: 8%;
     margin: 2.5%;
 }
-.register-button {
-    color: #fff;
+
+#registerButton {
     background-color: #F1972A;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 0.75rem;
     width: 85%;
-    height: 1.5rem;
-    border-radius: 10px;
 }
 
 /* Empieza registration */
 .reg-box{
     background-color: #422E53;
-    border-radius: 10px;
-    margin-top: 20%;
     padding: 5%;
 }
 
 #seePasswordReg{
     background-color: #201F41;
-    color: white;
-    border-radius: 10px;
-    border: 0;
-    padding: 5px 13px;
 }
-.return-button{
-    color: #fff;
+
+#regBtn {
     background-color: #F1972A;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 12px;
-    line-height: 15px;
-    width: 135px;
-    border-radius: 10px;
-    border: 0;
-    height: 25px;
-    padding: 6px, 8px, 6px, 8px;
-    margin: 10px;
+    width: 70%;
 }
-.alert{
-    color: #F1972A;
+
+.media-logos{
+    width: 150%;
 }
+
+.return-button{
+    background-color: #F1972A;
+    width: 35%;
+    margin: 2.5%;
+}
+
+/* MAIN PAGE */
 .main-page{
     margin: 0;
     width: 100%;
@@ -200,7 +204,7 @@ p {
         display: block;
         width: 40%;
     }
-    .home-structure{
+    .home-structure, .registration-structure{
         width: 35%;
     }
 }

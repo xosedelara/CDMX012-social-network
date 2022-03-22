@@ -4,12 +4,14 @@ import { onNavigate } from '../app.js';
 import { createAccount, signInWithFacebook, signInWithGoogle } from '../lib/firebaseApp.js';
 
 export const registration = () => {
-  const registrationStructureAttributes = {
+  const structureAttributes = {
     class: 'structure',
+  };
+  const registrationStructureAttributes = {
+    class: 'registration-structure',
   };
   const petspaceLogoAttributes = {
     class: 'petspace-logo',
-    id: 'petspaceLogo',
     src: 'img/PetSpaceLogo.png',
   };
   const desktopImgAttributes = {
@@ -37,7 +39,7 @@ export const registration = () => {
     id: 'regMessage',
   };
   const buttonRegisterAttributes = {
-    class: 'register-button',
+    class: 'submit-button',
     type: 'button',
     id: 'regBtn',
   };
@@ -70,16 +72,22 @@ export const registration = () => {
   const inputEmail = document.createElement('input');
   const inputPW = document.createElement('input');
   const regMessage = document.createElement('p');
+  const pwAndSubmit = document.createElement('div');
+  pwAndSubmit.setAttribute('class', 'eyeAndSubmit');
   const eyeButton = document.createElement('button');
   eyeButton.setAttribute('id', 'seePasswordReg');
+  eyeButton.setAttribute('class', 'seePassword');
   const eye = document.createElement('i');
   eye.setAttribute('class', 'fas fa-eye');
   const buttonRegister = document.createElement('button');
   const pOptions = document.createElement('p');
+  const mediaLogo = document.createElement('div');
+  mediaLogo.setAttribute('class', 'media-logos');
   const facebookLogo = document.createElement('img');
   const gmailLogo = document.createElement('img');
   const returnButton = document.createElement('button');
 
+  setAttributes(structure, structureAttributes);
   setAttributes(registrationStructure, registrationStructureAttributes);
   setAttributes(petspaceLogo, petspaceLogoAttributes);
   setAttributes(desktopImg, desktopImgAttributes);
@@ -99,8 +107,10 @@ export const registration = () => {
   returnButton.textContent = 'Regresa al inicio';
 
   eyeButton.append(eye);
-  form.append(inputName, inputEmail, inputPW, regMessage, eyeButton, buttonRegister);
-  registrationBox.append(pUser, form, pOptions, facebookLogo, gmailLogo);
+  pwAndSubmit.append(eyeButton, buttonRegister);
+  form.append(inputName, inputEmail, inputPW, regMessage, pwAndSubmit);
+  mediaLogo.append(facebookLogo, gmailLogo);
+  registrationBox.append(pUser, form, pOptions, mediaLogo);
   registrationStructure.append(petspaceLogo, registrationBox, returnButton);
   structure.append(desktopImg, registrationStructure);
 
@@ -120,7 +130,7 @@ export const registration = () => {
     const email = inputEmail.value;
     const password = inputPW.value;
     const message = regMessage;
-    console.log(email, password);
+    // console.log(email, password);
     createAccount(message, email, password, name);
   });
 
