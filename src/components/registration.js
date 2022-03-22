@@ -120,7 +120,7 @@ export const registration = () => {
     const email = inputEmail.value;
     const password = inputPW.value;
     const message = regMessage;
-    console.log(email, password);
+    // console.log(email, password);
     createAccount(message, email, password, name);
   });
 
