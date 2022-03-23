@@ -89,9 +89,9 @@ export const createPosts = (publicationInput) => {
 
   likeIcon.addEventListener('click', () => {
     // if (likeIcon.src === 'img/likeIcon.png') {
-      likeIcon.src = 'img/likeIconFilled.png';
-      count += 1;
-      likeCount.innerText = count;
+    likeIcon.src = 'img/likeIconFilled.png';
+    count += 1;
+    likeCount.innerText = count;
     // } else {
     //   likeIcon.src = 'img/likeIcon.png';
     // }
