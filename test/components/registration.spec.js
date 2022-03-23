@@ -13,7 +13,7 @@ describe('registration', () => {
     rootDiv.appendChild(component);
     expect(rootDiv.innerHTML).toMatchSnapshot('./registration.spec.js.snap');
   });
-/*   it('onNavigate funciona correctamente', () => {
+  /*   it('onNavigate funciona correctamente', () => {
     expect(window.location.pathname).toBe('/registration');
   }); */
   it('ís a function', () => {
