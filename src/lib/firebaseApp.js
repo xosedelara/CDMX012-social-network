@@ -38,6 +38,7 @@ export const createAccount = (message, email, password, name) => {
   firebase.auth().createUserWithEmailAndPassword(email, password).then((result) => {
     // console.log(result);
     result.user.updateProfile({
+      // Jalar esta data para asignar al nombre de usuarix
       displayName: name,
     });
     // console.log(displayName);

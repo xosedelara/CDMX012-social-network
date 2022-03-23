@@ -77,7 +77,7 @@ export const pubBarFunc = () => {
   uploadSpace.setAttribute('class', 'upload-space');
   thirdBox.setAttribute('class', 'pub-third-box');
 
-  userName.innerText = 'Usuarix';
+  userName.innerText = 'user';
   publishButton.innerText = 'Publicar';
 
   userPicSpace.appendChild(userPic);

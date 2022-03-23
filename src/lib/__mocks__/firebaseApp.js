@@ -1,5 +1,6 @@
 global.firebase = {
   initializeApp: () => {
-
+  },
+  signInWithGoogle: () => {
   },
 };
