@@ -6,11 +6,11 @@ import '../app';
 import { home } from '../../src/components/home.js';
 
 describe('home', () => {
-  const component = home();
-  document.body.innerHTML = '<div id="root"></div>';
-  const rootDiv = document.getElementById('root');
-  rootDiv.appendChild(component);
   it('Snapshot home', () => {
+    const component = home();
+    document.body.innerHTML = '<div id="root"></div>';
+    const rootDiv = document.getElementById('root');
+    rootDiv.appendChild(component);
     expect(rootDiv.innerHTML).toMatchSnapshot('./home.spec.js.snap');
   });
   it('onNavigate funciona correctamente', () => {
