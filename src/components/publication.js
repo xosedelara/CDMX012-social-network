@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 // eslint-disable-next-line import/no-cycle
+import { accessPosts, addPostCollection } from '../lib/firebaseApp.js';
 import { createPosts } from './posts.js';
 
 export const pubBarFunc = () => {
@@ -89,9 +90,10 @@ export const pubBarFunc = () => {
 
   publishButton.addEventListener('click', () => {
     const newPub = createPosts(publicationInput.value);
+    accessPosts();
+    addPostCollection(publicationInput.value);
     publicationSpace.append(newPub);
     publicationInput.value = null;
-    createPublications.after(newPub);
   });
   return publicationSpace;
 };
