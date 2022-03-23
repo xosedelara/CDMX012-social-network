@@ -10,7 +10,7 @@ describe('registration', () => {
     const component = registration();
     document.body.innerHTML = '<div id="root"></div>';
     const rootDiv = document.getElementById('root');
-    rootDiv.appendChild(component); 
+    rootDiv.appendChild(component);
     expect(rootDiv.innerHTML).toMatchSnapshot('./registration.spec.js.snap');
   });
   /* it('onNavigate funciona correctamente', () => {

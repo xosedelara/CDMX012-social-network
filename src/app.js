@@ -33,6 +33,6 @@ window.onpopstate = () => {
   root.appendChild(routes[window.location.pathname]());
 };
 
-window.addEventListener('click', (e) => {
-  this.console.log(e.target);
-});
+// window.addEventListener('click', (e) => {
+//   this.console.log(e.target);
+// });
