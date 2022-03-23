@@ -2,7 +2,7 @@
 //  Routing
 import { home } from './components/home.js';
 import { registration } from './components/registration.js';
-import { mainPage } from './components/mainPage.js'; 
+import { mainPage } from './components/mainPage.js';
 
 //  Routing
 const routes = {

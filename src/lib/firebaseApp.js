@@ -108,3 +108,30 @@ export const signInWithFacebook = () => {
   });
 };
 // console.log(firebase.auth.UserInfo);
+
+export const addPostCollection = (input) => {
+  const user = firebase.auth().currentUser;
+  const db = firebase.firestore();
+  db.collection('posts').add({
+    user: user.uid,
+    text: input,
+    date: String(new Date()),
+    likes: [],
+  })
+    .then((docRef) => {
+      console.log('Document written with ID: ', docRef.id);
+    })
+    .catch((error) => {
+      console.error('Error adding document: ', error);
+    });
+};
+
+export const accessPosts = () => {
+  const db = firebase.firestore();
+  db.collection('posts').get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      console.log(doc.id, ' => ', doc.data());
+    });
+  });
+};
