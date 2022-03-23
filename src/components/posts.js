@@ -21,8 +21,26 @@ export const createPosts = (publicationInput) => {
     // falta agregar el src
   };
   const pubTextAttributes = {
-    class: 'publication-input new-pub-text',
-
+    class: 'publication-input',
+  };
+  const likeIconAttributes = {
+    class: 'like-icon new-pub-icon',
+    id: 'likeIcon',
+    src: 'img/likeIcon.png',
+  };
+  const likeCountAttributes = {
+    class: 'like-count',
+    id: 'likeCount',
+  };
+  const commentIconAttributes = {
+    class: 'comment-icon new-pub-icon',
+    id: 'commentIcon',
+    src: 'img/commentIcon.png',
+  };
+  const commentSpaceAttributes = {
+    class: 'publication-input',
+    id: 'commentSpace',
+    placeholder: 'Haz un comentario ...',
   };
 
   const setAttributes = (element, attributes) => {
@@ -35,7 +53,7 @@ export const createPosts = (publicationInput) => {
   const newPubName = document.createElement('p');
   const newPubText = document.createElement('p');
   const newPubProfile = document.createElement('section');
-  const editPub = document.createElement('img'); // no he agregado icono de editar a imágenes
+  const editPub = document.createElement('img');
   const likePost = document.createElement('section');
   const likeIcon = document.createElement('img');
   const likeCount = document.createElement('p');
@@ -44,26 +62,40 @@ export const createPosts = (publicationInput) => {
   const commentSpace = document.createElement('input');
 
   newPublication.setAttribute('class', 'create-pubs');
-  newPubProfile.setAttribute('class', 'pub-first-box');
+  newPubProfile.setAttribute('class', 'pub-first-box new-pub-profile');
   likePost.setAttribute('class', 'like-post');
-  likeIcon.setAttribute('class', 'like-icon');
-  likeCount.setAttribute('class', 'like-count');
   commentPost.setAttribute('class', 'comment-post');
-  commentIcon.setAttribute('class', 'comment-icon');
-  commentSpace.setAttribute('class', 'comment-space');
 
   setAttributes(newPubText, pubTextAttributes);
   setAttributes(newPubPicSpace, userPicSpaceAttributes);
   setAttributes(newPubPic, userPicAttributes);
   setAttributes(newPubName, userNameAttributes);
   setAttributes(editPub, editPubAttributes);
+  setAttributes(likeIcon, likeIconAttributes);
+  setAttributes(likeCount, likeCountAttributes);
+  setAttributes(commentIcon, commentIconAttributes);
+  setAttributes(commentSpace, commentSpaceAttributes);
 
   newPubText.innerText = publicationInput;
   newPubName.innerText = 'Usuarix';
+  let count = 0;
+  likeCount.innerText = count;
 
   newPubPicSpace.appendChild(newPubPic);
-  newPubProfile.append(newPubPicSpace, newPubName);
-  newPublication.append(newPubProfile, newPubText);
+  likePost.append(likeIcon, likeCount);
+  newPubProfile.append(newPubPicSpace, newPubName, likePost);
+  commentPost.append(commentIcon, commentSpace);
+  newPublication.append(newPubProfile, newPubText, editPub, commentPost);
+
+  likeIcon.addEventListener('click', () => {
+    // if (likeIcon.src === 'img/likeIcon.png') {
+      likeIcon.src = 'img/likeIconFilled.png';
+      count += 1;
+      likeCount.innerText = count;
+    // } else {
+    //   likeIcon.src = 'img/likeIcon.png';
+    // }
+  });
 
   return newPublication;
 };

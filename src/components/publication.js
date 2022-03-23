@@ -27,6 +27,7 @@ export const pubBarFunc = () => {
     class: 'publication-input',
     id: 'publicationInput',
     placeholder: 'Publica algo...',
+    autocomplete: 'off',
   };
   const uploadImageIconAttributes = {
     class: 'upload-image-icon pub-icon',
@@ -89,7 +90,6 @@ export const pubBarFunc = () => {
   publishButton.addEventListener('click', () => {
     const newPub = createPosts(publicationInput.value);
     publicationSpace.append(newPub);
-    const newPubText = document.querySelector('.new-pub-text');
     publicationInput.value = null;
     createPublications.after(newPub);
   });
