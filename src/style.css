@@ -224,17 +224,22 @@ p {
     margin: 20% 5%;
     position: absolute;
 }
+
+#postArea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .create-pubs{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 25%;
     width: 80%;
     background-color: white;
     padding: 0% 3%;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    overflow:hidden;
     margin-bottom: 5%;
 }
 .pub-first-box{
