@@ -80,6 +80,7 @@ export const createPosts = (publicationInput, user) => {
   newPubName.innerText = user;
   let count = 0;
   likeCount.innerText = count;
+  let checkClick = 1;
 
   newPubPicSpace.appendChild(newPubPic);
   likePost.append(likeIcon, likeCount);
@@ -88,13 +89,16 @@ export const createPosts = (publicationInput, user) => {
   newPublication.append(newPubProfile, newPubText, editPub, commentPost);
 
   likeIcon.addEventListener('click', () => {
-    // if (likeIcon.src === 'img/likeIcon.png') {
-    likeIcon.src = 'img/likeIconFilled.png';
-    count += 1;
-    likeCount.innerText = count;
-    // } else {
-    //   likeIcon.src = 'img/likeIcon.png';
-    // }
+    if (checkClick === 1) {
+      count += 1;
+      likeCount.innerText = count;
+      likeIcon.src = 'img/likeIconFilled.png';
+    } else {
+      count -= 1;
+      likeCount.innerText = count;
+      likeIcon.src = 'img/likeIcon.png';
+    }
+    checkClick = 2;
   });
 
   const postArea = document.querySelector('#postArea');

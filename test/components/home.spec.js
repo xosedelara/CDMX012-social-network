@@ -2,7 +2,6 @@
  * @jest-environment jsdom
  */
 import { signInEmailAndPW, signInWithGoogle, signInWithFacebook } from '../../src/lib/__mocks__/firebaseApp';
-import '../app';
 import { home } from '../../src/components/home.js';
 
 describe('home', () => {
@@ -22,9 +21,7 @@ describe('home', () => {
     const rootDiv = document.getElementById('root');
     rootDiv.appendChild(component);
     const seePWBtn = document.getElementById('seePasswordHome');
-    const loginPW = {
-      type: 'password',
-    };
+    const loginPW = document.getElementById('loginPassword');
     seePWBtn.click();
     expect(loginPW.type).toBe('text');
   });
