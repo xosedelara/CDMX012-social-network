@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 // eslint-disable-next-line import/no-cycle
 import { accessPosts, addPostCollection } from '../lib/firebaseApp.js';
-import { createPosts } from './posts.js';
+/* import { createPosts } from './posts.js'; */
 
 export const pubBarFunc = () => {
   const root = document.getElementById('root');
@@ -62,6 +62,7 @@ export const pubBarFunc = () => {
   const uploadImageIcon = document.createElement('img');
   const uploadLocation = document.createElement('img');
   const publishButton = document.createElement('button');
+  const postArea = document.createElement('div');
 
   setAttributes(publicationSpace, publicationSpaceAttributes);
   setAttributes(userPicSpace, userPicSpaceAttributes);
@@ -76,6 +77,7 @@ export const pubBarFunc = () => {
   secondBox.setAttribute('class', 'pub-second-box');
   uploadSpace.setAttribute('class', 'upload-space');
   thirdBox.setAttribute('class', 'pub-third-box');
+  postArea.setAttribute('id', 'postArea');
 
   userName.innerText = 'user';
   publishButton.innerText = 'Publicar';
@@ -86,15 +88,16 @@ export const pubBarFunc = () => {
   uploadSpace.append(uploadImageIcon, uploadLocation);
   thirdBox.append(uploadSpace, publishButton);
   createPublications.append(firstBox, secondBox, thirdBox);
-  publicationSpace.append(createPublications);
+  publicationSpace.append(createPublications, postArea);
+
+  document.addEventListener('DOMContentLoaded', accessPosts());
 
   publishButton.addEventListener('click', () => {
-    accessPosts();
     addPostCollection(publicationInput.value);
-    const newPub = createPosts(publicationInput.value);
-    publicationSpace.append(newPub);
     publicationInput.value = null;
-    createPublications.after(newPub);
+    /* const newPub = createPosts(publicationInput.value);
+    publicationSpace.append(newPub);
+    createPublications.after(newPub); */
   });
   return publicationSpace;
 };

@@ -2,6 +2,7 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-unused-vars */
 import { onNavigate } from '../app.js';
+import { createPosts } from '../components/posts.js';
 
 //  Firebase implementation
 const firebaseConfig = {
@@ -97,6 +98,7 @@ export const addPostCollection = (input) => {
   const db = firebase.firestore();
   db.collection('posts').add({
     user: user.uid,
+    name: user.displayName,
     text: input,
     date: String(new Date()),
     likes: [],
@@ -111,10 +113,13 @@ export const addPostCollection = (input) => {
 
 export const accessPosts = () => {
   const db = firebase.firestore();
-  db.collection('posts').get().then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, ' => ', doc.data());
+  const postArray = [];
+  db.collection('posts')
+    .onSnapshot((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        postArray.push(doc.data());
+        createPosts(doc.data().text, doc.data().name);
+      });
+      console.log(postArray);
     });
-  });
 };

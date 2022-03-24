@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-cycle
 // import { pubBarFunc } from './publication.js';
 
-export const createPosts = (publicationInput) => {
+export const createPosts = (publicationInput, user) => {
   const userPicSpaceAttributes = {
     class: 'user-pic-space',
     id: 'userPicSpace',
@@ -77,7 +77,7 @@ export const createPosts = (publicationInput) => {
   setAttributes(commentSpace, commentSpaceAttributes);
 
   newPubText.innerText = publicationInput;
-  newPubName.innerText = 'Usuarix';
+  newPubName.innerText = user;
   let count = 0;
   likeCount.innerText = count;
 
@@ -97,5 +97,7 @@ export const createPosts = (publicationInput) => {
     // }
   });
 
-  return newPublication;
+  const postArea = document.querySelector('#postArea');
+  postArea.append(newPublication);
+  return postArea;
 };
