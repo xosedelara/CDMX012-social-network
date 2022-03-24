@@ -13,6 +13,7 @@ const firebaseConfig = {
   appId: '1:719999017536:web:4e72654f1a5dba66b1b5a5',
 };
 firebase.initializeApp(firebaseConfig);
+firebase.firestore().settings({ experimentalForceLongPolling: true, merge: true });
 
 const errorTranslate = {
   'auth/invalid-email': 'El email es inválido.',
