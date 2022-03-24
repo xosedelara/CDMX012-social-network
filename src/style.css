@@ -1,14 +1,14 @@
 body {
-    background-color: #201F41;
     font-family: 'Orbitron', sans-serif;
     color: #fff;
     margin: 0;
 }
 
-#root{
+.structure{
+    background-color: #201F41;
+    height: 100vh;
     display: flex;
     align-items: center;
-    height: 100vh;
 }
 
 .desktop-img {
