@@ -2,7 +2,6 @@
  * @jest-environment jsdom
  */
 import '../../src/lib/__mocks__/firebaseApp';
-import '../app';
 import { registration } from '../../src/components/registration';
 
 describe('registration', () => {

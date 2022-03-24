@@ -151,7 +151,6 @@ export const home = () => {
     const email = loginMail.value;
     const password = loginPW.value;
     const message = loginMessage;
-    console.log(email, password);
     signInEmailAndPW(message, email, password);
   });
 
