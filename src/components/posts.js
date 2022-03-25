@@ -93,12 +93,13 @@ export const createPosts = (publicationInput, user) => {
       count += 1;
       likeCount.innerText = count;
       likeIcon.src = 'img/likeIconFilled.png';
+      checkClick = 2;
     } else {
       count -= 1;
       likeCount.innerText = count;
       likeIcon.src = 'img/likeIcon.png';
+      checkClick = 1;
     }
-    checkClick = 2;
   });
 
   const postArea = document.querySelector('#postArea');
