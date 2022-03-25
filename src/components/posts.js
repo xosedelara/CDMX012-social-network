@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-cycle
 // import { pubBarFunc } from './publication.js';
 
-export const createPosts = (publicationInput) => {
+export const createPosts = (publicationInput, user) => {
   const userPicSpaceAttributes = {
     class: 'user-pic-space',
     id: 'userPicSpace',
@@ -77,9 +77,10 @@ export const createPosts = (publicationInput) => {
   setAttributes(commentSpace, commentSpaceAttributes);
 
   newPubText.innerText = publicationInput;
-  newPubName.innerText = 'Usuarix';
+  newPubName.innerText = user;
   let count = 0;
   likeCount.innerText = count;
+  let checkClick = 1;
 
   newPubPicSpace.appendChild(newPubPic);
   likePost.append(likeIcon, likeCount);
@@ -88,14 +89,19 @@ export const createPosts = (publicationInput) => {
   newPublication.append(newPubProfile, newPubText, editPub, commentPost);
 
   likeIcon.addEventListener('click', () => {
-    // if (likeIcon.src === 'img/likeIcon.png') {
-    likeIcon.src = 'img/likeIconFilled.png';
-    count += 1;
-    likeCount.innerText = count;
-    // } else {
-    //   likeIcon.src = 'img/likeIcon.png';
-    // }
+    if (checkClick === 1) {
+      count += 1;
+      likeCount.innerText = count;
+      likeIcon.src = 'img/likeIconFilled.png';
+    } else {
+      count -= 1;
+      likeCount.innerText = count;
+      likeIcon.src = 'img/likeIcon.png';
+    }
+    checkClick = 2;
   });
 
-  return newPublication;
+  const postArea = document.querySelector('#postArea');
+  postArea.append(newPublication);
+  return postArea;
 };

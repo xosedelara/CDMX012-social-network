@@ -2,7 +2,6 @@
  * @jest-environment jsdom
  */
 import { signInEmailAndPW, signInWithGoogle, signInWithFacebook } from '../../src/lib/__mocks__/firebaseApp';
-import '../app';
 import { home } from '../../src/components/home.js';
 
 describe('home', () => {
