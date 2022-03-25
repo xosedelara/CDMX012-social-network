@@ -22,9 +22,7 @@ describe('home', () => {
     const rootDiv = document.getElementById('root');
     rootDiv.appendChild(component);
     const seePWBtn = document.getElementById('seePasswordHome');
-    const loginPW = {
-      type: 'password',
-    };
+    const loginPW = document.getElementById('loginPassword');
     seePWBtn.click();
     expect(loginPW.type).toBe('text');
   });
@@ -53,7 +51,7 @@ describe('home', () => {
     rootDiv.appendChild(component);
     const gmailLogo = document.getElementById('gmailLogo');
     gmailLogo.click();
-    expect(signInWithGoogle).toHaveBeenCalled();
+    expect(signInWithGoogle()).toHaveBeenCalled();
   });
   it('calls google when click on facebooklogo', () => {
     const component = home();

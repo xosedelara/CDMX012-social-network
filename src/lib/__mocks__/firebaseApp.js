@@ -1,12 +1,19 @@
 global.firebase = {
   initializeApp: () => {
   },
-  signInWithGoogle: () => {
-    const GoogleAuthProvider = () => {
-    };
+  auth: () => {
   },
-  signInWithFacebook: () => {
-    const FacebookAuthProvider = () => {
-    };
-  },
+//   firestore: () => {
+//   },
+//   // signInEmailAndPW: () => {
+//   //   const signInWithEmailAndPassword = () => {};
+//   // },
+//   signInWithGoogle: () => {
+//     const GoogleAuthProvider = () => {
+//     };
+//   },
+//   signInWithFacebook: () => {
+//     const FacebookAuthProvider = () => {
+//     };
+//   },
 };
