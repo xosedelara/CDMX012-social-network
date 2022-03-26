@@ -96,11 +96,13 @@ export const signInWithFacebook = () => {
 };
 
 export const addPostCollection = (input) => {
-  const user = firebase.auth().currentUser;
-  const date = new Date();
   const db = firebase.firestore();
+  const user = firebase.auth().currentUser;
+  const docRefId = db.collection('posts').doc();
+  const date = new Date();
   db.collection('posts').add({
     user: user.uid,
+    id: docRefId.id,
     name: user.displayName,
     text: input,
     date: `${date.getHours()}${':'}${date.getMinutes()} ${date.getDate()}${'/'}${date.getMonth() + 1}${'/'}${date.getFullYear()}`,
@@ -121,7 +123,7 @@ export const accessPosts = (postArea) => {
   db.collection('posts').orderBy('time', 'desc')
     .onSnapshot((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        doc._delegate._document.data.value.mapValue.fields.id = { stringValue: doc.id };
+        /* doc._delegate._document.data.value.mapValue.fields.id = { stringValue: doc.id }; */
         /* console.log(doc._delegate._document.data.value.mapValue.fields); */
         console.log(doc.data());
         const document = doc.data();
@@ -135,7 +137,18 @@ export const accessPosts = (postArea) => {
       const filteredPosts = unique(postArray);
       postArea.innerHTML = '';
       filteredPosts.forEach((post) => {
-        createPosts(post.text, post.name);
+        createPosts(post.text, post.name, post.id);
       });
     });
 };
+
+/* export const accessLikes = (count) => {
+  const db = firebase.firestore();
+
+}; */
+
+/* // Add a new document with a generated id.
+var newCityRef = db.collection("cities").doc();
+
+// later...
+newCityRef.set(data); */
