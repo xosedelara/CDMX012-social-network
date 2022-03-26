@@ -90,7 +90,7 @@ export const pubBarFunc = () => {
   createPublications.append(firstBox, secondBox, thirdBox);
   publicationSpace.append(createPublications, postArea);
 
-  document.addEventListener('DOMContentLoaded', accessPosts());
+  document.addEventListener('DOMContentLoaded', accessPosts(postArea));
 
   publishButton.addEventListener('click', () => {
     addPostCollection(publicationInput.value);

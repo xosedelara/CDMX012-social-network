@@ -112,7 +112,7 @@ export const addPostCollection = (input) => {
     });
 };
 
-export const accessPosts = () => {
+export const accessPosts = (postArea) => {
   const db = firebase.firestore();
   const postArray = [];
   db.collection('posts')
@@ -121,25 +121,18 @@ export const accessPosts = () => {
         const document = doc.data();
         document.id = doc.id;
         postArray.push(document);
-        /* createPosts(doc.data().text, doc.data().name); */
       });
-      /* function onlyPosts(value, index, self) {
-        console.log(self);
-        console.log(value.id);
-        console.log(self.indexOf(value.id));
-        return self.findIndex(value.id) === index;
-      } */
+
       function unique(posts) {
         return posts.filter((e, index) => posts.findIndex((a) => a.id === e.id) === index);
       }
-
       const filteredPosts = unique(postArray);
+      postArea.innerHTML = '';
       filteredPosts.forEach((post) => {
         createPosts(post.text, post.name);
-        console.log(createPosts(post.text, post.name));
+        console.log(post.text, post.name);
       });
       console.log(filteredPosts);
       console.log(postArray);
-      /* console.log(filterPosts); */
     });
 };
