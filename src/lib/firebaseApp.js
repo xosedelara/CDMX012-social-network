@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable max-len */
 /* eslint-disable import/no-cycle */
 /* eslint-disable no-param-reassign */
@@ -96,12 +97,14 @@ export const signInWithFacebook = () => {
 
 export const addPostCollection = (input) => {
   const user = firebase.auth().currentUser;
+  const date = new Date();
   const db = firebase.firestore();
   db.collection('posts').add({
     user: user.uid,
     name: user.displayName,
     text: input,
-    date: String(new Date()),
+    date: `${date.getHours()}${':'}${date.getMinutes()} ${date.getDate()}${'/'}${date.getMonth() + 1}${'/'}${date.getFullYear()}`,
+    time: firebase.firestore.Timestamp.now(),
     likes: [],
   })
     .then((docRef) => {
@@ -115,11 +118,14 @@ export const addPostCollection = (input) => {
 export const accessPosts = (postArea) => {
   const db = firebase.firestore();
   const postArray = [];
-  db.collection('posts')
+  db.collection('posts').orderBy('time', 'desc')
     .onSnapshot((querySnapshot) => {
       querySnapshot.forEach((doc) => {
+        doc._delegate._document.data.value.mapValue.fields.id = { stringValue: doc.id };
+        /* console.log(doc._delegate._document.data.value.mapValue.fields); */
+        console.log(doc.data());
         const document = doc.data();
-        document.id = doc.id;
+        /* document.id = doc.id; */
         postArray.push(document);
       });
 
@@ -130,9 +136,6 @@ export const accessPosts = (postArea) => {
       postArea.innerHTML = '';
       filteredPosts.forEach((post) => {
         createPosts(post.text, post.name);
-        console.log(post.text, post.name);
       });
-      console.log(filteredPosts);
-      console.log(postArray);
     });
 };
