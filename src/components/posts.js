@@ -2,9 +2,9 @@
 // import { pubBarFunc } from './publication.js';
 
 // eslint-disable-next-line import/no-cycle
-/* import { accessLikes } from '../lib/firebaseApp'; */
+import { accessLikes } from '../lib/firebaseApp.js';
 
-export const createPosts = (publicationInput, user/* , postId */) => {
+export const createPosts = (publicationInput, user, postId) => {
   const userPicSpaceAttributes = {
     class: 'user-pic-space',
     id: 'userPicSpace',
@@ -82,7 +82,7 @@ export const createPosts = (publicationInput, user/* , postId */) => {
   newPubText.innerText = publicationInput;
   newPubName.innerText = user;
   let count = 0;
-  /* const id = postId; */
+  const id = postId;
   likeCount.innerText = count;
   let checkClick = 1;
 
@@ -104,8 +104,8 @@ export const createPosts = (publicationInput, user/* , postId */) => {
       likeIcon.src = 'img/likeIcon.png';
       checkClick = 1;
     }
-    /*
-    accessLikes(count, id); */
+
+    accessLikes(count, id);
   });
 
   const postArea = document.querySelector('#postArea');

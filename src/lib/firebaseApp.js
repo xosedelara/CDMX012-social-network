@@ -107,7 +107,7 @@ export const addPostCollection = (input) => {
     text: input,
     date: `${date.getHours()}${':'}${date.getMinutes()} ${date.getDate()}${'/'}${date.getMonth() + 1}${'/'}${date.getFullYear()}`,
     time: firebase.firestore.Timestamp.now(),
-    likes: [],
+    likes: 0,
   })
     .then((docRef) => {
       console.log('Document written with ID: ', docRef.id);
@@ -123,18 +123,16 @@ export const accessPosts = (postArea) => {
   db.collection('posts').orderBy('time', 'desc')
     .onSnapshot((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        /* doc._delegate._document.data.value.mapValue.fields.id = { stringValue: doc.id }; */
-        /* console.log(doc._delegate._document.data.value.mapValue.fields); */
-        console.log(doc.data());
         const document = doc.data();
-        /* document.id = doc.id; */
         postArray.push(document);
       });
-
+      console.log(db.collection('posts').orderBy('time', 'desc'));
+      console.log(postArray);
       function unique(posts) {
         return posts.filter((e, index) => posts.findIndex((a) => a.id === e.id) === index);
       }
       const filteredPosts = unique(postArray);
+      console.log(filteredPosts);
       postArea.innerHTML = '';
       filteredPosts.forEach((post) => {
         createPosts(post.text, post.name, post.id);
@@ -142,13 +140,13 @@ export const accessPosts = (postArea) => {
     });
 };
 
-/* export const accessLikes = (count) => {
+export const accessLikes = (count, docId) => {
   const db = firebase.firestore();
+  const docRef = db.collection('posts').doc(docId);
 
-}; */
+  const setWithMerge = docRef.set({
+    likes: count,
+  }, { merge: true });
 
-/* // Add a new document with a generated id.
-var newCityRef = db.collection("cities").doc();
-
-// later...
-newCityRef.set(data); */
+  console.log(setWithMerge);
+};
