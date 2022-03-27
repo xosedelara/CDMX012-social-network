@@ -94,10 +94,8 @@ export const pubBarFunc = () => {
 
   publishButton.addEventListener('click', () => {
     addPostCollection(publicationInput.value);
+    accessPosts(postArea);
     publicationInput.value = null;
-    /* const newPub = createPosts(publicationInput.value);
-    publicationSpace.append(newPub);
-    createPublications.after(newPub); */
   });
   return publicationSpace;
 };

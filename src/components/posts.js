@@ -106,6 +106,7 @@ export const createPosts = (publicationInput, user, postId) => {
     }
 
     accessLikes(count, id);
+    console.log(id);
   });
 
   const postArea = document.querySelector('#postArea');
