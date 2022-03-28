@@ -28,7 +28,7 @@ export const createPosts = (publicationInput, user, postId) => {
   };
   const likeIconAttributes = {
     class: 'like-icon new-pub-icon',
-    id: 'likeIcon',
+    id: postId,
     src: 'img/likeIcon.png',
   };
   const likeCountAttributes = {
@@ -49,7 +49,8 @@ export const createPosts = (publicationInput, user, postId) => {
   const setAttributes = (element, attributes) => {
     Object.keys(attributes).forEach((attr) => element.setAttribute(attr, attributes[attr]));
   };
-
+  console.log(postId);
+  console.log(likeIconAttributes.id);
   const newPublication = document.createElement('section');
   const newPubPicSpace = document.createElement('figure');
   const newPubPic = document.createElement('img');
@@ -82,7 +83,6 @@ export const createPosts = (publicationInput, user, postId) => {
   newPubText.innerText = publicationInput;
   newPubName.innerText = user;
   let count = 0;
-  const id = postId;
   likeCount.innerText = count;
   let checkClick = 1;
 
@@ -91,6 +91,9 @@ export const createPosts = (publicationInput, user, postId) => {
   newPubProfile.append(newPubPicSpace, newPubName, likePost);
   commentPost.append(commentIcon, commentSpace);
   newPublication.append(newPubProfile, newPubText, editPub, commentPost);
+
+  const likeButton = document.getElementById(postId);
+  console.log(likeButton);
 
   likeIcon.addEventListener('click', () => {
     if (checkClick === 1) {
@@ -105,8 +108,8 @@ export const createPosts = (publicationInput, user, postId) => {
       checkClick = 1;
     }
 
-    accessLikes(count, id);
-    console.log(id);
+    accessLikes(count, postId);
+    console.log(postId);
   });
 
   const postArea = document.querySelector('#postArea');
