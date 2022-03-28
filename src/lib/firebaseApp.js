@@ -1,3 +1,6 @@
+/* eslint-disable arrow-body-style */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable max-len */
 /* eslint-disable import/no-cycle */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-unused-vars */
@@ -93,15 +96,45 @@ export const signInWithFacebook = () => {
   });
 };
 
-export const addPostCollection = (input) => {
-  const user = firebase.auth().currentUser;
+const getId = (doc) => {
   const db = firebase.firestore();
+  const ref = db.collection('posts').doc(doc);
+  return ref.update({
+    id: doc,
+  })
+    .then(() => {
+      console.log('Document successfully updated!');
+    })
+    .catch((error) => {
+      // The document probably doesn't exist.
+      console.error('Error updating document: ', error);
+    });
+};
+
+export const addId = () => {
+  const db = firebase.firestore();
+  db.collection('posts').where('id', '==', '')
+    .onSnapshot((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        getId(doc.id);
+      });
+    });
+};
+
+export const addPostCollection = (input) => {
+  const db = firebase.firestore();
+  const user = firebase.auth().currentUser;
+  const docRefId = db.collection('posts').doc();
+  const date = new Date();
   db.collection('posts').add({
     user: user.uid,
+    idd: docRefId.id,
+    id: '',
     name: user.displayName,
     text: input,
-    date: String(new Date()),
-    likes: [],
+    date: `${date.getHours()}${':'}${date.getMinutes()} ${date.getDate()}${'/'}${date.getMonth() + 1}${'/'}${date.getFullYear()}`,
+    time: firebase.firestore.Timestamp.now(),
+    likes: 0,
   })
     .then((docRef) => {
       console.log('Document written with ID: ', docRef.id);
@@ -109,17 +142,43 @@ export const addPostCollection = (input) => {
     .catch((error) => {
       console.error('Error adding document: ', error);
     });
+  addId();
 };
 
-export const accessPosts = () => {
+export const accessPosts = (postArea) => {
   const db = firebase.firestore();
   const postArray = [];
-  db.collection('posts')
+  db.collection('posts').orderBy('time', 'desc')
     .onSnapshot((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        postArray.push(doc.data());
-        createPosts(doc.data().text, doc.data().name);
+        /* console.log(`Id de la colección: ${doc.id}`);
+        console.log(`Id cuando lo llamamos: ${doc.data().idd}`); */
+        const document = doc.data();
+        postArray.push(document);
       });
-      console.log(postArray);
+      function unique(posts) {
+        return posts.filter((e, index) => posts.findIndex((a) => a.idd === e.idd) === index);
+      }
+      const filteredPosts = unique(postArray);
+      postArea.innerHTML = '';
+      filteredPosts.forEach((post) => {
+        createPosts(post.text, post.name, post.id);
+      });
+    });
+};
+
+export const accessLikes = (count, docId) => {
+  const db = firebase.firestore();
+  const docRef = db.collection('posts').doc(docId);
+  console.log(docId);
+  return docRef.update({
+    likes: count,
+  })
+    .then(() => {
+      console.log('Document successfully updated!');
+    })
+    .catch((error) => {
+    // The document probably doesn't exist.
+      console.error('Error updating document: ', error);
     });
 };

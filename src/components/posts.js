@@ -1,7 +1,10 @@
 // eslint-disable-next-line import/no-cycle
 // import { pubBarFunc } from './publication.js';
 
-export const createPosts = (publicationInput, user) => {
+// eslint-disable-next-line import/no-cycle
+import { accessLikes } from '../lib/firebaseApp.js';
+
+export const createPosts = (publicationInput, user, postId) => {
   const userPicSpaceAttributes = {
     class: 'user-pic-space',
     id: 'userPicSpace',
@@ -25,7 +28,7 @@ export const createPosts = (publicationInput, user) => {
   };
   const likeIconAttributes = {
     class: 'like-icon new-pub-icon',
-    id: 'likeIcon',
+    id: postId,
     src: 'img/likeIcon.png',
   };
   const likeCountAttributes = {
@@ -46,7 +49,8 @@ export const createPosts = (publicationInput, user) => {
   const setAttributes = (element, attributes) => {
     Object.keys(attributes).forEach((attr) => element.setAttribute(attr, attributes[attr]));
   };
-
+  console.log(postId);
+  console.log(likeIconAttributes.id);
   const newPublication = document.createElement('section');
   const newPubPicSpace = document.createElement('figure');
   const newPubPic = document.createElement('img');
@@ -88,6 +92,9 @@ export const createPosts = (publicationInput, user) => {
   commentPost.append(commentIcon, commentSpace);
   newPublication.append(newPubProfile, newPubText, editPub, commentPost);
 
+  const likeButton = document.getElementById(postId);
+  console.log(likeButton);
+
   likeIcon.addEventListener('click', () => {
     if (checkClick === 1) {
       count += 1;
@@ -100,6 +107,9 @@ export const createPosts = (publicationInput, user) => {
       likeIcon.src = 'img/likeIcon.png';
       checkClick = 1;
     }
+
+    accessLikes(count, postId);
+    console.log(postId);
   });
 
   const postArea = document.querySelector('#postArea');
