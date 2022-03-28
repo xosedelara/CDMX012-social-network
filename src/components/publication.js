@@ -1,6 +1,9 @@
 /* eslint-disable max-len */
 // eslint-disable-next-line import/no-cycle
-import { accessPosts, addPostCollection } from '../lib/firebaseApp.js';
+import {
+  getCurrentUserPhoto, getCurrentUserName, accessPosts, addPostCollection,
+} from '../lib/firebaseApp.js';
+
 /* import { createPosts } from './posts.js'; */
 
 export const pubBarFunc = () => {
@@ -18,7 +21,7 @@ export const pubBarFunc = () => {
   const userPicAttributes = {
     class: 'user-pic',
     id: 'userPic',
-    src: 'img/keira.jpg',
+    src: getCurrentUserPhoto(),
   };
   const userNameAttributes = {
     class: 'user-name',
@@ -79,7 +82,7 @@ export const pubBarFunc = () => {
   thirdBox.setAttribute('class', 'pub-third-box');
   postArea.setAttribute('id', 'postArea');
 
-  userName.innerText = 'user';
+  userName.innerText = getCurrentUserName();
   publishButton.innerText = 'Publicar';
 
   userPicSpace.appendChild(userPic);
@@ -93,8 +96,8 @@ export const pubBarFunc = () => {
   document.addEventListener('DOMContentLoaded', accessPosts(postArea));
 
   publishButton.addEventListener('click', () => {
-    addPostCollection(publicationInput.value);
     accessPosts(postArea);
+    addPostCollection(publicationInput.value, getCurrentUserPhoto());
     publicationInput.value = null;
   });
   return publicationSpace;

@@ -4,7 +4,7 @@
 // eslint-disable-next-line import/no-cycle
 import { accessLikes } from '../lib/firebaseApp.js';
 
-export const createPosts = (publicationInput, user, postId) => {
+export const createPosts = (publicationInput, user, postId, photo) => {
   const userPicSpaceAttributes = {
     class: 'user-pic-space',
     id: 'userPicSpace',
@@ -12,7 +12,7 @@ export const createPosts = (publicationInput, user, postId) => {
   const userPicAttributes = {
     class: 'user-pic',
     id: 'userPic',
-    src: 'img/keira.jpg',
+    src: photo,
   };
   const userNameAttributes = {
     class: 'user-name',
@@ -49,8 +49,8 @@ export const createPosts = (publicationInput, user, postId) => {
   const setAttributes = (element, attributes) => {
     Object.keys(attributes).forEach((attr) => element.setAttribute(attr, attributes[attr]));
   };
-  console.log(postId);
-  console.log(likeIconAttributes.id);
+  // console.log(postId);
+  // console.log(likeIconAttributes.id);
   const newPublication = document.createElement('section');
   const newPubPicSpace = document.createElement('figure');
   const newPubPic = document.createElement('img');
@@ -93,7 +93,7 @@ export const createPosts = (publicationInput, user, postId) => {
   newPublication.append(newPubProfile, newPubText, editPub, commentPost);
 
   const likeButton = document.getElementById(postId);
-  console.log(likeButton);
+  // console.log(likeButton);
 
   likeIcon.addEventListener('click', () => {
     if (checkClick === 1) {

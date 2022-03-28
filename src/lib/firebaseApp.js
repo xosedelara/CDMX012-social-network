@@ -26,6 +26,15 @@ const errorTranslate = {
   'auth/user-not-found': 'El usuario no existe',
 };
 
+/* export const addUserCollection = (user) => {
+  const db = firebase.firestore();
+  const docRefId = db.collection('users').doc();
+  db.collection('users').add({
+    user,
+    docRefId,
+  });
+}; */
+
 export const signInEmailAndPW = (message, email, password) => {
   firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
     onNavigate('/mainPage');
@@ -41,8 +50,10 @@ export const createAccount = (message, email, password, name) => {
     result.user.updateProfile({
       // Jalar esta data para asignar al nombre de usuarix
       displayName: name,
+      photoURL: '',
     });
     onNavigate('/mainPage');
+    // addUserCollection(result.user);
   }).catch((error) => {
     const errorType = error.code;
     message.innerHTML = (errorTranslate[errorType]);
@@ -103,11 +114,11 @@ const getId = (doc) => {
     id: doc,
   })
     .then(() => {
-      console.log('Document successfully updated!');
+      // console.log('Document successfully updated!');
     })
     .catch((error) => {
       // The document probably doesn't exist.
-      console.error('Error updating document: ', error);
+      // console.error('Error updating document: ', error);
     });
 };
 
@@ -121,7 +132,7 @@ export const addId = () => {
     });
 };
 
-export const addPostCollection = (input) => {
+export const addPostCollection = (input, photoURL) => {
   const db = firebase.firestore();
   const user = firebase.auth().currentUser;
   const docRefId = db.collection('posts').doc();
@@ -132,17 +143,29 @@ export const addPostCollection = (input) => {
     id: '',
     name: user.displayName,
     text: input,
+    photo: photoURL,
     date: `${date.getHours()}${':'}${date.getMinutes()} ${date.getDate()}${'/'}${date.getMonth() + 1}${'/'}${date.getFullYear()}`,
     time: firebase.firestore.Timestamp.now(),
     likes: 0,
   })
     .then((docRef) => {
-      console.log('Document written with ID: ', docRef.id);
+      // console.log('Document written with ID: ', docRef.id);
     })
     .catch((error) => {
-      console.error('Error adding document: ', error);
+      // console.error('Error adding document: ', error);
     });
   addId();
+};
+
+export const getCurrentUserPhoto = () => {
+  const user = firebase.auth().currentUser;
+  const photoURL = user.photoURL;
+  return photoURL;
+};
+export const getCurrentUserName = () => {
+  const user = firebase.auth().currentUser;
+  const userName = user.displayName;
+  return userName;
 };
 
 export const accessPosts = (postArea) => {
@@ -162,7 +185,7 @@ export const accessPosts = (postArea) => {
       const filteredPosts = unique(postArray);
       postArea.innerHTML = '';
       filteredPosts.forEach((post) => {
-        createPosts(post.text, post.name, post.id);
+        createPosts(post.text, post.name, post.id, post.photo);
       });
     });
 };
@@ -175,10 +198,10 @@ export const accessLikes = (count, docId) => {
     likes: count,
   })
     .then(() => {
-      console.log('Document successfully updated!');
+      // console.log('Document successfully updated!');
     })
     .catch((error) => {
     // The document probably doesn't exist.
-      console.error('Error updating document: ', error);
+      // console.error('Error updating document: ', error);
     });
 };
