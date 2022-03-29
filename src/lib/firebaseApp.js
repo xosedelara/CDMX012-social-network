@@ -131,6 +131,23 @@ export const addId = () => {
       });
     });
 };
+export const getCurrentUserPhoto = () => {
+  const user = firebase.auth().currentUser;
+  let photoURL = user.photoURL;
+  if (photoURL === null || photoURL === undefined) {
+    photoURL = './img/cuteplanet.webp';
+  } else {
+    photoURL = user.photoURL;
+  }
+  console.log(photoURL);
+  return photoURL;
+};
+
+export const getCurrentUserName = () => {
+  const user = firebase.auth().currentUser;
+  const userName = user.displayName;
+  return userName;
+};
 
 export const addPostCollection = (input, photoURL) => {
   const db = firebase.firestore();
@@ -155,17 +172,6 @@ export const addPostCollection = (input, photoURL) => {
       // console.error('Error adding document: ', error);
     });
   addId();
-};
-
-export const getCurrentUserPhoto = () => {
-  const user = firebase.auth().currentUser;
-  const photoURL = user.photoURL;
-  return photoURL;
-};
-export const getCurrentUserName = () => {
-  const user = firebase.auth().currentUser;
-  const userName = user.displayName;
-  return userName;
 };
 
 export const accessPosts = (postArea) => {
