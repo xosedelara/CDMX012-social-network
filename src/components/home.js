@@ -144,8 +144,6 @@ export const home = () => {
     }
   });
 
-  registerBtn.addEventListener('click', () => { onNavigate('/registration'); });
-
   loginSubmit.addEventListener('click', (e) => {
     e.preventDefault();
     const email = loginMail.value;
@@ -153,6 +151,7 @@ export const home = () => {
     const message = loginMessage;
     signInEmailAndPW(message, email, password);
   });
+  registerBtn.addEventListener('click', () => { onNavigate('/registration'); });
 
   gmailLogo.addEventListener('click', () => {
     signInWithGoogle();

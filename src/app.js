@@ -5,16 +5,17 @@ import { registration } from './components/registration.js';
 import { mainPage } from './components/mainPage.js';
 
 //  Routing
-const routes = {
+export const routes = {
   '/': home,
   '/registration': registration,
   '/mainPage': mainPage,
 };
 
-const root = document.getElementById('root');
-// window.onload = () => {
+// const root = document.getElementById('root');
+window.onload = () => {
+  const root = document.getElementById('root');
   root.appendChild(routes[window.location.pathname]());
-// };
+};
 
 export const onNavigate = (pathname) => {
   window.history.pushState(
@@ -22,19 +23,19 @@ export const onNavigate = (pathname) => {
     pathname,
     window.location.origin + pathname,
   );
-  // window.onload = () => {
-    if (root.hasChildNodes()) {
-      root.innerHTML = '';
-    }
-    root.appendChild(routes[pathname]());
-  // };
+  const root = document.getElementById('root');
+  if (root.hasChildNodes()) {
+    root.innerHTML = '';
+  }
+  root.appendChild(routes[pathname]());
 };
 
 window.onpopstate = () => {
+  const root = document.getElementById('root');
   root.innerHTML = '';
   root.appendChild(routes[window.location.pathname]());
 };
 
-// window.addEventListener('click', (e) => {
-//   this.console.log(e.target);
-// });
+window.addEventListener('click', function (e) {
+  this.console.log(e.target);
+});

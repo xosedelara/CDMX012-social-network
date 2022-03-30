@@ -1,19 +1,27 @@
 global.firebase = {
   initializeApp: () => {
   },
-  auth: () => {
+  auth: () => ({
+    signInWithEmailAndPassword: () => new Promise((resolve) => {
+      resolve('');
+    }),
+    createUserWithEmailAndPassword: () => new Promise((resolve) => {
+      resolve('');
+    }),
+    signInWithPopup: () => new Promise((resolve) => {
+      resolve('');
+    }),
+  }),
+  firestore: () => {
   },
-//   firestore: () => {
-//   },
-//   // signInEmailAndPW: () => {
-//   //   const signInWithEmailAndPassword = () => {};
-//   // },
-//   signInWithGoogle: () => {
-//     const GoogleAuthProvider = () => {
-//     };
-//   },
-//   signInWithFacebook: () => {
-//     const FacebookAuthProvider = () => {
-//     };
-//   },
+  signInWithGoogle: () => {
+    const GoogleAuthProvider = () => {
+    };
+  },
+  signInWithFacebook: () => {
+    const FacebookAuthProvider = () => {
+    };
+  },
 };
+
+export default firebase;

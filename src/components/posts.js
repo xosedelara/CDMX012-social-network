@@ -103,5 +103,6 @@ export const createPosts = (publicationInput, user) => {
 
   const postArea = document.querySelector('#postArea');
   postArea.append(newPublication);
+  postArea.after(newPublication);
   return postArea;
 };
