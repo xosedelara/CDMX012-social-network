@@ -4,7 +4,7 @@
 // eslint-disable-next-line import/no-cycle
 import { accessLikes } from '../lib/firebaseApp.js';
 
-export const createPosts = (publicationInput, user, likes, postId) => {
+export const createPosts = (publicationInput, user, likes, photo, postId) => {
   const userPicSpaceAttributes = {
     class: 'user-pic-space',
     id: 'userPicSpace',
@@ -12,7 +12,7 @@ export const createPosts = (publicationInput, user, likes, postId) => {
   const userPicAttributes = {
     class: 'user-pic',
     id: 'userPic',
-    src: 'img/keira.jpg',
+    src: photo,
   };
   const userNameAttributes = {
     class: 'user-name',

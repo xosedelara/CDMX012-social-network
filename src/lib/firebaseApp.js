@@ -96,7 +96,25 @@ export const signInWithFacebook = () => {
   });
 };
 
-export const addPostCollection = (input) => {
+export const getCurrentUserPhoto = () => {
+  const user = firebase.auth().currentUser;
+  let photoURL = user.photoURL;
+  if (photoURL === null || photoURL === undefined) {
+    photoURL = './img/cuteplanet.webp';
+  } else {
+    photoURL = user.photoURL;
+  }
+  console.log(photoURL);
+  return photoURL;
+};
+
+export const getCurrentUserName = () => {
+  const user = firebase.auth().currentUser;
+  const userName = user.displayName;
+  return userName;
+};
+
+export const addPostCollection = (input, photoURL) => {
   const db = firebase.firestore();
   const user = firebase.auth().currentUser;
   const date = new Date();
@@ -104,6 +122,7 @@ export const addPostCollection = (input) => {
     user: user.uid,
     name: user.displayName,
     text: input,
+    photo: photoURL,
     date: `${date.getHours()}${':'}${date.getMinutes()} ${date.getDate()}${'/'}${date.getMonth() + 1}${'/'}${date.getFullYear()}`,
     time: firebase.firestore.Timestamp.now(),
     likes: 0,
@@ -130,7 +149,7 @@ export const accessPosts = (postArea) => {
       const filteredPosts = unique(postArray);
       postArea.innerHTML = '';
       filteredPosts.forEach((post) => {
-        createPosts(post.data().text, post.data().name, post.data().likes, post.id);
+        createPosts(post.data().text, post.data().name, post.data().likes, post.data().photo, post.id);
       });
     });
 };
