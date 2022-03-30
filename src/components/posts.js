@@ -1,10 +1,10 @@
+/* eslint-disable import/no-cycle */
 // eslint-disable-next-line import/no-cycle
 // import { pubBarFunc } from './publication.js';
-
 // eslint-disable-next-line import/no-cycle
 import { accessLikes } from '../lib/firebaseApp.js';
 
-export const createPosts = (publicationInput, user, postId, photo) => {
+export const createPosts = (publicationInput, user, likes, photo, postId) => {
   const userPicSpaceAttributes = {
     class: 'user-pic-space',
     id: 'userPicSpace',
@@ -49,8 +49,6 @@ export const createPosts = (publicationInput, user, postId, photo) => {
   const setAttributes = (element, attributes) => {
     Object.keys(attributes).forEach((attr) => element.setAttribute(attr, attributes[attr]));
   };
-  // console.log(postId);
-  // console.log(likeIconAttributes.id);
   const newPublication = document.createElement('section');
   const newPubPicSpace = document.createElement('figure');
   const newPubPic = document.createElement('img');
@@ -83,7 +81,8 @@ export const createPosts = (publicationInput, user, postId, photo) => {
   newPubText.innerText = publicationInput;
   newPubName.innerText = user;
   let count = 0;
-  likeCount.innerText = count;
+  let localCount = likes;
+  likeCount.innerText = localCount;
   let checkClick = 1;
 
   newPubPicSpace.appendChild(newPubPic);
@@ -92,27 +91,25 @@ export const createPosts = (publicationInput, user, postId, photo) => {
   commentPost.append(commentIcon, commentSpace);
   newPublication.append(newPubProfile, newPubText, editPub, commentPost);
 
-  const likeButton = document.getElementById(postId);
-  // console.log(likeButton);
+  const postArea = document.querySelector('#postArea');
+  postArea.append(newPublication);
 
-  likeIcon.addEventListener('click', () => {
+  const likeButton = document.getElementById(postId);
+
+  likeButton.addEventListener('click', () => {
     if (checkClick === 1) {
-      count += 1;
-      likeCount.innerText = count;
+      count = 1;
+      localCount += 1;
       likeIcon.src = 'img/likeIconFilled.png';
       checkClick = 2;
     } else {
-      count -= 1;
-      likeCount.innerText = count;
+      count = -1;
+      localCount -= 1;
       likeIcon.src = 'img/likeIcon.png';
       checkClick = 1;
     }
-
-    accessLikes(count, postId);
-    console.log(postId);
+    likeCount.innerText = localCount;
   });
-
-  const postArea = document.querySelector('#postArea');
-  postArea.append(newPublication);
+  accessLikes(count, postId);
   return postArea;
 };
