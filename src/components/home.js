@@ -2,7 +2,7 @@
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable import/no-cycle */
 import { onNavigate } from '../app.js';
-import { signInEmailAndPW, signInWithGoogle, signInWithFacebook } from '../lib/firebaseApp.js';
+import { signInEmailAndPW, signInWithGoogle, signInWithFacebook } from '../lib/firebase-Auth.js';
 
 export const home = () => {
   const structureAttributes = {

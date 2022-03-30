@@ -328,5 +328,16 @@ p {
 .comment-icon{
     width: 8%;
 }
-
-
+.edit-pub{
+    width: 8%;
+}
+.edit-input{
+    background-color: rgb(236, 236, 236);
+    text-align: left;
+    padding-left: 7%;
+    height: 50%;
+    color: black;
+}
+.delete-pub{
+    width: 8%;
+}

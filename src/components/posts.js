@@ -1,8 +1,9 @@
 /* eslint-disable import/no-cycle */
 // eslint-disable-next-line import/no-cycle
 // import { pubBarFunc } from './publication.js';
-// eslint-disable-next-line import/no-cycle
-import { accessLikes } from '../lib/firebaseApp.js';
+// import { accessLikes } from '../lib/firebasePosts.js';
+import { editPublication, deletePublication } from './editanddeletepubs.js';
+import { accessLikes } from '../lib/firebasePosts.js';
 
 export const createPosts = (publicationInput, user, likes, photo, postId) => {
   const userPicSpaceAttributes = {
@@ -21,7 +22,12 @@ export const createPosts = (publicationInput, user, likes, photo, postId) => {
   const editPubAttributes = {
     class: 'edit-pub',
     id: 'editPub',
-    // falta agregar el src
+    src: './img/editicon.webp',
+  };
+  const deletePubAttributes = {
+    class: 'delete-pub',
+    id: 'deletePub',
+    src: '.img/deleteicon.png',
   };
   const pubTextAttributes = {
     class: 'publication-input',
@@ -56,6 +62,7 @@ export const createPosts = (publicationInput, user, likes, photo, postId) => {
   const newPubText = document.createElement('p');
   const newPubProfile = document.createElement('section');
   const editPub = document.createElement('img');
+  const deletePub = document.createElement('img');
   const likePost = document.createElement('section');
   const likeIcon = document.createElement('img');
   const likeCount = document.createElement('p');
@@ -73,6 +80,7 @@ export const createPosts = (publicationInput, user, likes, photo, postId) => {
   setAttributes(newPubPic, userPicAttributes);
   setAttributes(newPubName, userNameAttributes);
   setAttributes(editPub, editPubAttributes);
+  setAttributes(deletePub, deletePubAttributes);
   setAttributes(likeIcon, likeIconAttributes);
   setAttributes(likeCount, likeCountAttributes);
   setAttributes(commentIcon, commentIconAttributes);
@@ -89,14 +97,16 @@ export const createPosts = (publicationInput, user, likes, photo, postId) => {
   likePost.append(likeIcon, likeCount);
   newPubProfile.append(newPubPicSpace, newPubName, likePost);
   commentPost.append(commentIcon, commentSpace);
-  newPublication.append(newPubProfile, newPubText, editPub, commentPost);
+  newPublication.append(newPubProfile, newPubText, editPub, deletePub, commentPost);
+
+  // delete
+  const deleteMessage = document.createElement('p');
+  deleteMessage.innerText = 'has borrado esta publicación';
 
   const postArea = document.querySelector('#postArea');
   postArea.append(newPublication);
 
-  const likeButton = document.getElementById(postId);
-
-  likeButton.addEventListener('click', () => {
+  likeIcon.addEventListener('click', () => {
     if (checkClick === 1) {
       count = 1;
       localCount += 1;
@@ -110,6 +120,16 @@ export const createPosts = (publicationInput, user, likes, photo, postId) => {
     }
     likeCount.innerText = localCount;
   });
-  accessLikes(count, postId);
+
+  // botón editar
+  editPub.addEventListener('click', () => {
+    newPublication.appendChild(editPublication(user, postId));
+  });
+
+  // botón para borrar
+  deletePub.addEventListener('click', () => {
+    newPublication.appendChild(deletePublication(user, postId));
+  });
+
   return postArea;
 };
