@@ -1,6 +1,6 @@
-/* eslint-disable import/no-cycle */
 // eslint-disable-next-line import/no-cycle
 // import { pubBarFunc } from './publication.js';
+
 // eslint-disable-next-line import/no-cycle
 import { accessLikes } from '../lib/firebaseApp.js';
 
@@ -49,6 +49,7 @@ export const createPosts = (publicationInput, user, likes, photo, postId) => {
   const setAttributes = (element, attributes) => {
     Object.keys(attributes).forEach((attr) => element.setAttribute(attr, attributes[attr]));
   };
+
   const newPublication = document.createElement('section');
   const newPubPicSpace = document.createElement('figure');
   const newPubPic = document.createElement('img');
@@ -110,6 +111,6 @@ export const createPosts = (publicationInput, user, likes, photo, postId) => {
     }
     likeCount.innerText = localCount;
   });
-  accessLikes(count, postId);
+
   return postArea;
 };

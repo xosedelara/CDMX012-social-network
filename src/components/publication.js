@@ -1,9 +1,8 @@
 /* eslint-disable max-len */
 // eslint-disable-next-line import/no-cycle
 import {
-  getCurrentUserPhoto, getCurrentUserName, accessPosts, addPostCollection,
+  accessPosts, addPostCollection, getCurrentUserName, getCurrentUserPhoto,
 } from '../lib/firebaseApp.js';
-
 /* import { createPosts } from './posts.js'; */
 
 export const pubBarFunc = () => {
@@ -96,8 +95,8 @@ export const pubBarFunc = () => {
   document.addEventListener('DOMContentLoaded', accessPosts(postArea));
 
   publishButton.addEventListener('click', () => {
-    accessPosts(postArea);
     addPostCollection(publicationInput.value, getCurrentUserPhoto());
+    accessPosts(postArea);
     publicationInput.value = null;
   });
   return publicationSpace;
