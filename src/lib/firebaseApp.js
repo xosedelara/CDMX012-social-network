@@ -96,40 +96,12 @@ export const signInWithFacebook = () => {
   });
 };
 
-const getId = (doc) => {
-  const db = firebase.firestore();
-  const ref = db.collection('posts').doc(doc);
-  return ref.update({
-    id: doc,
-  })
-    .then(() => {
-      console.log('Document successfully updated!');
-    })
-    .catch((error) => {
-      // The document probably doesn't exist.
-      console.error('Error updating document: ', error);
-    });
-};
-
-export const addId = () => {
-  const db = firebase.firestore();
-  db.collection('posts').where('id', '==', '')
-    .onSnapshot((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        getId(doc.id);
-      });
-    });
-};
-
 export const addPostCollection = (input) => {
   const db = firebase.firestore();
   const user = firebase.auth().currentUser;
-  const docRefId = db.collection('posts').doc();
   const date = new Date();
   db.collection('posts').add({
     user: user.uid,
-    idd: docRefId.id,
-    id: '',
     name: user.displayName,
     text: input,
     date: `${date.getHours()}${':'}${date.getMinutes()} ${date.getDate()}${'/'}${date.getMonth() + 1}${'/'}${date.getFullYear()}`,
@@ -142,7 +114,6 @@ export const addPostCollection = (input) => {
     .catch((error) => {
       console.error('Error adding document: ', error);
     });
-  addId();
 };
 
 export const accessPosts = (postArea) => {
@@ -151,18 +122,15 @@ export const accessPosts = (postArea) => {
   db.collection('posts').orderBy('time', 'desc')
     .onSnapshot((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        /* console.log(`Id de la colección: ${doc.id}`);
-        console.log(`Id cuando lo llamamos: ${doc.data().idd}`); */
-        const document = doc.data();
-        postArray.push(document);
+        postArray.push(doc);
       });
       function unique(posts) {
-        return posts.filter((e, index) => posts.findIndex((a) => a.idd === e.idd) === index);
+        return posts.filter((e, index) => posts.findIndex((a) => a.id === e.id) === index);
       }
       const filteredPosts = unique(postArray);
       postArea.innerHTML = '';
       filteredPosts.forEach((post) => {
-        createPosts(post.text, post.name, post.id);
+        createPosts(post.data().text, post.data().name, post.data().likes, post.id);
       });
     });
 };
