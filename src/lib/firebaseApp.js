@@ -32,7 +32,6 @@ export const getCurrentUserPhoto = () => {
   } else {
     photoURL = user.photoURL;
   }
-  console.log(photoURL);
   return photoURL;
 };
 

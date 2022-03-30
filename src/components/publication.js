@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 // eslint-disable-next-line import/no-cycle
 import { getCurrentUserPhoto, getCurrentUserName } from '../lib/firebaseApp.js';
-import { accessPosts, addPostCollection } from '../lib/firebasePosts.js';
+import { accessPosts, addPostCollection } from '../lib/firestore';
 
 export const pubBarFunc = () => {
   const root = document.getElementById('root');

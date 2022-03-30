@@ -1,7 +1,7 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/no-cycle */
 import { getCurrentUserName } from '../lib/firebaseApp.js';
-import { deletePost } from '../lib/firebasePosts.js';
+import { deletePost } from '../lib/firestore.js';
 
 export const editPublication = (user, postId) => {
   if (user === getCurrentUserName()) {
