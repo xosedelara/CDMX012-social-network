@@ -26,15 +26,6 @@ const errorTranslate = {
   'auth/user-not-found': 'El usuario no existe',
 };
 
-/* export const addUserCollection = (user) => {
-  const db = firebase.firestore();
-  const docRefId = db.collection('users').doc();
-  db.collection('users').add({
-    user,
-    docRefId,
-  });
-}; */
-
 export const signInEmailAndPW = (message, email, password) => {
   firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
     onNavigate('/mainPage');
@@ -50,10 +41,8 @@ export const createAccount = (message, email, password, name) => {
     result.user.updateProfile({
       // Jalar esta data para asignar al nombre de usuarix
       displayName: name,
-      photoURL: '',
     });
     onNavigate('/mainPage');
-    // addUserCollection(result.user);
   }).catch((error) => {
     const errorType = error.code;
     message.innerHTML = (errorTranslate[errorType]);
@@ -139,10 +128,10 @@ export const addPostCollection = (input, photoURL) => {
     likes: 0,
   })
     .then((docRef) => {
-      // console.log('Document written with ID: ', docRef.id);
+      console.log('Document written with ID: ', docRef.id);
     })
     .catch((error) => {
-      // console.error('Error adding document: ', error);
+      console.error('Error adding document: ', error);
     });
 };
 
@@ -158,7 +147,6 @@ export const accessPosts = (postArea) => {
         return posts.filter((e, index) => posts.findIndex((a) => a.id === e.id) === index);
       }
       const filteredPosts = unique(postArray);
-      console.log(filteredPosts);
       postArea.innerHTML = '';
       filteredPosts.forEach((post) => {
         createPosts(post.data().text, post.data().name, post.data().likes, post.data().photo, post.id);
@@ -171,13 +159,13 @@ export const accessLikes = (count, docId) => {
   const docRef = db.collection('posts').doc(docId);
   console.log(docId);
   return docRef.update({
-    likes: firebase.firestore.FieldValue.increment(count),
+    likes: count,
   })
     .then(() => {
-      // console.log('Document successfully updated!');
+      console.log('Document successfully updated!');
     })
     .catch((error) => {
     // The document probably doesn't exist.
-      // console.error('Error updating document: ', error);
+      console.error('Error updating document: ', error);
     });
 };
