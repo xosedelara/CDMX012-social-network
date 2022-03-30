@@ -15,10 +15,10 @@ export const editPublication = (user, postId) => {
   }
 };
 
-export const deletePublication = (user, postId) => {
+export const deletePublication = (user, postId, postArea) => {
   let publicationDeletedMsg = '';
   if (user === getCurrentUserName()) {
-    deletePost(postId);
+    deletePost(postId, postArea);
     publicationDeletedMsg = 'esta publicación ha sido eliminada';
   } else {
     publicationDeletedMsg = 'no se pudo eliminar';

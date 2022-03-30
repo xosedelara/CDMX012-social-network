@@ -61,10 +61,12 @@ export const accessPosts = (postArea) => {
       querySnapshot.forEach((doc) => {
         postArray.push(doc);
       });
+      console.log(postArray);
       function unique(posts) {
-        return posts.filter((e, index) => posts.findIndex((a) => a.idd === e.idd) === index);
+        return posts.filter((e, index) => posts.findIndex((a) => a.id === e.id) === index);
       }
       const filteredPosts = unique(postArray);
+      console.log(filteredPosts);
       postArea.innerHTML = '';
       filteredPosts.forEach((post) => {
         createPosts(post.data().text, post.data().name, post.data().likes, post.data().photo, post.id);
@@ -77,10 +79,12 @@ export const editPost = (postId) => {
   console.log(postId);
 };
 
-export const deletePost = (postId) => {
+export const deletePost = (postId, postArea) => {
   const db = firebase.firestore();
   db.collection('posts').doc(postId).delete().then(() => {
     console.log('¡Has borrado esta publicación!');
+    postArea.innerHTML = '';
+    accessPosts(postArea);
   })
     .catch((error) => {
       console.error('Error removing document: ', error);

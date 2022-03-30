@@ -27,7 +27,7 @@ export const createPosts = (publicationInput, user, likes, photo, postId) => {
   const deletePubAttributes = {
     class: 'delete-pub',
     id: 'deletePub',
-    src: '.img/deleteicon.png',
+    src: './img/deleteicon.png',
   };
   const pubTextAttributes = {
     class: 'publication-input',
@@ -128,7 +128,7 @@ export const createPosts = (publicationInput, user, likes, photo, postId) => {
 
   // botón para borrar
   deletePub.addEventListener('click', () => {
-    newPublication.appendChild(deletePublication(user, postId));
+    newPublication.appendChild(deletePublication(user, postId, postArea));
   });
 
   return postArea;
