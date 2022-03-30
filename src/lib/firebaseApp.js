@@ -201,7 +201,7 @@ export const accessLikes = (count, docId) => {
   const docRef = db.collection('posts').doc(docId);
   console.log(docId);
   return docRef.update({
-    likes: count,
+    likes: firebase.firestore.FieldValue.increment(count),
   })
     .then(() => {
       // console.log('Document successfully updated!');

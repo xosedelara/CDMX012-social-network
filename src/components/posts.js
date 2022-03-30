@@ -49,8 +49,6 @@ export const createPosts = (publicationInput, user, postId, photo) => {
   const setAttributes = (element, attributes) => {
     Object.keys(attributes).forEach((attr) => element.setAttribute(attr, attributes[attr]));
   };
-  // console.log(postId);
-  // console.log(likeIconAttributes.id);
   const newPublication = document.createElement('section');
   const newPubPicSpace = document.createElement('figure');
   const newPubPic = document.createElement('img');
@@ -95,7 +93,7 @@ export const createPosts = (publicationInput, user, postId, photo) => {
   const likeButton = document.getElementById(postId);
   // console.log(likeButton);
 
-  likeIcon.addEventListener('click', () => {
+  likeButton.addEventListener('click', () => {
     if (checkClick === 1) {
       count += 1;
       likeCount.innerText = count;
@@ -114,5 +112,6 @@ export const createPosts = (publicationInput, user, postId, photo) => {
 
   const postArea = document.querySelector('#postArea');
   postArea.append(newPublication);
+
   return postArea;
 };
