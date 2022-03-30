@@ -3,7 +3,7 @@
 // import { pubBarFunc } from './publication.js';
 // import { accessLikes } from '../lib/firebasePosts.js';
 import { editPublication, deletePublication } from './editanddeletepubs.js';
-import { accessLikes } from '../lib/firebasePosts.js';
+// import { accessLikes } from '../lib/firebasePosts.js';
 
 export const createPosts = (publicationInput, user, likes, photo, postId) => {
   const userPicSpaceAttributes = {
