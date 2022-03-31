@@ -14,7 +14,7 @@ export const addUserCollection = (user) => {
   }
   db.collection('users').add({
     user: user.uid,
-    username: user.displayName,
+    name: user.displayName,
     photo: photoURL,
   });
 };
@@ -52,10 +52,23 @@ export const accessPosts = (postArea) => {
       const filteredPosts = unique(postArray);
       postArea.innerHTML = '';
       filteredPosts.forEach((post) => {
-        createPosts(post.data().text, post.data().name, post.data().likes, post.data().photo, post.id);
+        createPosts(post.data().text, post.data().name, firebase.auth().currentUser.uid, post.data().likes, post.data().photo, post.id);
       });
     });
 };
+
+/* const getNameAndPhoto = (userId) => {
+  db.collection('users').where('uid', '==', userId)
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        doc.data().photo;
+      });
+    })
+    .catch((error) => {
+      console.log('Error getting documents: ', error);
+    });
+}; */
 
 export const editPost = (postId) => {
   // para modificar el doc de la colección en firestore
@@ -73,13 +86,17 @@ export const deletePost = (postId, postArea) => {
     });
 };
 
-/* export const accessLikes = (count, docId, postArea) => {
-  console.log(count);
-  const db = firebase.firestore();
+export const addLikes = (docId, userId, postArea, likes) => {
   const docRef = db.collection('posts').doc(docId);
-  docRef.update({
-    likes: ,
-  });
+  if (likes.includes(userId)) {
+    docRef.update({
+      likes: firebase.firestore.FieldValue.arrayRemove(userId),
+    });
+  } else {
+    docRef.update({
+      likes: firebase.firestore.FieldValue.arrayUnion(userId),
+    });
+  }
   postArea.innerHTML = '';
   accessPosts(postArea);
-}; */
+};
