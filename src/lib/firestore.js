@@ -3,40 +3,12 @@
 /* eslint-disable import/no-cycle */
 import { createPosts } from '../components/posts.js';
 
-/* const getId = (doc) => {
-  const db = firebase.firestore();
-  const ref = db.collection('posts').doc(doc);
-  return ref.update({
-    id: doc,
-  })
-    .then(() => {
-      // console.log('Document successfully updated!');
-    })
-    .catch((error) => {
-      // The document probably doesn't exist.
-      console.error('Error updating document: ', error);
-    });
-}; */
-
-/* export const addId = () => {
-  const db = firebase.firestore();
-  db.collection('posts').where('id', '==', '')
-    .onSnapshot((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        getId(doc.id);
-      });
-    });
-}; */
-
 export const addPostCollection = (input, photoURL) => {
   const db = firebase.firestore();
   const user = firebase.auth().currentUser;
-  // const docRefId = db.collection('posts').doc();
   const date = new Date();
   db.collection('posts').add({
     user: user.uid,
-    // idd: docRefId.id,
-    // id: '',
     name: user.displayName,
     text: input,
     photo: photoURL,
@@ -50,7 +22,6 @@ export const addPostCollection = (input, photoURL) => {
     .catch((error) => {
       console.error('Error adding document: ', error);
     });
-  // addId();
 };
 
 export const accessPosts = (postArea) => {

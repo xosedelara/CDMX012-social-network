@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/no-cycle */
 // eslint-disable-next-line import/no-cycle
 // import { pubBarFunc } from './publication.js';
 // import { accessLikes } from '../lib/firebasePosts.js';
