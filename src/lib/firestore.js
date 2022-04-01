@@ -6,6 +6,8 @@ import { createPosts } from '../components/posts.js';
 const db = firebase.firestore();
 
 export const addUserCollection = (user) => {
+  console.log(user);
+  console.log(user.displayName);
   let photoURL = user.photoURL;
   if (photoURL === null || photoURL === undefined) {
     photoURL = './img/cuteplanet.webp';

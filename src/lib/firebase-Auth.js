@@ -25,9 +25,14 @@ export const signInEmailAndPW = (message, email, password) => {
 
 export const createAccount = (message, email, password, name) => {
   firebase.auth().createUserWithEmailAndPassword(email, password).then((result) => {
-    addUserCollection(result.user);
+    result.user.updateProfile({
+      displayName: name,
+    }).then(() => {
+      addUserCollection(result.user);
+    }).catch((error) => {
+
+    });
     onNavigate('/mainPage');
-    // addUserCollection(result.user);
   }).catch((error) => {
     const errorType = error.code;
     message.innerHTML = (errorTranslate[errorType]);
