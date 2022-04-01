@@ -3,46 +3,35 @@
 /* eslint-disable import/no-cycle */
 import { createPosts } from '../components/posts.js';
 
-/* const getId = (doc) => {
-  const db = firebase.firestore();
-  const ref = db.collection('posts').doc(doc);
-  return ref.update({
-    id: doc,
-  })
-    .then(() => {
-      // console.log('Document successfully updated!');
-    })
-    .catch((error) => {
-      // The document probably doesn't exist.
-      console.error('Error updating document: ', error);
-    });
-}; */
+const db = firebase.firestore();
 
-/* export const addId = () => {
-  const db = firebase.firestore();
-  db.collection('posts').where('id', '==', '')
-    .onSnapshot((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        getId(doc.id);
-      });
-    });
-}; */
+export const addUserCollection = (user) => {
+  console.log(user);
+  console.log(user.displayName);
+  let photoURL = user.photoURL;
+  if (photoURL === null || photoURL === undefined) {
+    photoURL = './img/cuteplanet.webp';
+  } else {
+    photoURL = user.photoURL;
+  }
+  db.collection('users').add({
+    user: user.uid,
+    name: user.displayName,
+    photo: photoURL,
+  });
+};
 
 export const addPostCollection = (input, photoURL) => {
-  const db = firebase.firestore();
   const user = firebase.auth().currentUser;
-  // const docRefId = db.collection('posts').doc();
   const date = new Date();
   db.collection('posts').add({
     user: user.uid,
-    // idd: docRefId.id,
-    // id: '',
     name: user.displayName,
     text: input,
     photo: photoURL,
     date: `${date.getHours()}${':'}${date.getMinutes()} ${date.getDate()}${'/'}${date.getMonth() + 1}${'/'}${date.getFullYear()}`,
     time: firebase.firestore.Timestamp.now(),
-    likes: 0,
+    likes: [],
   })
     .then((docRef) => {
       console.log('Document written with ID: ', docRef.id);
@@ -50,26 +39,24 @@ export const addPostCollection = (input, photoURL) => {
     .catch((error) => {
       console.error('Error adding document: ', error);
     });
-  // addId();
 };
 
 export const accessPosts = (postArea) => {
-  const db = firebase.firestore();
   const postArray = [];
   db.collection('posts').orderBy('time', 'desc')
     .onSnapshot((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         postArray.push(doc);
       });
-      console.log(postArray);
       function unique(posts) {
         return posts.filter((e, index) => posts.findIndex((a) => a.id === e.id) === index);
       }
       const filteredPosts = unique(postArray);
-      console.log(filteredPosts);
       postArea.innerHTML = '';
       filteredPosts.forEach((post) => {
-        createPosts(post.data().text, post.data().name, post.data().likes, post.data().photo, post.id);
+        const doc = post.data();
+        const user = firebase.auth().currentUser;
+        createPosts(doc.text, doc.name, user.uid, doc.likes, doc.photo, post.id);
       });
     });
 };
@@ -80,7 +67,6 @@ export const editPost = (postId) => {
 };
 
 export const deletePost = (postId, postArea) => {
-  const db = firebase.firestore();
   db.collection('posts').doc(postId).delete().then(() => {
     console.log('¡Has borrado esta publicación!');
     postArea.innerHTML = '';
@@ -91,18 +77,17 @@ export const deletePost = (postId, postArea) => {
     });
 };
 
-export const accessLikes = (count, docId) => {
-  const db = firebase.firestore();
+export const addLikes = (docId, userId, postArea, likes) => {
   const docRef = db.collection('posts').doc(docId);
-  console.log(docId);
-  return docRef.update({
-    likes: count,
-  })
-    .then(() => {
-      console.log('Document successfully updated!');
-    })
-    .catch((error) => {
-      // The document probably doesn't exist.
-      console.error('Error updating document: ', error);
+  if (likes.includes(userId)) {
+    docRef.update({
+      likes: firebase.firestore.FieldValue.arrayRemove(userId),
     });
+  } else {
+    docRef.update({
+      likes: firebase.firestore.FieldValue.arrayUnion(userId),
+    });
+  }
+  postArea.innerHTML = '';
+  accessPosts(postArea);
 };

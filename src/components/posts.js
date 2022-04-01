@@ -1,10 +1,20 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/no-cycle */
 // eslint-disable-next-line import/no-cycle
 // import { pubBarFunc } from './publication.js';
 // import { accessLikes } from '../lib/firebasePosts.js';
+import { addLikes } from '../lib/firestore.js';
 import { editPublication, deletePublication } from './editanddeletepubs.js';
 // import { accessLikes } from '../lib/firebasePosts.js';
 
-export const createPosts = (publicationInput, user, likes, photo, postId) => {
+export const createPosts = (input, user, currentUserId, likes, photo, postId) => {
+  let likeImg = '';
+  if (likes.includes(currentUserId)) {
+    likeImg = 'img/likeIconFilled.png';
+  } else {
+    likeImg = 'img/likeIcon.png';
+  }
+
   const userPicSpaceAttributes = {
     class: 'user-pic-space',
     id: 'userPicSpace',
@@ -34,7 +44,7 @@ export const createPosts = (publicationInput, user, likes, photo, postId) => {
   const likeIconAttributes = {
     class: 'like-icon new-pub-icon',
     id: postId,
-    src: 'img/likeIcon.png',
+    src: likeImg,
   };
   const likeCountAttributes = {
     class: 'like-count',
@@ -86,12 +96,10 @@ export const createPosts = (publicationInput, user, likes, photo, postId) => {
   setAttributes(commentIcon, commentIconAttributes);
   setAttributes(commentSpace, commentSpaceAttributes);
 
-  newPubText.innerText = publicationInput;
+  newPubText.innerText = input;
   newPubName.innerText = user;
-  let count = 0;
-  let localCount = likes;
+  const localCount = likes.length;
   likeCount.innerText = localCount;
-  let checkClick = 1;
 
   newPubPicSpace.appendChild(newPubPic);
   likePost.append(likeIcon, likeCount);
@@ -106,18 +114,9 @@ export const createPosts = (publicationInput, user, likes, photo, postId) => {
   const postArea = document.querySelector('#postArea');
   postArea.append(newPublication);
 
-  likeIcon.addEventListener('click', () => {
-    if (checkClick === 1) {
-      count = 1;
-      localCount += 1;
-      likeIcon.src = 'img/likeIconFilled.png';
-      checkClick = 2;
-    } else {
-      count = -1;
-      localCount -= 1;
-      likeIcon.src = 'img/likeIcon.png';
-      checkClick = 1;
-    }
+  const likeButton = document.getElementById(postId);
+  likeButton.addEventListener('click', () => {
+    addLikes(postId, currentUserId, postArea, likes);
     likeCount.innerText = localCount;
   });
 

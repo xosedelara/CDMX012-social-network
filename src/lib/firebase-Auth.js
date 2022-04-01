@@ -3,6 +3,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-param-reassign */
 import { onNavigate } from '../app.js';
+import { addUserCollection } from './firestore.js';
 
 const errorTranslate = {
   'auth/invalid-email': 'El email es inválido.',
@@ -25,12 +26,13 @@ export const signInEmailAndPW = (message, email, password) => {
 export const createAccount = (message, email, password, name) => {
   firebase.auth().createUserWithEmailAndPassword(email, password).then((result) => {
     result.user.updateProfile({
-    // Jalar esta data para asignar al nombre de usuarix
       displayName: name,
-      photoURL: '',
+    }).then(() => {
+      addUserCollection(result.user);
+    }).catch((error) => {
+
     });
     onNavigate('/mainPage');
-    // addUserCollection(result.user);
   }).catch((error) => {
     const errorType = error.code;
     message.innerHTML = (errorTranslate[errorType]);
@@ -44,11 +46,7 @@ export const signInWithGoogle = () => {
     /** @type {firebase.auth.OAuthCredential} */
     const credential = result.credential;
 
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    const token = credential.accessToken;
-    // The signed-in user info.
-    const user = result.user;
-    // ...
+    addUserCollection(result.user);
     onNavigate('/mainPage');
   }).catch((error) => {
     // Handle Errors here.
@@ -67,11 +65,7 @@ export const signInWithFacebook = () => {
   firebase.auth().signInWithPopup(provider).then((result) => {
     /** @type {firebase.auth.OAuthCredential} */
     const credential = result.credential;
-    // The signed-in user info.
-    const user = result.user;
-    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-    const accessToken = credential.accessToken;
-    // ...
+    addUserCollection(result.user);
   }).catch((error) => {
     // Handle Errors here.
     const errorCode = error.code;

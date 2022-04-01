@@ -15,15 +15,6 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 
-/* export const addUserCollection = (user) => {
-  const db = firebase.firestore();
-  const docRefId = db.collection('users').doc();
-  db.collection('users').add({
-    user,
-    docRefId,
-  });
-}; */
-
 export const getCurrentUserPhoto = () => {
   const user = firebase.auth().currentUser;
   let photoURL = user.photoURL;
