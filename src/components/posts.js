@@ -7,7 +7,14 @@ import { addLikes } from '../lib/firestore.js';
 import { editPublication, deletePublication } from './editanddeletepubs.js';
 // import { accessLikes } from '../lib/firebasePosts.js';
 
-export const createPosts = (publicationInput, user, currentUserId, likes, photo, postId) => {
+export const createPosts = (input, user, currentUserId, likes, photo, postId) => {
+  let likeImg = '';
+  if (likes.includes(currentUserId)) {
+    likeImg = 'img/likeIconFilled.png';
+  } else {
+    likeImg = 'img/likeIcon.png';
+  }
+
   const userPicSpaceAttributes = {
     class: 'user-pic-space',
     id: 'userPicSpace',
@@ -37,7 +44,7 @@ export const createPosts = (publicationInput, user, currentUserId, likes, photo,
   const likeIconAttributes = {
     class: 'like-icon new-pub-icon',
     id: postId,
-    src: 'img/likeIcon.png',
+    src: likeImg,
   };
   const likeCountAttributes = {
     class: 'like-count',
@@ -89,7 +96,7 @@ export const createPosts = (publicationInput, user, currentUserId, likes, photo,
   setAttributes(commentIcon, commentIconAttributes);
   setAttributes(commentSpace, commentSpaceAttributes);
 
-  newPubText.innerText = publicationInput;
+  newPubText.innerText = input;
   newPubName.innerText = user;
   const localCount = likes.length;
   likeCount.innerText = localCount;

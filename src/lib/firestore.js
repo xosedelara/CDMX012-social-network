@@ -54,23 +54,12 @@ export const accessPosts = (postArea) => {
       const filteredPosts = unique(postArray);
       postArea.innerHTML = '';
       filteredPosts.forEach((post) => {
-        createPosts(post.data().text, post.data().name, firebase.auth().currentUser.uid, post.data().likes, post.data().photo, post.id);
+        const doc = post.data();
+        const user = firebase.auth().currentUser;
+        createPosts(doc.text, doc.name, user.uid, doc.likes, doc.photo, post.id);
       });
     });
 };
-
-/* const getNameAndPhoto = (userId) => {
-  db.collection('users').where('uid', '==', userId)
-    .get()
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        doc.data().photo;
-      });
-    })
-    .catch((error) => {
-      console.log('Error getting documents: ', error);
-    });
-}; */
 
 export const editPost = (postId) => {
   // para modificar el doc de la colección en firestore
