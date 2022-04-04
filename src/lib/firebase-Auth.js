@@ -3,7 +3,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-param-reassign */
 import { onNavigate } from '../app.js';
-import { addUserCollection } from './firestore.js';
+import { addUserCollection } from './addFirestore.js';
 
 const errorTranslate = {
   'auth/invalid-email': 'El email es inválido.',
