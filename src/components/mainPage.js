@@ -73,6 +73,35 @@ export const mainPage = () => {
     id: 'profileIcon',
     src: 'img/profileIcon.png',
   };
+  const menuLeftPcAttributes = {
+    class: 'menu-left-pc',
+    id: 'menuDown',
+  };
+  const homeIconPcAttributes = {
+    class: 'home-icon-pc',
+    id: 'homeIcon',
+    src: 'img/homeIcon.png',
+  };
+  const menuIconPcAttributes = {
+    class: 'menu-icon-pc icon',
+    id: 'menuIcon',
+    src: 'img/menuIcon.png',
+  };
+  const notificationIconPcAttributes = {
+    class: 'notification-icon-pc icon',
+    id: 'notificationIcon',
+    src: 'img/notificationIcon.png',
+  };
+  const messageIconPcAttributes = {
+    class: 'message-icon-pc icon',
+    id: 'messageIcon',
+    src: 'img/messageIcon.png',
+  };
+  const profileIconPcAttributes = {
+    class: 'profile-icon-pc icon',
+    id: 'profileIcon',
+    src: 'img/profileIcon.png',
+  };
 
   const setAttributes = (element, attributes) => {
     Object.keys(attributes).forEach((attr) => element.setAttribute(attr, attributes[attr]));
@@ -93,6 +122,12 @@ export const mainPage = () => {
   const notificationIcon = document.createElement('img');
   const messageIcon = document.createElement('img');
   const profileIcon = document.createElement('img');
+  const menuLeftPc = document.createElement('section');
+  const homeIconPc = document.createElement('img');
+  const menuIconPc = document.createElement('img');
+  const notificationIconPc = document.createElement('img');
+  const messageIconPc = document.createElement('img');
+  const profileIconPc = document.createElement('img');
   // const addBr = document.createElement('br');
 
   setAttributes(mainPageStructure, mainPageStructureAttributes);
@@ -110,12 +145,19 @@ export const mainPage = () => {
   setAttributes(notificationIcon, notificationIconAttributes);
   setAttributes(messageIcon, messageIconAttributes);
   setAttributes(profileIcon, profileIconAttributes);
+  setAttributes(menuLeftPc, menuLeftPcAttributes);
+  setAttributes(homeIconPc, homeIconPcAttributes);
+  setAttributes(menuIconPc, menuIconPcAttributes);
+  setAttributes(notificationIconPc, notificationIconPcAttributes);
+  setAttributes(messageIconPc, messageIconPcAttributes);
+  setAttributes(profileIconPc, profileIconPcAttributes);
 
   menuUpRight.append(shopIcon, locationIcon, searchIcon);
   menuUp.append(petspacePlanet, menuUpRight);
   homePage.append(pubBarFunc(), homePageM);
   menuDown.append(homeIcon, menuIcon, notificationIcon, messageIcon, profileIcon);
-  mainPageStructure.append(menuUp, homePage, menuDown);
+  menuLeftPc.append(homeIconPc, menuIconPc, notificationIconPc, messageIconPc, profileIconPc);
+  mainPageStructure.append(menuUp, homePage, menuDown, menuLeftPc);
   menuIcon.addEventListener('click', () => { onNavigate('/'); });
   // const body = document.querySelector('body');
   //   body.style.background = '#ffff';

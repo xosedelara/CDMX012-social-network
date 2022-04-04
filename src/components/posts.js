@@ -4,12 +4,12 @@
 // import { pubBarFunc } from './publication.js';
 // import { accessLikes } from '../lib/firebasePosts.js';
 import { addLikes } from '../lib/firestore.js';
-import { editPublication, deletePublication } from './editanddeletepubs.js';
+import { editPublication, deletePublication } from './create-edit-and-delete-pubs.js';
 // import { accessLikes } from '../lib/firebasePosts.js';
 
 export const createPosts = (input, user, currentUserId, likes, photo, postId) => {
   let likeImg = '';
-  if (likes.includes(currentUserId)) {
+  if (Object.values(likes).includes(currentUserId)) {
     likeImg = 'img/likeIconFilled.png';
   } else {
     likeImg = 'img/likeIcon.png';

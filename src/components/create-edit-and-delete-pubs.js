@@ -1,7 +1,7 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/no-cycle */
-import { getCurrentUserName } from '../lib/firebaseApp.js';
-import { deletePost } from '../lib/firestore.js';
+import { getCurrentUserName, getCurrentUserPhoto } from '../lib/firebaseApp.js';
+import { deletePost, addPostCollection, accessPosts } from '../lib/firestore.js';
 
 export const editPublication = (user, postId) => {
   if (user === getCurrentUserName()) {
@@ -24,4 +24,13 @@ export const deletePublication = (user, postId, postArea) => {
     publicationDeletedMsg = 'no se pudo eliminar';
   }
   return publicationDeletedMsg;
+};
+
+export const publishPublication = (publicationInput, postArea) => {
+  if (publicationInput === null || publicationInput === '') {
+    alert('No has escrito una publicación');
+  } else {
+    addPostCollection(publicationInput, getCurrentUserPhoto());
+    accessPosts(postArea);
+  }
 };
