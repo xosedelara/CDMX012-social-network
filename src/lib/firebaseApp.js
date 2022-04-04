@@ -15,17 +15,6 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 
-export const getCurrentUserPhoto = () => {
-  const user = firebase.auth().currentUser;
-  let photoURL = user.photoURL;
-  if (photoURL === null || photoURL === undefined) {
-    photoURL = './img/cuteplanet.webp';
-  } else {
-    photoURL = user.photoURL;
-  }
-  return photoURL;
-};
-
 export const getCurrentUserName = () => {
   const user = firebase.auth().currentUser;
   const userName = user.displayName;
