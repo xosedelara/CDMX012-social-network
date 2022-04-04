@@ -1,5 +1,6 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable no-param-reassign */
+import { onNavigate } from '../app.js';
 import { accessPosts } from './readFirestore.js';
 
 const db = firebase.firestore();
@@ -15,7 +16,10 @@ export const addUserCollection = (user) => {
     user: user.uid,
     name: user.displayName,
     photo: photoURL,
-  });
+  })
+    .then(() => {
+      onNavigate('/mainPage');
+    });
 };
 
 export const addPostCollection = (input) => {

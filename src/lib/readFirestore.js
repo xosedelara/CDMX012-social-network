@@ -5,6 +5,29 @@ import { createPosts } from '../components/posts.js';
 
 const db = firebase.firestore();
 
+export const getCurrentUser = (usernameText, userPic) => {
+  const userId = firebase.auth().currentUser.uid;
+  console.log(userId);
+  const userArray = [];
+  db.collection('users').where('user', '==', userId)
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        userArray.push(doc.data());
+        console.log(doc.data());
+      });
+      function uniqueUser(users) {
+        return users.filter((e, index) => users.findIndex((a) => a.user === e.user) === index);
+      }
+      const userDoc = (uniqueUser(userArray))[0];
+      usernameText.innerText = userDoc.name;
+      userPic.setAttribute('src', userDoc.photo);
+    })
+    .catch((error) => {
+      console.log('Error getting documents: ', error);
+    });
+};
+
 export const getPostUser = (postUserId, usernameText, userPic) => {
   const userArray = [];
   db.collection('users').where('user', '==', postUserId)

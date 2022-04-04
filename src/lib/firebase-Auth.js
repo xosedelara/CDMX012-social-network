@@ -31,9 +31,8 @@ export const createAccount = (message, email, password, name) => {
     }).then(() => {
       addUserCollection(result.user);
     }).catch((error) => {
-
+      console.error('Error updating document: ', error);
     });
-    onNavigate('/mainPage');
   }).catch((error) => {
     const errorType = error.code;
     message.innerHTML = (errorTranslate[errorType]);
