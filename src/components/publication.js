@@ -3,7 +3,7 @@
 // eslint-disable-next-line import/no-cycle
 
 import { accessPosts, getCurrentUser } from '../lib/readFirestore.js';
-import { addPostCollection } from '../lib/addFirestore.js';
+import { publishPublication } from './create-edit-and-delete-pubs.js';
 
 export const pubBarFunc = () => {
   const root = document.getElementById('root');
