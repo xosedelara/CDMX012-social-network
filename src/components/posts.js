@@ -128,7 +128,7 @@ export const createPosts = (input, user, currentUserId, likes, postId, postUser)
 
   // botón para borrar
   deletePub.addEventListener('click', () => {
-    newPublication.appendChild(deletePublication(user, postId, postArea));
+    newPublication.appendChild(deletePublication(currentUserId, postUser, postId, postArea));
   });
 
   return postArea;
