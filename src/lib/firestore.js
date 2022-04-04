@@ -6,8 +6,6 @@ import { createPosts } from '../components/posts.js';
 const db = firebase.firestore();
 
 export const addUserCollection = (user) => {
-  console.log(user);
-  console.log(user.displayName);
   let photoURL = user.photoURL;
   if (photoURL === null || photoURL === undefined) {
     photoURL = './img/cuteplanet.webp';
@@ -41,6 +39,26 @@ export const addPostCollection = (input, photoURL) => {
     });
 };
 
+export const getUserInfo = (postUser) => {
+  const userArray = [];
+  db.collection('users').where('user', '==', postUser)
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        userArray.push(doc.data());
+      });
+      function uniqueUser(users) {
+        return users.filter((e, index) => users.findIndex((a) => a.user === e.user) === index);
+      }
+      const userDoc = (uniqueUser(userArray))[0];
+      console.log(userDoc.name);
+      return userDoc.name;
+    })
+    .catch((error) => {
+      console.log('Error getting documents: ', error);
+    });
+};
+
 export const accessPosts = (postArea) => {
   const postArray = [];
   db.collection('posts').orderBy('time', 'desc')
@@ -56,7 +74,8 @@ export const accessPosts = (postArea) => {
       filteredPosts.forEach((post) => {
         const doc = post.data();
         const user = firebase.auth().currentUser;
-        createPosts(doc.text, doc.name, user.uid, doc.likes, doc.photo, post.id);
+        getUserInfo(doc.user);
+        createPosts(doc.text, doc.name, user.uid, doc.likes, doc.photo, post.id, doc.user);
       });
     });
 };

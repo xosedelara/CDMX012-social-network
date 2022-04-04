@@ -6,8 +6,9 @@
 import { addLikes } from '../lib/firestore.js';
 import { editPublication, deletePublication } from './create-edit-and-delete-pubs.js';
 // import { accessLikes } from '../lib/firebasePosts.js';
+const db = firebase.firestore();
 
-export const createPosts = (input, user, currentUserId, likes, photo, postId) => {
+export const createPosts = (input, user, currentUserId, likes, photo, postId, postUser) => {
   let likeImg = '';
   if (Object.values(likes).includes(currentUserId)) {
     likeImg = 'img/likeIconFilled.png';
