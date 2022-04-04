@@ -39,7 +39,7 @@ export const addPostCollection = (input, photoURL) => {
     });
 };
 
-export const getUserInfo = (postUser) => {
+export const getUserInfo = (postUser, newPubName, newPubPic) => {
   const userArray = [];
   db.collection('users').where('user', '==', postUser)
     .get()
@@ -51,8 +51,8 @@ export const getUserInfo = (postUser) => {
         return users.filter((e, index) => users.findIndex((a) => a.user === e.user) === index);
       }
       const userDoc = (uniqueUser(userArray))[0];
-      console.log(userDoc.name);
-      return userDoc.name;
+      newPubName.innerText = userDoc.name;
+      newPubPic.setAttribute('src', userDoc.photo);
     })
     .catch((error) => {
       console.log('Error getting documents: ', error);

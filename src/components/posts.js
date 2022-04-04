@@ -23,7 +23,6 @@ export const createPosts = (input, user, currentUserId, likes, photo, postId, po
   const userPicAttributes = {
     class: 'user-pic',
     id: 'userPic',
-    src: photo,
   };
   const userNameAttributes = {
     class: 'user-name',
@@ -98,9 +97,10 @@ export const createPosts = (input, user, currentUserId, likes, photo, postId, po
   setAttributes(commentSpace, commentSpaceAttributes);
 
   newPubText.innerText = input;
-  newPubName.innerText = user;
   const localCount = likes.length;
   likeCount.innerText = localCount;
+
+  getUserInfo(postUser, newPubName, newPubPic);
 
   newPubPicSpace.appendChild(newPubPic);
   likePost.append(likeIcon, likeCount);
