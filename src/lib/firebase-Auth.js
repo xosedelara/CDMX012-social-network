@@ -3,7 +3,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-param-reassign */
 import { onNavigate } from '../app.js';
-import { addUserCollection } from './firestore.js';
+import { addUserCollection } from './addFirestore.js';
 
 const errorTranslate = {
   'auth/invalid-email': 'El email es inválido.',
@@ -18,7 +18,6 @@ export const signInEmailAndPW = (message, email, password) => {
     onNavigate('/mainPage');
   }).catch((error) => {
     const errorType = error.code;
-    // quitar conexion con el dom y moverlo a otro archivo
     message.innerHTML = (errorTranslate[errorType]);
     message.style.color = '#FE6C6C';
   });
@@ -31,11 +30,11 @@ export const createAccount = (message, email, password, name) => {
     }).then(() => {
       addUserCollection(result.user);
     }).catch((error) => {
-
+      console.error('Error updating document: ', error);
     });
-    onNavigate('/mainPage');
   }).catch((error) => {
     const errorType = error.code;
+    // quitar conexion con el dom y moverlo a otro archivo
     message.innerHTML = (errorTranslate[errorType]);
     message.style.color = '#FE6C6C';
   });

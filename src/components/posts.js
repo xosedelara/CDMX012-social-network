@@ -3,13 +3,13 @@
 // eslint-disable-next-line import/no-cycle
 // import { pubBarFunc } from './publication.js';
 // import { accessLikes } from '../lib/firebasePosts.js';
-import { addLikes } from '../lib/firestore.js';
+import { getPostUser } from '../lib/readFirestore.js';
+import { addLikes } from '../lib/addFirestore.js';
 import { editPublication, deletePublication } from './create-edit-and-delete-pubs.js';
-// import { accessLikes } from '../lib/firebasePosts.js';
 
-export const createPosts = (input, user, currentUserId, likes, photo, postId) => {
+export const createPosts = (input, user, currentUserId, likes, postId, postUser) => {
   let likeImg = '';
-  if (Object.values(likes).includes(currentUserId)) {
+  if ((Object.values(likes)).includes(currentUserId)) {
     likeImg = 'img/likeIconFilled.png';
   } else {
     likeImg = 'img/likeIcon.png';
@@ -22,7 +22,6 @@ export const createPosts = (input, user, currentUserId, likes, photo, postId) =>
   const userPicAttributes = {
     class: 'user-pic',
     id: 'userPic',
-    src: photo,
   };
   const userNameAttributes = {
     class: 'user-name',
@@ -97,9 +96,10 @@ export const createPosts = (input, user, currentUserId, likes, photo, postId) =>
   setAttributes(commentSpace, commentSpaceAttributes);
 
   newPubText.innerText = input;
-  newPubName.innerText = user;
   const localCount = likes.length;
   likeCount.innerText = localCount;
+
+  getPostUser(postUser, newPubName, newPubPic);
 
   newPubPicSpace.appendChild(newPubPic);
   likePost.append(likeIcon, likeCount);
@@ -127,7 +127,7 @@ export const createPosts = (input, user, currentUserId, likes, photo, postId) =>
 
   // botón para borrar
   deletePub.addEventListener('click', () => {
-    newPublication.appendChild(deletePublication(user, postId, postArea));
+    newPublication.appendChild(deletePublication(currentUserId, postUser, postId, postArea));
   });
 
   return postArea;

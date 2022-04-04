@@ -1,7 +1,8 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable max-len */
 // eslint-disable-next-line import/no-cycle
-import { getCurrentUserPhoto, getCurrentUserName } from '../lib/firebaseApp.js';
-import { accessPosts } from '../lib/firestore.js';
+
+import { accessPosts, getCurrentUser } from '../lib/readFirestore.js';
 import { publishPublication } from './create-edit-and-delete-pubs.js';
 
 export const pubBarFunc = () => {
@@ -19,7 +20,6 @@ export const pubBarFunc = () => {
   const userPicAttributes = {
     class: 'user-pic',
     id: 'userPic',
-    src: getCurrentUserPhoto(),
   };
   const userNameAttributes = {
     class: 'user-name',
@@ -80,8 +80,9 @@ export const pubBarFunc = () => {
   thirdBox.setAttribute('class', 'pub-third-box');
   postArea.setAttribute('id', 'postArea');
 
-  userName.innerText = getCurrentUserName();
   publishButton.innerText = 'Publicar';
+
+  getCurrentUser(userName, userPic);
 
   userPicSpace.appendChild(userPic);
   firstBox.append(userPicSpace, userName);
