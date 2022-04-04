@@ -19,14 +19,13 @@ export const addUserCollection = (user) => {
   });
 };
 
-export const addPostCollection = (input, photoURL) => {
+export const addPostCollection = (input) => {
   const user = firebase.auth().currentUser;
   const date = new Date();
   db.collection('posts').add({
     user: user.uid,
     name: user.displayName,
     text: input,
-    photo: photoURL,
     date: `${date.getHours()}${':'}${date.getMinutes()} ${date.getDate()}${'/'}${date.getMonth() + 1}${'/'}${date.getFullYear()}`,
     time: firebase.firestore.Timestamp.now(),
     likes: [],
@@ -39,9 +38,9 @@ export const addPostCollection = (input, photoURL) => {
     });
 };
 
-export const getUserInfo = (postUser, newPubName, newPubPic) => {
+export const getPostUser = (postUserId, usernameText, userPic) => {
   const userArray = [];
-  db.collection('users').where('user', '==', postUser)
+  db.collection('users').where('user', '==', postUserId)
     .get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
@@ -51,8 +50,8 @@ export const getUserInfo = (postUser, newPubName, newPubPic) => {
         return users.filter((e, index) => users.findIndex((a) => a.user === e.user) === index);
       }
       const userDoc = (uniqueUser(userArray))[0];
-      newPubName.innerText = userDoc.name;
-      newPubPic.setAttribute('src', userDoc.photo);
+      usernameText.innerText = userDoc.name;
+      userPic.setAttribute('src', userDoc.photo);
     })
     .catch((error) => {
       console.log('Error getting documents: ', error);
@@ -74,8 +73,7 @@ export const accessPosts = (postArea) => {
       filteredPosts.forEach((post) => {
         const doc = post.data();
         const user = firebase.auth().currentUser;
-        getUserInfo(doc.user);
-        createPosts(doc.text, doc.name, user.uid, doc.likes, doc.photo, post.id, doc.user);
+        createPosts(doc.text, doc.name, user.uid, doc.likes, post.id, doc.user);
       });
     });
 };

@@ -8,7 +8,7 @@ import { editPublication, deletePublication } from './create-edit-and-delete-pub
 // import { accessLikes } from '../lib/firebasePosts.js';
 const db = firebase.firestore();
 
-export const createPosts = (input, user, currentUserId, likes, photo, postId, postUser) => {
+export const createPosts = (input, user, currentUserId, likes, postId, postUser) => {
   let likeImg = '';
   if (Object.values(likes).includes(currentUserId)) {
     likeImg = 'img/likeIconFilled.png';
@@ -100,7 +100,7 @@ export const createPosts = (input, user, currentUserId, likes, photo, postId, po
   const localCount = likes.length;
   likeCount.innerText = localCount;
 
-  getUserInfo(postUser, newPubName, newPubPic);
+  getPostUser(postUser, newPubName, newPubPic);
 
   newPubPicSpace.appendChild(newPubPic);
   likePost.append(likeIcon, likeCount);
