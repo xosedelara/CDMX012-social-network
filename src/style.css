@@ -238,7 +238,6 @@ p {
 }
 .pub-second-box{
     display: flex;
-    flex
     justify-content: flex-start;
     align-items: center;
     padding: 0%;
@@ -454,7 +453,6 @@ p {
         width: 4%;
     }
 /*     .comment-post{
-
     } */
     .comment-icon{
         width: 4%;

@@ -3,14 +3,13 @@
 // eslint-disable-next-line import/no-cycle
 // import { pubBarFunc } from './publication.js';
 // import { accessLikes } from '../lib/firebasePosts.js';
-import { addLikes } from '../lib/firestore.js';
+import { getPostUser } from '../lib/readFirestore.js';
+import { addLikes } from '../lib/addFirestore.js';
 import { editPublication, deletePublication } from './create-edit-and-delete-pubs.js';
-// import { accessLikes } from '../lib/firebasePosts.js';
-const db = firebase.firestore();
 
 export const createPosts = (input, user, currentUserId, likes, postId, postUser) => {
   let likeImg = '';
-  if (Object.values(likes).includes(currentUserId)) {
+  if ((Object.values(likes)).includes(currentUserId)) {
     likeImg = 'img/likeIconFilled.png';
   } else {
     likeImg = 'img/likeIcon.png';

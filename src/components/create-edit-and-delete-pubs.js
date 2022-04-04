@@ -31,7 +31,7 @@ export const publishPublication = (publicationInput, postArea) => {
   if (publicationInput === null || publicationInput === '') {
     alert('No has escrito una publicación');
   } else {
-    addPostCollection(publicationInput, getCurrentUserPhoto());
+    addPostCollection(publicationInput);
     accessPosts(postArea);
   }
 };
