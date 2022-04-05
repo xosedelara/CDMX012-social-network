@@ -34,7 +34,7 @@ describe('home', () => {
     expect(window.location.pathname).toBe('/');
     const loginSubmit = document.getElementById('submitButton');
     loginSubmit.click();
-    firebase.atuh().signInWithEmailAndPassword().then((result) => {
+    firebase.auth().signInWithEmailAndPassword().then((result) => {
       if (result) {
         expect(window.location.pathname).toBe('/mainPage');
         done();
