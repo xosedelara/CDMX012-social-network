@@ -474,7 +474,7 @@ p {
         text-align: left;
         height: 50%;
         color: black;
-        margin: 3px 19px 3px 2px;
+        margin: 3px 19px;
         font-size: medium;
         line-height: 18px;
         padding: 8px 16px;
@@ -490,12 +490,10 @@ p {
     }
     .comment-post{
         padding: 5px;
-        margin: 2px;
-        grid-row: 3;
+        margin: 3px;
     }
     .comment-icon{
         width: 4%;
         margin: 5px 19px;
     }
-
 }
