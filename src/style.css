@@ -199,20 +199,8 @@ p {
     z-index: 2;
     border-radius: 15px 15px 0px 0px;
 }
-
-@media only screen and (min-width: 768px) {
-    .structure {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .desktop-img {
-        display: block;
-        width: 40%;
-    }
-    .home-structure, .registration-structure{
-        width: 35%;
-    }
+.menu-left-pc{
+    display:none;
 }
 .publication-space{
     display: flex;
@@ -296,6 +284,7 @@ p {
     height: 20px;
 }
 .publish-button{
+    align-items: center;
     font-family: 'Orbitron', sans-serif;
     font-size: 80%;
     color: white;
@@ -328,5 +317,144 @@ p {
 .comment-icon{
     width: 8%;
 }
-
-
+.edit-pub{
+    width: 8%;
+}
+.edit-input{
+    background-color: rgb(236, 236, 236);
+    text-align: left;
+    padding-left: 7%;
+    height: 50%;
+    color: black;
+}
+.delete-pub{
+    width: 8%;
+}
+@media only screen and (min-width: 768px) {
+    .structure {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .desktop-img {
+        display: block;
+        width: 40%;
+    }
+    .home-structure, .registration-structure{
+        width: 35%;
+    }
+    .main-page{
+        display:grid;
+        grid-template-columns: repeat 2;
+        grid-template-row: repeat 2;
+        margin: 0;
+        padding: 0;
+    }
+    .menu-up{
+        background-color: #201F41;
+        grid-row: 1;
+        grid-column: 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 10vh;
+        z-index: 2;
+        border-radius: 0;
+    }
+    .menu-down{
+        display: none;
+    }
+    .menu-left-pc{
+        height: 82.7vh;
+        width: 15vw;
+        z-index: 1;
+        background-color: #8d6c8d;
+        grid-row: 2;
+        grid-column: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 15vh 20px 20px 20px;
+    }
+    .home-icon-pc{
+        margin: 12px;
+        width: 40px;
+        height: 40px;
+    }
+    .menu-icon-pc{
+        margin: 12px;
+        width: 40px;
+        height: 35px;
+    }
+    .notification-icon-pc{
+        margin: 12px;
+        width: 40px;
+        height: 40px;
+    }
+    .message-icon-pc{
+        margin: 12px;
+        width: 40px;
+        height: 30px;
+    }
+    .profile-icon-pc{
+        margin: 12px;
+        width: 40px;
+        height: 40px;
+    }
+    .home-page{
+        background-color: rgba(255, 255, 255, 0.884);
+        grid-column: 2;
+        grid-row: 2;
+        display: flex;
+        margin-right: 3%;
+        padding-left: 16vw;
+        padding-right: 8vw;
+        justify-content: center;
+    }
+    .publication-space{
+        padding-right: 3vw;
+        margin: 12vh 10vw 5vh 0;
+        display: flex;
+        align-items: center;
+    }
+    .create-pubs{
+        width: 70vw;
+        margin: 5px 25px;
+        padding: 0;
+    }
+    .pub-first-box{
+        padding: 5px;
+    }
+    .pub-second-box{
+        padding: 3px;
+    }
+    .publication-input{
+        background-color: rgb(236, 236, 236);
+        text-align: left;
+        height: 50%;
+        color: black;
+        margin: 3px 10px;
+        font-size: medium;
+        line-height: 18px;
+        padding: 8px 16px;
+        border-radius: 8px;
+    }
+    .publish-button{
+        padding: 0 18px;
+    }
+    .like-icon{
+        width:15%;
+    }
+    .edit-pub{
+        width: 5%;
+    }
+    .delete-pub{
+        width: 4%;
+    }
+/*     .comment-post{
+    } */
+    .comment-icon{
+        width: 4%;
+    }
+}

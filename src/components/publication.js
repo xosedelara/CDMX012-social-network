@@ -1,7 +1,9 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable max-len */
 // eslint-disable-next-line import/no-cycle
-import { accessPosts, addPostCollection } from '../lib/firebaseApp.js';
-/* import { createPosts } from './posts.js'; */
+
+import { accessPosts, getCurrentUser } from '../lib/readFirestore.js';
+import { publishPublication } from './create-edit-and-delete-pubs.js';
 
 export const pubBarFunc = () => {
   const root = document.getElementById('root');
@@ -18,7 +20,6 @@ export const pubBarFunc = () => {
   const userPicAttributes = {
     class: 'user-pic',
     id: 'userPic',
-    src: 'img/keira.jpg',
   };
   const userNameAttributes = {
     class: 'user-name',
@@ -79,8 +80,9 @@ export const pubBarFunc = () => {
   thirdBox.setAttribute('class', 'pub-third-box');
   postArea.setAttribute('id', 'postArea');
 
-  userName.innerText = 'user';
   publishButton.innerText = 'Publicar';
+
+  getCurrentUser(userName, userPic);
 
   userPicSpace.appendChild(userPic);
   firstBox.append(userPicSpace, userName);
@@ -90,14 +92,13 @@ export const pubBarFunc = () => {
   createPublications.append(firstBox, secondBox, thirdBox);
   publicationSpace.append(createPublications, postArea);
 
-  document.addEventListener('DOMContentLoaded', accessPosts());
+  document.addEventListener('DOMContentLoaded', accessPosts(postArea));
 
   publishButton.addEventListener('click', () => {
-    addPostCollection(publicationInput.value);
+    console.log(publicationInput.value);
+    publishPublication(publicationInput.value, postArea);
     publicationInput.value = null;
-    const newPub = document.querySelector('create-pubs');
-    // publicationSpace.append(newPub);
-    createPublications.after(newPub);
   });
+
   return publicationSpace;
 };

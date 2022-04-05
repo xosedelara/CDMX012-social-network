@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 /* eslint-disable import/no-cycle */
 import { onNavigate } from '../app.js';
-import { createAccount, signInWithFacebook, signInWithGoogle } from '../lib/firebaseApp.js';
+import { createAccount, signInWithFacebook, signInWithGoogle } from '../lib/firebase-Auth.js';
 
 export const registration = () => {
   const structureAttributes = {
