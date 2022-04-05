@@ -38,7 +38,7 @@ export const createPosts = (input, user, currentUserId, likes, postId, postUser)
     src: './img/deleteicon.png',
   };
   const pubTextAttributes = {
-    class: 'publication-input',
+    class: 'publication-text',
   };
   const likeIconAttributes = {
     class: 'like-icon new-pub-icon',
@@ -78,11 +78,13 @@ export const createPosts = (input, user, currentUserId, likes, postId, postUser)
   const commentPost = document.createElement('section');
   const commentIcon = document.createElement('img');
   const commentSpace = document.createElement('input');
+  const newPost = document.createElement('section');
 
   newPublication.setAttribute('class', 'create-pubs');
   newPubProfile.setAttribute('class', 'pub-first-box new-pub-profile');
   likePost.setAttribute('class', 'like-post');
   commentPost.setAttribute('class', 'comment-post');
+  newPost.setAttribute('class', 'new-post');
 
   setAttributes(newPubText, pubTextAttributes);
   setAttributes(newPubPicSpace, userPicSpaceAttributes);
@@ -104,8 +106,9 @@ export const createPosts = (input, user, currentUserId, likes, postId, postUser)
   newPubPicSpace.appendChild(newPubPic);
   likePost.append(likeIcon, likeCount);
   newPubProfile.append(newPubPicSpace, newPubName, likePost);
+  newPost.append(newPubText, editPub, deletePub);
   commentPost.append(commentIcon, commentSpace);
-  newPublication.append(newPubProfile, newPubText, editPub, deletePub, commentPost);
+  newPublication.append(newPubProfile, newPost, commentPost);
 
   // delete
   const deleteMessage = document.createElement('p');
@@ -127,8 +130,7 @@ export const createPosts = (input, user, currentUserId, likes, postId, postUser)
 
   // botón para borrar
   deletePub.addEventListener('click', () => {
-    newPublication.appendChild(deletePublication(currentUserId, postUser, postId, postArea));
+    (deletePublication(currentUserId, postUser, postId, postArea));
   });
-
   return postArea;
 };
