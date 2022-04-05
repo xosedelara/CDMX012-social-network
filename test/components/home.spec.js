@@ -32,8 +32,9 @@ describe('home', () => {
   });
   it('goes to signInWithEmailAndPassword when click on button', () => {
     const loginSubmit = document.getElementById('submitButton');
+    const signIn = jest.fn(signInEmailAndPW);
     loginSubmit.click();
-    expect(signInEmailAndPW).toHaveBeenCalled();
+    expect(signIn).toHaveBeenCalled();
   });
   it('changes route when click on button', () => {
     reloadHome();
