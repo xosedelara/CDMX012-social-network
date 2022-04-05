@@ -3,6 +3,7 @@
  */
 import firebase from '../../src/lib/__mocks__/firebase-Auth.js';
 import { home } from '../../src/components/home.js';
+import { signInEmailAndPW } from '../../src/lib/firebase-Auth.js';
 
 const component = home();
 document.body.innerHTML = '<div id="root"></div>';
@@ -29,17 +30,10 @@ describe('home', () => {
     seePWBtn.click();
     expect(loginPW.type).toBe('text');
   });
-  it('goes to mainpage when successfully logged in', (done) => {
-    // reloadHome();
-    expect(window.location.pathname).toBe('/');
+  it('goes to signInWithEmailAndPassword when click on button', () => {
     const loginSubmit = document.getElementById('submitButton');
     loginSubmit.click();
-    firebase.auth().signInWithEmailAndPassword().then((result) => {
-      if (result) {
-        expect(window.location.pathname).toBe('/mainPage');
-        done();
-      }
-    });
+    expect(signInEmailAndPW).toHaveBeenCalled();
   });
   it('changes route when click on button', () => {
     reloadHome();

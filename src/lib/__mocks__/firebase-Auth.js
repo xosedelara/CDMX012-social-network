@@ -2,8 +2,10 @@ global.firebase = {
   initializeApp: () => {
   },
   auth: () => ({
-    signInWithEmailAndPassword: () => new Promise((resolve) => {
-      resolve('');
+    signInEmailAndPW: () => ({
+      signInWithEmailAndPassword: () => new Promise((resolve) => {
+        resolve('');
+      }),
     }),
     createUserWithEmailAndPassword: () => new Promise((resolve) => {
       resolve('');
