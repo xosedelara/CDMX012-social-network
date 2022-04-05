@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-import firebase from '../../src/lib/__mocks__/firebaseApp.js';
+import firebase from '../../src/lib/__mocks__/firebase-Auth.js';
 import { home } from '../../src/components/home.js';
 
 const component = home();

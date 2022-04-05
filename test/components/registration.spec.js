@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-import '../../src/lib/__mocks__/firebaseApp';
+import '../../src/lib/__mocks__/firebase-Auth';
 import { registration } from '../../src/components/registration';
 
 const component = registration();
