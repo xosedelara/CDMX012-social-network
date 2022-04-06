@@ -44,11 +44,12 @@ export const editPublication = (user, postId) => {
 export const deletePublication = (user, postUser, postId, postArea) => {
   let publicationDeletedMsg = '';
   if (user === postUser) {
-    deletePost(postId, postArea);
-    publicationDeletedMsg = 'esta publicación ha sido eliminada';
-  } else {
-    publicationDeletedMsg = 'no se pudo eliminar';
-  }
+    if (window.confirm('¿Segurx que deseas borrar?')) {
+      deletePost(postId, postArea);
+      publicationDeletedMsg = 'esta publicación ha sido eliminada';
+      return publicationDeletedMsg;
+    }
+  } publicationDeletedMsg = 'no se pudo eliminar';
   return publicationDeletedMsg;
 };
 

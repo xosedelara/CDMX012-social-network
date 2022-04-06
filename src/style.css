@@ -240,7 +240,7 @@ p {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding: 0%;
+    padding: 0% 7%;
 }
 .pub-third-box{
     display: flex;
@@ -264,12 +264,14 @@ p {
     font-size: 120%;
     color: black;
 }
-.publication-input{
+.publication-input, .publication-text{
     background-color: rgb(236, 236, 236);
     text-align: left;
-    padding-left: 7%;
     height: 50%;
+    width:75%;
     color: black;
+    border-radius: 10px;
+    padding: 3% 8%;
 }
 .upload-space{
     display: flex;
@@ -317,8 +319,15 @@ p {
 .comment-icon{
     width: 8%;
 }
+.new-post{
+    padding: 2px 0; 
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
 .edit-pub{
     width: 8%;
+    margin: 3px;
 }
 .edit-input{
     background-color: rgb(236, 236, 236);
@@ -329,6 +338,7 @@ p {
 }
 .delete-pub{
     width: 8%;
+    margin: 3px;
 }
 
 .to-modify-text{
@@ -487,6 +497,8 @@ p {
         width: 70vw;
         margin: 1.5% 10%;
         padding: 0;
+        grid-template-columns: 3;
+        grid-template-rows: 3;
     }
     .pub-first-box{
         padding: 2% 5% 1% 5%;
@@ -496,17 +508,62 @@ p {
     }
     .pub-third-box{
         padding: 0% 5% 1% 5%;
+        grid-column: 1, 2, 3;
+        grid-row: 1;
+        grid-template-columns: 2;
+        padding: 5px;
+    }
+    .user-pic-space{
+        grid-column: 1;
+    }
+    .user-name{
+        grid-column: 1;
+    }
+    .like-post{
+        grid-column: 3;
+    }
+    .new-post{
+        grid-row: 2;
+        padding: 2px 0; 
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .publication-text{
+        background-color: rgb(236, 236, 236);
+        text-align: left;
+        height: 50%;
+        width: 77%;
+        color: black;
+        margin: 3px 8px 3px 19px;
+        font-size: medium;
+        line-height: 18px;
+        padding: 8px 16px;
+        border-radius: 8px;
+    }
+    .edit-pub{
+        width: 25px;
+        height: 25px;
+        margin: 2px;
+    }
+    .delete-pub{
+        width: 25px;
+        height: 25px;
+        margin: 2px 19px 2px 2px;
     }
     .new-Text{
         background-color: rgb(236, 236, 236);
         text-align: left;
         height: 50%;
         color: black;
-        margin: 1.5% 10%;
+        /* margin: 1.5% 10%; */
+        margin: 3px 19px;
         font-size: medium;
         line-height: 18px;
         padding: 8px 16px;
         border-radius: 8px;
+        /* grid-column: 1, 2; */
+        grid-row: 3;
     }
     .publish-button{
         padding: 0 18px;
@@ -514,16 +571,13 @@ p {
     .like-icon{
         width:15%;
     }
-    .edit-pub{
-        width: 5%;
+    .comment-post{
+        padding: 5px;
+        margin: 3px;
     }
-    .delete-pub{
-        width: 4%;
-    }
-/*     .comment-post{
-    } */
     .comment-icon{
         width: 4%;
+        margin: 5px 19px;
     }
     .to-modify-text{
         font-size: 100%;

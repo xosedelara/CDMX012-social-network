@@ -39,8 +39,9 @@ export const createPosts = (input, user, currentUserId, likes, postId, postUser)
     src: './img/deleteicon.png',
   };
   const pubTextAttributes = {
-    class: 'publication-input new-Text',
+    // class: 'publication-input new-Text',
     id: `text${postId}`,
+    class: 'publication-text',
   };
   const likeIconAttributes = {
     class: 'like-icon new-pub-icon',
@@ -82,6 +83,7 @@ export const createPosts = (input, user, currentUserId, likes, postId, postUser)
   const commentPost = document.createElement('section');
   const commentIcon = document.createElement('img');
   const commentSpace = document.createElement('input');
+  const newPost = document.createElement('section');
 
   newPubTextSpace.setAttribute('id', `textSapce${postId}`, 'class', 'new-text-space'); // ESTE
   newPublication.setAttribute('class', 'create-pubs');
@@ -89,6 +91,7 @@ export const createPosts = (input, user, currentUserId, likes, postId, postUser)
   likePost.setAttribute('class', 'like-post');
   commentPost.setAttribute('class', 'comment-post');
   optionSection.setAttribute('id', `optionSection${postId}`);
+  newPost.setAttribute('class', 'new-post');
 
   setAttributes(newPubText, pubTextAttributes);
   setAttributes(newPubPicSpace, userPicSpaceAttributes);
@@ -112,8 +115,9 @@ export const createPosts = (input, user, currentUserId, likes, postId, postUser)
   likePost.append(likeIcon, likeCount);
   newPubProfile.append(newPubPicSpace, newPubName, likePost);
   newPubTextSpace.appendChild(newPubText);
+  newPost.append(newPubTextSpace, editPub, deletePub);
   commentPost.append(commentIcon, commentSpace);
-  newPublication.append(newPubProfile, newPubTextSpace, optionSection, commentPost);
+  newPublication.append(newPubProfile, newPost, commentPost);
 
   // delete
   const deleteMessage = document.createElement('p');
@@ -141,8 +145,7 @@ export const createPosts = (input, user, currentUserId, likes, postId, postUser)
 
   // botón para borrar
   deletePub.addEventListener('click', () => {
-    newPublication.appendChild(deletePublication(currentUserId, postUser, postId, postArea));
+    (deletePublication(currentUserId, postUser, postId, postArea));
   });
-
   return postArea;
 };
