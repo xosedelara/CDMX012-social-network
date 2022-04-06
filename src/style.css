@@ -380,6 +380,33 @@ p {
         z-index: 2;
         border-radius: 0;
     }
+    .petspace-planet{
+        height: 80%;
+    }
+    .menu-up-r{
+        justify-content: flex-end;
+    }
+    .shop-icon{
+        height: 50%;
+        background-color: #17162E;
+        padding: 1.5% 3.5%;
+        border-radius: 10%;
+        margin-right: 3%;
+    }
+    .location-icon{
+        height: 50%;
+        background-color: #17162E;
+        padding: 1.5% 2.5%;
+        border-radius: 10%;
+        margin-right: 3%;
+    }
+    .search-icon{
+        height: 50%;
+        background-color: #17162E;
+        padding: 1.5% 2.5%;
+        border-radius: 10%;
+        margin-right: 10%;
+    }
     .menu-down{
         display: none;
     }
@@ -470,12 +497,12 @@ p {
     .pub-third-box{
         padding: 0% 5% 1% 5%;
     }
-    .publication-input{
+    .new-Text{
         background-color: rgb(236, 236, 236);
         text-align: left;
         height: 50%;
         color: black;
-        margin: 3px 10px;
+        margin: 1.5% 10%;
         font-size: medium;
         line-height: 18px;
         padding: 8px 16px;

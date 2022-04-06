@@ -39,7 +39,7 @@ export const createPosts = (input, user, currentUserId, likes, postId, postUser)
     src: './img/deleteicon.png',
   };
   const pubTextAttributes = {
-    class: 'publication-input',
+    class: 'publication-input new-Text',
     id: `text${postId}`,
   };
   const likeIconAttributes = {
@@ -83,7 +83,7 @@ export const createPosts = (input, user, currentUserId, likes, postId, postUser)
   const commentIcon = document.createElement('img');
   const commentSpace = document.createElement('input');
 
-  newPubTextSpace.setAttribute('id', `textSapce${postId}`); // ESTE
+  newPubTextSpace.setAttribute('id', `textSapce${postId}`, 'class', 'new-text-space'); // ESTE
   newPublication.setAttribute('class', 'create-pubs');
   newPubProfile.setAttribute('class', 'pub-first-box new-pub-profile');
   likePost.setAttribute('class', 'like-post');
