@@ -58,6 +58,11 @@ export const addLikes = (docId, userId, postArea, likes) => {
 
 export const editPost = (postId) => {
   // para modificar el doc de la colección en firestore
+  // db.collection('posts').doc(postId).edit().then(() => {
+  //   console.log('¡Has borrado esta publicación!');
+  //   postArea.innerHTML = '';
+  //   accessPosts(postArea);
+  // });
   console.log(postId);
 };
 

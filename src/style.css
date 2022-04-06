@@ -330,6 +330,24 @@ p {
 .delete-pub{
     width: 8%;
 }
+
+.to-modify-text{
+    text-align: left;
+    width: 76%;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #105C7C;
+    font-size: 80%;
+    padding: 2% 1%;
+    margin-right: 0;
+}
+.modify-text-icon{
+    width: 8%;
+    margin: 0;
+    position: relative;
+    top: 5px;
+    left: 0;
+}
 @media only screen and (min-width: 768px) {
     .structure {
         display: flex;
@@ -346,7 +364,7 @@ p {
     .main-page{
         display:grid;
         grid-template-columns: repeat 2;
-        grid-template-row: repeat 2;
+        grid-template-rows: repeat 2;
         margin: 0;
         padding: 0;
     }
@@ -369,7 +387,7 @@ p {
         height: 82.7vh;
         width: 15vw;
         z-index: 1;
-        background-color: #8d6c8d;
+        background-color: #7a547a;
         grid-row: 2;
         grid-column: 1;
         display: flex;
@@ -381,26 +399,46 @@ p {
         margin: 12px;
         width: 40px;
         height: 40px;
+        background-color: #573057;
+        padding: 10%;
+        border-radius: 10%;
+        margin-left: 30%;
     }
     .menu-icon-pc{
         margin: 12px;
         width: 40px;
         height: 35px;
+        background-color: #573057;
+        padding: 10%;
+        border-radius: 10%;
+        margin-left: 30%;
     }
     .notification-icon-pc{
         margin: 12px;
         width: 40px;
         height: 40px;
+        background-color: #573057;
+        padding: 10%;
+        border-radius: 10%;
+        margin-left: 30%;
     }
     .message-icon-pc{
         margin: 12px;
         width: 40px;
         height: 30px;
+        background-color: #573057;
+        padding: 10%;
+        border-radius: 10%;
+        margin-left: 30%;
     }
     .profile-icon-pc{
         margin: 12px;
         width: 40px;
         height: 40px;
+        background-color: #573057;
+        padding: 10%;
+        border-radius: 10%;
+        margin-left: 30%;
     }
     .home-page{
         background-color: rgba(255, 255, 255, 0.884);
@@ -420,14 +458,17 @@ p {
     }
     .create-pubs{
         width: 70vw;
-        margin: 5px 25px;
+        margin: 1.5% 10%;
         padding: 0;
     }
     .pub-first-box{
-        padding: 5px;
+        padding: 2% 5% 1% 5%;
     }
     .pub-second-box{
-        padding: 3px;
+        padding: 0% 5%;
+    }
+    .pub-third-box{
+        padding: 0% 5% 1% 5%;
     }
     .publication-input{
         background-color: rgb(236, 236, 236);
@@ -456,5 +497,13 @@ p {
     } */
     .comment-icon{
         width: 4%;
+    }
+    .to-modify-text{
+        font-size: 100%;
+    }
+    .modify-text-icon{
+        width: 5%;
+        position: relative;
+        top: 10px;
     }
 }

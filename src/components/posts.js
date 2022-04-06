@@ -6,6 +6,7 @@
 import { getPostUser } from '../lib/readFirestore.js';
 import { addLikes } from '../lib/addFirestore.js';
 import { editPublication, deletePublication } from './create-edit-and-delete-pubs.js';
+import { getCurrentUserName } from '../lib/firebaseApp.js';
 
 export const createPosts = (input, user, currentUserId, likes, postId, postUser) => {
   let likeImg = '';
@@ -39,6 +40,7 @@ export const createPosts = (input, user, currentUserId, likes, postId, postUser)
   };
   const pubTextAttributes = {
     class: 'publication-input',
+    id: `text${postId}`,
   };
   const likeIconAttributes = {
     class: 'like-icon new-pub-icon',
@@ -69,7 +71,9 @@ export const createPosts = (input, user, currentUserId, likes, postId, postUser)
   const newPubPic = document.createElement('img');
   const newPubName = document.createElement('p');
   const newPubText = document.createElement('p');
+  const newPubTextSpace = document.createElement('section'); // ESTE
   const newPubProfile = document.createElement('section');
+  const optionSection = document.createElement('section');
   const editPub = document.createElement('img');
   const deletePub = document.createElement('img');
   const likePost = document.createElement('section');
@@ -79,10 +83,12 @@ export const createPosts = (input, user, currentUserId, likes, postId, postUser)
   const commentIcon = document.createElement('img');
   const commentSpace = document.createElement('input');
 
+  newPubTextSpace.setAttribute('id', `textSapce${postId}`); // ESTE
   newPublication.setAttribute('class', 'create-pubs');
   newPubProfile.setAttribute('class', 'pub-first-box new-pub-profile');
   likePost.setAttribute('class', 'like-post');
   commentPost.setAttribute('class', 'comment-post');
+  optionSection.setAttribute('id', `optionSection${postId}`);
 
   setAttributes(newPubText, pubTextAttributes);
   setAttributes(newPubPicSpace, userPicSpaceAttributes);
@@ -101,11 +107,13 @@ export const createPosts = (input, user, currentUserId, likes, postId, postUser)
 
   getPostUser(postUser, newPubName, newPubPic);
 
+  optionSection.append(editPub, deletePub);
   newPubPicSpace.appendChild(newPubPic);
   likePost.append(likeIcon, likeCount);
   newPubProfile.append(newPubPicSpace, newPubName, likePost);
+  newPubTextSpace.appendChild(newPubText);
   commentPost.append(commentIcon, commentSpace);
-  newPublication.append(newPubProfile, newPubText, editPub, deletePub, commentPost);
+  newPublication.append(newPubProfile, newPubTextSpace, optionSection, commentPost);
 
   // delete
   const deleteMessage = document.createElement('p');
@@ -120,9 +128,15 @@ export const createPosts = (input, user, currentUserId, likes, postId, postUser)
     likeCount.innerText = localCount;
   });
 
+  if (user !== getCurrentUserName()) {
+    optionSection.style.visibility = 'hidden';
+  } else {
+    optionSection.style.visibility = 'visible';
+  }
+
   // botón editar
   editPub.addEventListener('click', () => {
-    newPublication.appendChild(editPublication(user, postId));
+    newPublication.appendChild(editPublication(user, postId, postArea));
   });
 
   // botón para borrar
