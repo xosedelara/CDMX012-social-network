@@ -123,12 +123,22 @@ export const mainPage = () => {
   const messageIcon = document.createElement('img');
   const profileIcon = document.createElement('img');
   const menuLeftPc = document.createElement('section');
+  const homeIconPcContainer = document.createElement('div');
   const homeIconPc = document.createElement('img');
+  const menuIconPcContainer = document.createElement('div');
   const menuIconPc = document.createElement('img');
+  const notificationIconPcContainer = document.createElement('div');
   const notificationIconPc = document.createElement('img');
+  const messageIconPcContainer = document.createElement('div');
   const messageIconPc = document.createElement('img');
+  const profileIconPcContainer = document.createElement('div');
   const profileIconPc = document.createElement('img');
   // const addBr = document.createElement('br');
+  homeIconPcContainer.setAttribute('class', 'icon-container');
+  menuIconPcContainer.setAttribute('class', 'icon-container');
+  notificationIconPcContainer.setAttribute('class', 'icon-container');
+  messageIconPcContainer.setAttribute('class', 'icon-container');
+  profileIconPcContainer.setAttribute('class', 'icon-container');
 
   setAttributes(mainPageStructure, mainPageStructureAttributes);
   setAttributes(menuUp, menuUpAttributes);
@@ -156,7 +166,12 @@ export const mainPage = () => {
   menuUp.append(petspacePlanet, menuUpRight);
   homePage.append(pubBarFunc(), homePageM);
   menuDown.append(homeIcon, menuIcon, notificationIcon, messageIcon, profileIcon);
-  menuLeftPc.append(homeIconPc, menuIconPc, notificationIconPc, messageIconPc, profileIconPc);
+  homeIconPcContainer.appendChild(homeIconPc);
+  menuIconPcContainer.appendChild(menuIconPc);
+  notificationIconPcContainer.appendChild(notificationIconPc);
+  messageIconPcContainer.appendChild(messageIconPc);
+  profileIconPcContainer.appendChild(profileIconPc);
+  menuLeftPc.append(homeIconPcContainer, menuIconPcContainer, notificationIconPcContainer, messageIconPcContainer, profileIconPcContainer);
   mainPageStructure.append(menuUp, homePage, menuDown, menuLeftPc);
   menuIcon.addEventListener('click', () => { onNavigate('/'); });
   // const body = document.querySelector('body');
