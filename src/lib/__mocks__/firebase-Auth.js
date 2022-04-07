@@ -12,22 +12,22 @@ global.firebase = {
     signInWithPopup: () => new Promise((resolve) => {
       resolve('');
     }),
+    signInWithGoogle: () => {
+      class GoogleAuthProvider {
+        constructor() {
+          this.id = 'email';
+        }
+      }
+    },
+    signInWithFacebook: () => {
+      class FacebookAuthProvider {
+        constructor() {
+          this.id = 'email';
+        }
+      }
+    },
   }),
   firestore: () => {
-  },
-  signInWithGoogle: () => {
-    class GoogleAuthProvider {
-      constructor() {
-        console.log('un constructor');
-      }
-    }
-  },
-  signInWithFacebook: () => {
-    class FacebookAuthProvider {
-      constructor() {
-        console.log('otro constructor');
-      }
-    }
   },
 };
 

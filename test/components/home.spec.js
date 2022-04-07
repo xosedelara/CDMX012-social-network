@@ -35,6 +35,7 @@ describe('home', () => {
     expect(signIn).toHaveBeenCalled();
   });
   it('calls google when click on logo', () => {
+    reloadHome();
     const gmailLogo = document.getElementById('gmailLogo');
     const signInGoogle = jest.spyOn(firebaseAuth, 'signInWithGoogle');
     gmailLogo.click();
