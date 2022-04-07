@@ -30,7 +30,7 @@ describe('home', () => {
   });
   it('goes to signInWithEmailAndPassword when click on button', () => {
     const loginSubmit = document.getElementById('submitButton');
-    const signIn = jest.spyOn(firebase, 'signInEmailAndPW');
+    const signIn = jest.spyOn(firebaseAuth, 'signInEmailAndPW');
     loginSubmit.click();
     expect(signIn).toHaveBeenCalled();
   });
