@@ -5,8 +5,9 @@ import { createPosts } from '../components/posts.js';
 
 const db = firebase.firestore();
 
-export const getCurrentUser = (usernameText, userPic) => {
-  const userId = firebase.auth().currentUser.uid;
+export const getCurrentUser = (uid, usernameText, userPic) => {
+  const userId = uid;
+  /* firebase.auth().currentUser.uid; */
   console.log(userId);
   const userArray = [];
   db.collection('users').where('user', '==', userId)
@@ -26,6 +27,14 @@ export const getCurrentUser = (usernameText, userPic) => {
     .catch((error) => {
       console.log('Error getting documents: ', error);
     });
+};
+
+export const authObserver = (userName, userPic) => {
+  firebase.auth().onAuthStateChanged((user) => {
+    const uid = user.uid;
+    console.log(uid, 'consoledentrodelObserver');
+    getCurrentUser(uid, userName, userPic);
+  });
 };
 
 export const getPostUser = (postUserId, usernameText, userPic) => {

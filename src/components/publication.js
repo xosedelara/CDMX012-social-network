@@ -2,7 +2,7 @@
 /* eslint-disable max-len */
 // eslint-disable-next-line import/no-cycle
 
-import { accessPosts, getCurrentUser } from '../lib/readFirestore.js';
+import { accessPosts, authObserver } from '../lib/readFirestore.js';
 import { publishPublication } from './create-edit-and-delete-pubs.js';
 
 export const pubBarFunc = () => {
@@ -82,7 +82,7 @@ export const pubBarFunc = () => {
 
   publishButton.innerText = 'Publicar';
 
-  getCurrentUser(userName, userPic);
+  authObserver(userName, userPic);
 
   userPicSpace.appendChild(userPic);
   firstBox.append(userPicSpace, userName);
