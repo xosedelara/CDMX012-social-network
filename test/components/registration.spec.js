@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-import '../../src/lib/__mocks__/firebase-Auth';
+import firebase from '../../src/lib/__mocks__/firebase-Auth.js';
 import * as firebaseAuth from '../../src/lib/firebase-Auth.js';
 import { registration } from '../../src/components/registration';
 
@@ -40,8 +40,14 @@ describe('registration', () => {
   });
   it('calls Google when clicked on logo', () => {
     const gmailLogo = document.getElementById('googleLogo');
-    const googleSignIn = jest.spyOn(firebaseAuth, 'signInWithGoogle');
+    const googleSignIn = jest.spyOn(firebaseAuth, 'signInWithGoogle').mockImplementation(() => {});
     gmailLogo.click();
     expect(googleSignIn).toHaveBeenCalled();
+  });
+  it('calls Facebook when clicked on logo', () => {
+    const facebookLogo = document.getElementById('fbLogo');
+    const facebookSignIn = jest.spyOn(firebaseAuth, 'signInWithFacebook').mockImplementation(() => {});
+    facebookLogo.click();
+    expect(facebookSignIn).toHaveBeenCalled();
   });
 });

@@ -174,8 +174,6 @@ export const mainPage = () => {
   menuLeftPc.append(homeIconPcContainer, menuIconPcContainer, notificationIconPcContainer, messageIconPcContainer, profileIconPcContainer);
   mainPageStructure.append(menuUp, homePage, menuDown, menuLeftPc);
   menuIcon.addEventListener('click', () => { onNavigate('/'); });
-  // const body = document.querySelector('body');
-  //   body.style.background = '#ffff';
 
   return mainPageStructure;
 };
