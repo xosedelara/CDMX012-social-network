@@ -1,7 +1,8 @@
 /**
  * @jest-environment jsdom
  */
-import firebase from '../../src/lib/__mocks__/firebaseApp.js';
+import firebase from '../../src/lib/__mocks__/firebase-Auth.js';
+import * as firebaseAuth from '../../src/lib/firebase-Auth.js';
 import { home } from '../../src/components/home.js';
 
 const component = home();
@@ -19,43 +20,37 @@ describe('home', () => {
     expect(rootDiv.innerHTML).toMatchSnapshot('./home.spec.js.snap');
   });
   it('onNavigate works', () => {
-    // reloadHome();
     expect(window.location.pathname).toBe('/');
   });
   it('shows psw when click on btn', () => {
-    // reloadHome();
     const seePWBtn = document.getElementById('seePasswordHome');
     const loginPW = document.getElementById('loginPassword');
     seePWBtn.click();
     expect(loginPW.type).toBe('text');
   });
-  it('goes to mainpage when successfully logged in', (done) => {
-    // reloadHome();
-    expect(window.location.pathname).toBe('/');
+  it('goes to signInWithEmailAndPassword when click on button', () => {
     const loginSubmit = document.getElementById('submitButton');
+    const signIn = jest.spyOn(firebaseAuth, 'signInEmailAndPW');
     loginSubmit.click();
-    firebase.atuh().signInWithEmailAndPassword().then((result) => {
-      if (result) {
-        expect(window.location.pathname).toBe('/mainPage');
-        done();
-      }
-    });
+    expect(signIn).toHaveBeenCalled();
+  });
+  it('calls google when click on logo', () => {
+    reloadHome();
+    const gmailLogo = document.getElementById('gmailLogo');
+    const signInGoogle = jest.spyOn(firebaseAuth, 'signInWithGoogle');
+    gmailLogo.click();
+    expect(signInGoogle).toHaveBeenCalled();
+  });
+  it('calls facebook when click on facebooklogo', () => {
+    const facebookLogo = document.getElementById('facebookLogo');
+    const signInFacebook = jest.spyOn(firebaseAuth, 'signInWithFacebook');
+    facebookLogo.click();
+    expect(signInFacebook).toHaveBeenCalled();
   });
   it('changes route when click on button', () => {
     reloadHome();
-    expect(window.location.pathname).toBe('/');
     const registerBtn = document.getElementById('registerButton');
     registerBtn.click();
     expect(window.location.pathname).toBe('/registration');
   });
-  /* it('calls google when click on logo', () => {
-    const gmailLogo = document.getElementById('gmailLogo');
-    gmailLogo.click();
-    expect(signInWithGoogle()).toHaveBeenCalled();
-  });
-  it('calls google when click on facebooklogo', () => {
-    const facebookLogo = document.getElementById('facebookLogo');
-    facebookLogo.click();
-    expect(signInWithFacebook()).toHaveBeenCalled();
-  }); */
 });

@@ -151,6 +151,7 @@ export const home = () => {
     const message = loginMessage;
     signInEmailAndPW(message, email, password);
   });
+  
   registerBtn.addEventListener('click', () => { onNavigate('/registration'); });
 
   gmailLogo.addEventListener('click', () => {
