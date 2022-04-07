@@ -8,7 +8,7 @@ import { addLikes } from '../lib/addFirestore.js';
 import { editPublication, deletePublication } from './create-edit-and-delete-pubs.js';
 import { getCurrentUserName } from '../lib/firebaseApp.js';
 
-export const createPosts = (input, user, currentUserId, likes, postId, postUser) => {
+export const createPosts = (text, user, currentUserId, likes, postId, postUser) => {
   let likeImg = '';
   if ((Object.values(likes)).includes(currentUserId)) {
     likeImg = 'img/likeIconFilled.png';
@@ -90,7 +90,7 @@ export const createPosts = (input, user, currentUserId, likes, postId, postUser)
   newPubProfile.setAttribute('class', 'pub-first-box new-pub-profile');
   likePost.setAttribute('class', 'like-post');
   commentPost.setAttribute('class', 'comment-post');
-  optionSection.setAttribute('id', `optionSection${postId}`);
+  optionSection.setAttribute('id', `optionSection${postId}`, 'class', 'option-sec');
   newPost.setAttribute('class', 'new-post');
 
   setAttributes(newPubText, pubTextAttributes);
@@ -104,7 +104,7 @@ export const createPosts = (input, user, currentUserId, likes, postId, postUser)
   setAttributes(commentIcon, commentIconAttributes);
   setAttributes(commentSpace, commentSpaceAttributes);
 
-  newPubText.innerText = input;
+  newPubText.innerText = text;
   const localCount = likes.length;
   likeCount.innerText = localCount;
 
@@ -115,7 +115,7 @@ export const createPosts = (input, user, currentUserId, likes, postId, postUser)
   likePost.append(likeIcon, likeCount);
   newPubProfile.append(newPubPicSpace, newPubName, likePost);
   newPubTextSpace.appendChild(newPubText);
-  newPost.append(newPubTextSpace, editPub, deletePub);
+  newPost.append(newPubTextSpace, optionSection);
   commentPost.append(commentIcon, commentSpace);
   newPublication.append(newPubProfile, newPost, commentPost);
 
@@ -140,7 +140,8 @@ export const createPosts = (input, user, currentUserId, likes, postId, postUser)
 
   // botón editar
   editPub.addEventListener('click', () => {
-    newPublication.appendChild(editPublication(user, postId, postArea));
+    console.log(user);
+    newPublication.appendChild(editPublication(user, postId, postArea, text));
   });
 
   // botón para borrar

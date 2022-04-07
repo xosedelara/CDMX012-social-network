@@ -56,15 +56,49 @@ export const addLikes = (docId, userId, postArea, likes) => {
   accessPosts(postArea);
 };
 
-export const editPost = (postId) => {
-  // para modificar el doc de la colección en firestore
-  // db.collection('posts').doc(postId).edit().then(() => {
-  //   console.log('¡Has borrado esta publicación!');
-  //   postArea.innerHTML = '';
-  //   accessPosts(postArea);
-  // });
-  console.log(postId);
+export const editPost = (userId, docId, postArea, text) => {
+  const docRef = db.collection('posts').doc(docId);
+  if (text.includes(userId)) {
+    docRef.update({
+      text: firebase.firestore.FieldValue.arrayRemove(userId),
+    });
+  } else {
+    docRef.update({
+      text: firebase.firestore.FieldValue.arrayUnion(userId),
+    });
+  }
+  postArea.innerHTML = '';
+  accessPosts(postArea);
+  // db.collection('posts').doc(postId)
+  //   .onUpdate(async (change, context) => {
+  //     const setContext = context.params.postId;
+  //     const setText = context.params.text;
+  //     const before = change.before.val();
+  //     const after = change.after.val();
+  //     if (before.text === after.text) {
+  //       return null;
+  //     }
+  //     const snapshot = await admin.firestore()
+  //         .collection("reviews")
+  //         .where('userName', '==', previousValue.userName)
+  //         .get();
+  //     const newText = text;
+  //     return change.after.ref.update({ newText });
+  //   });
 };
+// export const editPost = (postId, input, postArea) => {
+//   db.collection('posts').doc(postId)
+//     // .onSnapshot((doc) => {
+//     //   const source = doc.metadata.hasPendingWrites ? 'Local' : 'Server';
+//     //   console.log(source, ' data: ', doc.data());
+//     //   // console.log('Current data: ', doc.data());
+//     // });
+//     .onUpdate(change, context) => {
+
+//     }
+//     .onUpdate(handler: (change: Change<QueryDocumentSnapshot>, context: EventContext) => any): CloudFunction<Change<QueryDocumentSnapshot>>
+
+// };
 
 export const deletePost = (postId, postArea) => {
   db.collection('posts').doc(postId).delete().then(() => {
