@@ -2,8 +2,8 @@
  * @jest-environment jsdom
  */
 import firebase from '../../src/lib/__mocks__/firebase-Auth.js';
+import * as firebaseAuth from '../../src/lib/firebase-Auth.js';
 import { home } from '../../src/components/home.js';
-import { signInEmailAndPW, signInWithFacebook, signInWithGoogle } from '../../src/lib/firebase-Auth.js';
 
 const component = home();
 document.body.innerHTML = '<div id="root"></div>';
@@ -30,19 +30,19 @@ describe('home', () => {
   });
   it('goes to signInWithEmailAndPassword when click on button', () => {
     const loginSubmit = document.getElementById('submitButton');
-    const signIn = jest.fn(signInEmailAndPW());
+    const signIn = jest.spyOn(firebase, 'signInEmailAndPW');
     loginSubmit.click();
     expect(signIn).toHaveBeenCalled();
   });
   it('calls google when click on logo', () => {
     const gmailLogo = document.getElementById('gmailLogo');
-    const signInGoogle = jest.fn(signInWithGoogle());
+    const signInGoogle = jest.spyOn(firebaseAuth, 'signInWithGoogle');
     gmailLogo.click();
     expect(signInGoogle).toHaveBeenCalled();
   });
   it('calls facebook when click on facebooklogo', () => {
     const facebookLogo = document.getElementById('facebookLogo');
-    const signInFacebook = jest.fn(signInWithFacebook());
+    const signInFacebook = jest.spyOn(firebaseAuth, 'signInWithFacebook');
     facebookLogo.click();
     expect(signInFacebook).toHaveBeenCalled();
   });

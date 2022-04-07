@@ -17,8 +17,9 @@ global.firebase = {
   firestore: () => {
   },
   signInWithGoogle: () => {
-    const GoogleAuthProvider = () => {
-    };
+    class GoogleAuthProvider {
+      constructor() { }
+    }
   },
   signInWithFacebook: () => {
     const FacebookAuthProvider = () => {

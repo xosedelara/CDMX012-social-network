@@ -2,6 +2,7 @@
  * @jest-environment jsdom
  */
 import '../../src/lib/__mocks__/firebase-Auth';
+import * as firebaseAuth from '../../src/lib/firebase-Auth.js';
 import { registration } from '../../src/components/registration';
 
 const component = registration();
@@ -18,9 +19,6 @@ describe('registration', () => {
     reloadRegistration();
     expect(rootDiv.innerHTML).toMatchSnapshot('./registration.spec.js.snap');
   });
-  it('onNavigate works', () => {
-    expect(window.location.pathname).toBe('/registration');
-  });
   it('shows psw when click on btn', () => {
     const regPW = document.getElementById('regPW');
     const seePWBtn = document.getElementById('seePasswordReg');
@@ -33,11 +31,17 @@ describe('registration', () => {
     const inputName = document.getElementById('regName');
     const inputMail = document.getElementById('regEmail');
     const inputPsw = document.getElementById('regPW');
-    const namelaceholder = inputName.placeholder;
+    const namePlaceholder = inputName.placeholder;
     const mailPlaceholder = inputMail.placeholder;
     const pswPlaceholder = inputPsw.placeholder;
-    expect(namelaceholder).toBe('Nombre');
+    expect(namePlaceholder).toBe('Nombre');
     expect(mailPlaceholder).toBe('Correo electrónico');
     expect(pswPlaceholder).toBe('Contraseña');
+  });
+  it('calls Google when clicked on logo', () => {
+    const gmailLogo = document.getElementById('googleLogo');
+    const googleSignIn = jest.spyOn(firebaseAuth, 'signInWithGoogle');
+    gmailLogo.click();
+    expect(googleSignIn).toHaveBeenCalled();
   });
 });
