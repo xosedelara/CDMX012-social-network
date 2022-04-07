@@ -1,3 +1,4 @@
+/* eslint-disable max-classes-per-file */
 global.firebase = {
   initializeApp: () => {
   },
@@ -11,16 +12,22 @@ global.firebase = {
     signInWithPopup: () => new Promise((resolve) => {
       resolve('');
     }),
+    signInWithGoogle: () => {
+      class GoogleAuthProvider {
+        constructor() {
+          this.id = 'email';
+        }
+      }
+    },
+    signInWithFacebook: () => {
+      class FacebookAuthProvider {
+        constructor() {
+          this.id = 'email';
+        }
+      }
+    },
   }),
   firestore: () => {
-  },
-  signInWithGoogle: () => {
-    const GoogleAuthProvider = () => {
-    };
-  },
-  signInWithFacebook: () => {
-    const FacebookAuthProvider = () => {
-    };
   },
 };
 

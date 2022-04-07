@@ -50,6 +50,7 @@ export const registration = () => {
   const gmailLogoAttributes = {
     src: 'img/google.png',
     class: 'gmail-logo',
+    id: 'googleLogo',
   };
   const returnButtonAttributes = {
     class: 'return-button',
@@ -130,7 +131,6 @@ export const registration = () => {
     const email = inputEmail.value;
     const password = inputPW.value;
     const message = regMessage;
-    // console.log(email, password);
     createAccount(message, email, password, name);
   });
 
