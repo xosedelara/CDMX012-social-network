@@ -268,7 +268,7 @@ p {
     background-color: rgb(236, 236, 236);
     text-align: left;
     height: 15%;
-    width:200%;
+    width: 53vw;
     color: black;
     border-radius: 10px;
     padding: 3% 8%;
@@ -324,10 +324,11 @@ p {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 .edit-pub{
-    width: 8%;
-    margin-left: 70%;
+    width: 5vw;
+    margin: 3px;
 }
 .edit-input{
     background-color: rgb(236, 236, 236);
@@ -337,7 +338,7 @@ p {
     color: black;
 }
 .delete-pub{
-    width: 8%;
+    width: 4vw;
     margin: 3px;
 }
 
@@ -440,7 +441,7 @@ p {
         height: 60px;
         background-color: #573057;
         border-radius: 50%;
-        margin: 12% 15px;
+        margin: 25% 15px;
     }
     .home-icon-pc{
         margin: 12px;
@@ -514,22 +515,24 @@ p {
     }
     .new-post{
         grid-row: 2;
-        padding: 2px 0; 
+        padding: 2% 5%; 
+        margin: 0;
         display: flex;
         align-items: center;
-        justify-content: space-around;
+        /* justify-content:space-around; */
     }
-    .publication-text{
+    .publication-text, .to-modify-text{
         background-color: rgb(236, 236, 236);
-        text-align: left;
-        height: 50%;
-        width: 77%;
+        text-align: justify;
+        width: 49vw;
         color: black;
-        margin: 3px 8px 3px 19px;
-        font-size: 100%;
+        font-size: medium;
         line-height: 18px;
         padding: 8px 16px;
+        margin:0px;
         border-radius: 8px;
+        /* grid-column: 1, 2; */
+        grid-row: 3;
     }
     .edit-pub{
         width: 25px;
@@ -544,7 +547,7 @@ p {
     .new-Text{
         background-color: rgb(236, 236, 236);
         text-align: left;
-        height: 50%;
+        height: fit-content;
         color: black;
         /* margin: 1.5% 10%; */
         margin: 3px 19px;
@@ -553,7 +556,7 @@ p {
         padding: 8px 16px;
         border-radius: 8px;
         /* grid-column: 1, 2; */
-        grid-row: 3;
+        grid-row: 2;
     }
     .publish-button{
         padding: 0 18px;
@@ -565,12 +568,22 @@ p {
         padding: 5px;
         margin: 3px;
     }
+    .publication-input{
+        background-color: rgb(236, 236, 236);
+        text-align: left;
+        height: fit-content;
+        color: black;
+        margin: 3px 19px;
+        font-size: medium;
+        line-height: 18px;
+        padding: 8px 16px;
+        border-radius: 8px;
+        /* grid-column: 1, 2; */
+        grid-row: 3;
+    }
     .comment-icon{
         width: 4%;
-        margin: 5px 19px;
-    }
-    .to-modify-text{
-        font-size: 100%;
+        margin: 5px 6px 5px 19px;
     }
     .modify-text-icon{
         width: 5%;
