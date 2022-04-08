@@ -37,13 +37,13 @@ describe('home', () => {
   it('calls google when click on logo', () => {
     reloadHome();
     const gmailLogo = document.getElementById('gmailLogo');
-    const signInGoogle = jest.spyOn(firebaseAuth, 'signInWithGoogle');
+    const signInGoogle = jest.spyOn(firebaseAuth, 'signInWithGoogle').mockImplementation(() => {});
     gmailLogo.click();
     expect(signInGoogle).toHaveBeenCalled();
   });
   it('calls facebook when click on facebooklogo', () => {
     const facebookLogo = document.getElementById('facebookLogo');
-    const signInFacebook = jest.spyOn(firebaseAuth, 'signInWithFacebook');
+    const signInFacebook = jest.spyOn(firebaseAuth, 'signInWithFacebook').mockImplementation(() => {});
     facebookLogo.click();
     expect(signInFacebook).toHaveBeenCalled();
   });

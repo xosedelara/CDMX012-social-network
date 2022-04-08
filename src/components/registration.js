@@ -46,6 +46,7 @@ export const registration = () => {
   const facebookLogoAttributes = {
     src: 'img/facebook.png',
     class: 'facebook-logo',
+    id: 'fbLogo',
   };
   const gmailLogoAttributes = {
     src: 'img/google.png',
