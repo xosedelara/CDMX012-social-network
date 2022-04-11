@@ -6,14 +6,15 @@ import { mainPage } from './components/mainPage.js';
 
 //  Routing
 export const routes = {
-  '/': home,
-  '/registration': registration,
-  '/mainPage': mainPage,
+  '/CDMX012-social-network/src/': home,
+  '/CDMX012-social-network/src/registration': registration,
+  '/CDMX012-social-network/src/mainPage': mainPage,
 };
 
 // const root = document.getElementById('root');
 window.onload = () => {
   const root = document.getElementById('root');
+  console.log(window.location.pathname);
   root.appendChild(routes[window.location.pathname]());
 };
 
