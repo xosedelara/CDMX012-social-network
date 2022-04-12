@@ -10,12 +10,19 @@
 PetSpace es una red social para conectar cuidadorxs de mascotas, y así poder acceder y compartir a servicios avalados por la misma comunidad. El desarrollo de este proyecto, se llevó acabo a partir de las siguientes Historias de Usuario:
 
 HU1: Yo como usuarix de PetSpace quiero crear una cuenta con correo electrónico.
+
 HU2: Yo como usuarix de PetSpace quiero poder acceder con la cuenta creada.
+
 HU3: Yo como usuarix de PetSpace quiero poder acceder con mi cuenta de Facebook y Gmail.
+
 HU4: Yo como usuarix de PetSpace quiero poder acceder a mi timeline una vez que inicie sesión.
+
 HU5: Yo como usuarix de PetSpace quiero que mis publicaciones se guarden aunque cierre sesión.
+
 HU6: Yo como usuarix de PetSpace, quiero poder dar likes a publicaciones.
+
 HU7: Yo como usuarix de PetSpace, quiero poder eliminar mis publicaciones.
+
 HU8: Yo como usuarix de PetSpace, quiero poder editar mis publicaciones.
 
 PetSpace fue desarrollado como una Single Page Application, con diseño responsivo (mobile first) e implementando Firebase (Authentication para inicio de sesión y registro de usuarixs, y FireStore para la creación y manipulcación de datos).
