@@ -25,7 +25,7 @@ HU7: Yo como usuarix de PetSpace, quiero poder eliminar mis publicaciones.
 
 HU8: Yo como usuarix de PetSpace, quiero poder editar mis publicaciones.
 
-PetSpace fue desarrollado como una Single Page Application, con diseño responsivo (mobile first) e implementando Firebase (Authentication para inicio de sesión y registro de usuarixs, y FireStore para la creación y manipulcación de datos).
+PetSpace fue desarrollado como una Single Page Application, con diseño responsivo (mobile first) e implementando Firebase (Authentication para inicio de sesión y registro de usuarixs, y FireStore para la creación y manipulación de datos).
 
 ## 2. Diseño
 
