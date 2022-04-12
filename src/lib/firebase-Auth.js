@@ -15,7 +15,7 @@ const errorTranslate = {
 
 export const signInEmailAndPW = (message, email, password) => {
   firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
-    onNavigate('/CDMX012-social-network/src/mainPage');
+    onNavigate('/mainPage');
   }).catch((error) => {
     const errorType = error.code;
     message.innerHTML = (errorTranslate[errorType]);
@@ -47,7 +47,7 @@ export const signInWithGoogle = () => {
     const credential = result.credential;
 
     addUserCollection(result.user);
-    onNavigate('/CDMX012-social-network/src/mainPage');
+    onNavigate('/mainPage');
   }).catch((error) => {
     // Handle Errors here.
     const errorCode = error.code;
