@@ -34,7 +34,6 @@ export const createAccount = (message, email, password, name) => {
     });
   }).catch((error) => {
     const errorType = error.code;
-    // quitar conexion con el dom y moverlo a otro archivo
     message.innerHTML = (errorTranslate[errorType]);
     message.style.color = '#FE6C6C';
   });

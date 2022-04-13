@@ -133,7 +133,6 @@ export const mainPage = () => {
   const messageIconPc = document.createElement('img');
   const profileIconPcContainer = document.createElement('div');
   const profileIconPc = document.createElement('img');
-  // const addBr = document.createElement('br');
   homeIconPcContainer.setAttribute('class', 'icon-container');
   menuIconPcContainer.setAttribute('class', 'icon-container');
   notificationIconPcContainer.setAttribute('class', 'icon-container');
