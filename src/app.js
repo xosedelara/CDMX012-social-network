@@ -11,7 +11,6 @@ export const routes = {
   '/mainPage': mainPage,
 };
 
-// const root = document.getElementById('root');
 window.onload = () => {
   const root = document.getElementById('root');
   root.appendChild(routes[window.location.pathname]());
